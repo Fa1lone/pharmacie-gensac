@@ -1,0 +1,89 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Pharmacie de Gensac-la-Pallue — Votre pharmacie de proximité en Charente",
+  description = "Pharmacie de proximité à Gensac-la-Pallue en Charente. Ordonnances, conseils santé, vaccination, matériel médical. Équipe humaine et disponible.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F7F4EA" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Fonts: Rufina (titres) + Figtree (corps) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor Icons (light variant) -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" is:inline></script>
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Pharmacy",
+      "name": "Pharmacie de Gensac-la-Pallue",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Route de Merpins",
+        "addressLocality": "Gensac-la-Pallue",
+        "postalCode": "16200",
+        "addressCountry": "FR"
+      },
+      "telephone": "+33XXXXXXXXX",
+      "openingHours": ["Mo-Fr 09:00-12:30", "Mo-Fr 14:00-19:00", "Sa 09:00-13:00"],
+      "url": "https://pharmacie-gensac.fr"
+    }
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Scroll reveal
+      const reveals = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      reveals.forEach(el => revealObserver.observe(el));
+
+      // Respect prefers-reduced-motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        reveals.forEach(el => {
+          el.classList.add('visible');
+          (el as HTMLElement).style.transition = 'none';
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

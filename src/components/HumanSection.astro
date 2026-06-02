@@ -1,0 +1,153 @@
+---
+---
+<section id="equipe" class="human-section" aria-labelledby="equipe-title">
+  <div class="section-inner">
+    <div class="human-grid">
+      <div class="human-content">
+        <div class="section-eyebrow reveal">Notre équipe</div>
+        <h2 id="equipe-title" class="section-title reveal reveal-delay-1">
+          Une pharmacie de village,<br /><em>une équipe qui vous connaît.</em>
+        </h2>
+        <blockquote class="reveal reveal-delay-2">
+          On connaît vos noms. Parfois depuis avant votre naissance.
+        </blockquote>
+        <p class="reveal reveal-delay-3">
+          À Gensac-la-Pallue, on se connaît. Nos pharmaciens suivent les mêmes familles depuis des années — les enfants qui deviennent parents, les parents qui vieillissent. Ils connaissent vos traitements, vos habitudes, votre médecin.
+        </p>
+        <p class="reveal reveal-delay-4">
+          Quand vous avez une question sur un médicament ou un doute sur un symptôme, vous parlez à quelqu'un qui vous connaît. Pas à un algorithme, pas à un inconnu derrière un comptoir.
+        </p>
+
+        <div class="human-tags reveal reveal-delay-5">
+          <span class="human-tag">
+            <ph-icon name="check-circle" size="14" weight="fill" aria-hidden="true"></ph-icon>
+            Équipe formée &amp; diplômée
+          </span>
+          <span class="human-tag">
+            <ph-icon name="check-circle" size="14" weight="fill" aria-hidden="true"></ph-icon>
+            Entretiens pharmaceutiques
+          </span>
+          <span class="human-tag">
+            <ph-icon name="check-circle" size="14" weight="fill" aria-hidden="true"></ph-icon>
+            Conseils sans rendez-vous
+          </span>
+        </div>
+      </div>
+
+      <div class="human-visual reveal reveal-delay-1">
+        <div class="photo-shell">
+          <div class="photo-inner" style="aspect-ratio:3/4">
+            <div class="photo-placeholder">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+                <circle cx="30" cy="20" r="12" fill="rgba(255,255,255,0.4)"/>
+                <path d="M10 52 Q30 38 50 52" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none"/>
+              </svg>
+              <p>Photo de l'équipe à venir</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card reveal">
+            <strong>15+</strong>
+            <span>ans d'histoire</span>
+          </div>
+          <div class="stat-card reveal reveal-delay-1">
+            <strong>3</strong>
+            <span>pharmaciens</span>
+          </div>
+          <div class="stat-card reveal reveal-delay-2">
+            <strong>6j/7</strong>
+            <span>ouverts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .human-section {
+    background: var(--cream-2);
+    padding: var(--space-xl) 0;
+  }
+  .human-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--text-main);
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  blockquote::before {
+    content: '\201C';
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -0.5em;
+    color: var(--green-leaf);
+    margin-right: 4px;
+  }
+
+  .human-content p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .human-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .human-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(9,101,52,0.07);
+    border: 1px solid rgba(9,101,52,0.13);
+    color: var(--green-deep);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .stat-card {
+    background: var(--cream);
+    border: 1px solid var(--border-green);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-card strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-card span { font-size: 0.75rem; color: var(--text-light); }
+
+  @media (max-width: 768px) {
+    .human-grid { grid-template-columns: 1fr; gap: 40px; }
+    .human-visual { order: -1; }
+  }
+</style>

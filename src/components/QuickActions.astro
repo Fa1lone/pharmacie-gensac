@@ -1,0 +1,101 @@
+---
+---
+<div class="quick-actions" role="navigation" aria-label="Actions rapides">
+  <div class="qa-inner">
+    <a href="#infos" class="qa-card">
+      <div class="qa-icon">
+        <ph-icon name="clock" size="22" weight="light" aria-hidden="true"></ph-icon>
+      </div>
+      <div class="qa-info">
+        <strong>Horaires &amp; garde</strong>
+        <span>Lun–Ven 9h–19h · Sam 9h–13h</span>
+      </div>
+      <ph-icon name="arrow-right" size="18" weight="light" class="qa-arrow" aria-hidden="true"></ph-icon>
+    </a>
+
+    <a href="https://maps.google.com/?q=Pharmacie+Gensac-la-Pallue" target="_blank" rel="noopener" class="qa-card">
+      <div class="qa-icon">
+        <ph-icon name="map-pin" size="22" weight="light" aria-hidden="true"></ph-icon>
+      </div>
+      <div class="qa-info">
+        <strong>Itinéraire</strong>
+        <span>Route de Merpins, Gensac-la-Pallue</span>
+      </div>
+      <ph-icon name="arrow-right" size="18" weight="light" class="qa-arrow" aria-hidden="true"></ph-icon>
+    </a>
+
+    <a href="mailto:ordonnances@pharmacie-gensac.fr" class="qa-card">
+      <div class="qa-icon">
+        <ph-icon name="envelope-simple" size="22" weight="light" aria-hidden="true"></ph-icon>
+      </div>
+      <div class="qa-info">
+        <strong>Envoyer une ordonnance</strong>
+        <span>Transmission par e-mail sécurisé</span>
+      </div>
+      <ph-icon name="arrow-right" size="18" weight="light" class="qa-arrow" aria-hidden="true"></ph-icon>
+    </a>
+  </div>
+</div>
+
+<style>
+  .quick-actions {
+    background: var(--green-deep);
+  }
+  .qa-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .qa-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 32px;
+    color: var(--cream-2);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.25s var(--ease-spring);
+    position: relative;
+    overflow: hidden;
+  }
+  .qa-card:last-child { border-right: none; }
+  .qa-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--blue-river);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease-out-expo);
+  }
+  .qa-card:hover::after { transform: scaleX(1); }
+  .qa-card:hover { background: rgba(255,255,255,0.05); }
+
+  .qa-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s, transform 0.25s var(--ease-spring);
+  }
+  .qa-card:hover .qa-icon { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+  .qa-info strong { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+  .qa-info span { font-size: 0.78rem; opacity: 0.7; }
+
+  .qa-arrow { margin-left: auto; opacity: 0.4; transition: transform 0.25s var(--ease-spring), opacity 0.25s; }
+  .qa-card:hover .qa-arrow { transform: translateX(4px); opacity: 0.8; }
+
+  @media (max-width: 768px) {
+    .qa-inner { grid-template-columns: 1fr; }
+    .qa-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .qa-card:last-child { border-bottom: none; }
+  }
+</style>

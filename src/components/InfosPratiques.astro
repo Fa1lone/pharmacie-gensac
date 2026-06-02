@@ -1,0 +1,172 @@
+---
+const horaires = [
+  { day: "Lundi",    hours: "9h00 – 12h30 · 14h00 – 19h00", open: true },
+  { day: "Mardi",    hours: "9h00 – 12h30 · 14h00 – 19h00", open: true },
+  { day: "Mercredi", hours: "9h00 – 12h30 · 14h00 – 19h00", open: true },
+  { day: "Jeudi",    hours: "9h00 – 12h30 · 14h00 – 19h00", open: true },
+  { day: "Vendredi", hours: "9h00 – 12h30 · 14h00 – 19h00", open: true },
+  { day: "Samedi",   hours: "9h00 – 13h00", open: true },
+  { day: "Dimanche", hours: "Fermé", open: false },
+];
+---
+
+<section id="infos" aria-labelledby="infos-title">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Infos pratiques</div>
+    <h2 id="infos-title" class="section-title reveal reveal-delay-1">
+      Tout ce qu'il faut savoir<br /><em>avant de venir</em>
+    </h2>
+
+    <div class="infos-grid">
+      <!-- Horaires -->
+      <div>
+        <div class="info-block reveal">
+          <h3>
+            <ph-icon name="clock" size="22" weight="light" aria-hidden="true"></ph-icon>
+            Horaires d'ouverture
+            <span class="badge-open" style="margin-left:auto">Ouvert</span>
+          </h3>
+          <ul class="horaires-list" aria-label="Horaires de la semaine">
+            {horaires.map(h => (
+              <li>
+                <span class="day">{h.day}</span>
+                <span class={h.open ? "hours" : "closed"}>{h.hours}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="map-placeholder reveal reveal-delay-1" role="img" aria-label="Carte d'accès">
+          <ph-icon name="map-trifold" size="28" weight="light" aria-hidden="true" style="color:var(--green-vivid);opacity:0.6"></ph-icon>
+          <span>Carte interactive à intégrer (Google Maps / OpenStreetMap)</span>
+        </div>
+      </div>
+
+      <!-- Coordonnées -->
+      <div class="info-block reveal reveal-delay-1">
+        <h3>
+          <ph-icon name="map-pin" size="22" weight="light" aria-hidden="true"></ph-icon>
+          Coordonnées &amp; accès
+        </h3>
+        <ul class="contact-list" aria-label="Coordonnées de la pharmacie">
+          <li>
+            <div class="ci-icon"><ph-icon name="map-pin" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info"><strong>Adresse</strong><span>Route de Merpins, 16200 Gensac-la-Pallue</span></div>
+          </li>
+          <li>
+            <div class="ci-icon"><ph-icon name="phone" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info"><strong>Téléphone</strong><span><a href="tel:+33XXXXXXXXX">05 XX XX XX XX</a></span></div>
+          </li>
+          <li>
+            <div class="ci-icon"><ph-icon name="envelope-simple" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info">
+              <strong>E-mail ordonnances</strong>
+              <span><a href="mailto:ordonnances@pharmacie-gensac.fr">ordonnances@pharmacie-gensac.fr</a></span>
+            </div>
+          </li>
+          <li>
+            <div class="ci-icon"><ph-icon name="car" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info"><strong>Parking</strong><span>Parking gratuit devant la pharmacie</span></div>
+          </li>
+          <li>
+            <div class="ci-icon"><ph-icon name="wheelchair" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info"><strong>Accessibilité PMR</strong><span>Accès de plain-pied, espace adapté</span></div>
+          </li>
+          <li>
+            <div class="ci-icon"><ph-icon name="shield-plus" size="18" weight="light" aria-hidden="true"></ph-icon></div>
+            <div class="ci-info">
+              <strong>Garde de nuit</strong>
+              <span>Consultez <a href="https://www.3114.fr" target="_blank" rel="noopener">3114</a> ou <a href="https://www.pharmacie.fr" target="_blank" rel="noopener">pharmacie.fr</a></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .infos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .info-block {
+    background: var(--cream-2);
+    border: 1px solid var(--border-green);
+    border-radius: var(--radius-card);
+    padding: 36px;
+  }
+  .info-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-block h3 ph-icon { color: var(--green-deep); }
+
+  .horaires-list { list-style: none; }
+  .horaires-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-green);
+    font-size: 0.9rem;
+  }
+  .horaires-list li:last-child { border-bottom: none; }
+  .day { color: var(--text-mid); font-weight: 500; }
+  .hours { color: var(--text-main); font-weight: 600; }
+  .closed { color: var(--text-light); }
+
+  .map-placeholder {
+    background: linear-gradient(135deg, #e8f0e4 0%, #d4e6ce 100%);
+    border: 1px solid var(--border-green);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-green);
+    font-size: 0.9rem;
+  }
+  .contact-list li:last-child { border-bottom: none; }
+  .ci-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(9,101,52,0.07);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-deep);
+    flex-shrink: 0;
+  }
+  .ci-info strong { display: block; color: var(--text-main); font-weight: 600; margin-bottom: 2px; }
+  .ci-info span { color: var(--text-mid); }
+  .ci-info a { color: var(--green-deep); text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.2s; }
+  .ci-info a:hover { text-decoration-color: var(--green-deep); }
+
+  @media (max-width: 768px) {
+    .infos-grid { grid-template-columns: 1fr; }
+  }
+</style>

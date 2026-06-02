@@ -1,0 +1,191 @@
+---
+---
+<footer id="contact" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="38" height="38" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="16" y="4" width="12" height="36" rx="3" fill="#389D33"/>
+            <rect x="4" y="16" width="36" height="12" rx="3" fill="#389D33"/>
+            <path d="M28 8 Q35 5 36 12 Q30 14 28 8Z" fill="#94BE24" opacity="0.9"/>
+            <path d="M32 6 Q38 8 37 14 Q32 12 32 6Z" fill="#96C229" opacity="0.7"/>
+            <ellipse cx="14" cy="22" rx="4" ry="7" fill="#F9CE07" opacity="0.85" transform="rotate(-15 14 22)"/>
+            <ellipse cx="22" cy="38" rx="10" ry="3" fill="#2DA1D9" opacity="0.7"/>
+          </svg>
+          <span>Pharmacie de Gensac-la-Pallue</span>
+        </div>
+        <p>Pharmacie de proximité en Charente, au service des habitants de Gensac-la-Pallue et des villages alentour depuis plus de 15 ans.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Ordonnances</a></li>
+          <li><a href="#services">Vaccination</a></li>
+          <li><a href="#services">Matériel médical</a></li>
+          <li><a href="#services">Maintien à domicile</a></li>
+          <li><a href="#services">Conseils naturels</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Infos pratiques</h4>
+        <ul>
+          <li><a href="#infos">Horaires</a></li>
+          <li><a href="#infos">Accès &amp; parking</a></li>
+          <li><a href="#equipe">Notre équipe</a></li>
+          <li><a href="https://www.3114.fr" target="_blank" rel="noopener">Pharmacie de garde</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33XXXXXXXXX">05 XX XX XX XX</a></li>
+          <li><a href="mailto:ordonnances@pharmacie-gensac.fr">Envoyer une ordonnance</a></li>
+          <li><a href="https://maps.google.com/?q=Gensac-la-Pallue" target="_blank" rel="noopener">Itinéraire Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Pharmacie de Gensac-la-Pallue. Tous droits réservés.</span>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Plan du site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Barre mobile sticky -->
+<nav class="mobile-sticky" aria-label="Actions rapides mobiles">
+  <div class="sticky-grid">
+    <a href="tel:+33XXXXXXXXX" class="sticky-btn primary" aria-label="Appeler la pharmacie">
+      <ph-icon name="phone" size="20" weight="fill" aria-hidden="true"></ph-icon>
+      Appeler
+    </a>
+    <a href="https://maps.google.com/?q=Pharmacie+Gensac-la-Pallue" target="_blank" rel="noopener" class="sticky-btn" aria-label="Obtenir l'itinéraire">
+      <ph-icon name="map-pin" size="20" weight="light" aria-hidden="true"></ph-icon>
+      Itinéraire
+    </a>
+    <a href="mailto:ordonnances@pharmacie-gensac.fr" class="sticky-btn" aria-label="Envoyer une ordonnance">
+      <ph-icon name="envelope-simple" size="20" weight="light" aria-hidden="true"></ph-icon>
+      Ordonnance
+    </a>
+  </div>
+</nav>
+
+<style>
+  footer {
+    background: var(--text-main);
+    color: rgba(247, 244, 234, 0.85);
+    padding: 64px 0 40px;
+  }
+  .footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .footer-logo span {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream-2);
+  }
+  .footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: rgba(247,244,234,0.55);
+    max-width: 34ch;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--cream-2);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 0.85rem;
+    color: rgba(247,244,234,0.5);
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--cream-2); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(247,244,234,0.08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(247,244,234,0.3);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: rgba(247,244,234,0.4); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream-2); }
+
+  /* Mobile sticky bar */
+  .mobile-sticky {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    background: var(--cream-2);
+    border-top: 1px solid var(--border-green);
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 24px rgba(9,101,52,0.1);
+  }
+  .sticky-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .sticky-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  .sticky-btn:hover { background: rgba(9,101,52,0.06); color: var(--green-deep); }
+  .sticky-btn.primary { background: var(--green-deep); color: var(--cream-2); }
+  .sticky-btn.primary:hover { background: #0a7a3e; }
+
+  @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding-bottom: 96px; }
+    .mobile-sticky { display: block; }
+    .footer-inner { padding: 0 20px; }
+  }
+</style>
