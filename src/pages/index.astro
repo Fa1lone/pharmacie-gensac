@@ -1,0 +1,1322 @@
+---
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pharmacie de Gensac-la-Pallue</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+<style>
+  :root{
+    --cream:#F7F4EA;
+    --cream-2:#FFFDF7;
+    --green-deep:#096534;
+    --green-vivid:#389D33;
+    --green-leaf:#94BE24;
+    --blue-river:#2DA1D9;
+    --yellow-iris:#F9CE07;
+    --text-main:#102418;
+    --text-mid:#2c3d32;
+
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Figtree',sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    background:var(--cream);
+    color:var(--text-main);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{font-family:'Rufina',serif;font-weight:700;line-height:1.05;}
+
+  a{color:inherit;text-decoration:none;}
+
+  i[class^="ph"]{display:inline-block;line-height:1;}
+
+  /* ============ HERO ENHANCEMENTS ============ */
+  /* Grain cinématique — texture film sur toute la photo */
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    z-index:2;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  /* Scroll indicator */
+  .hero-scroll{
+    position:absolute;
+    bottom:68px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:4;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    color:rgba(247,244,234,0.45);
+    font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;
+    font-family:'Figtree',sans-serif;
+    animation:scrollBounce 2.4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .hero-scroll-line{
+    width:1px;height:36px;
+    background:linear-gradient(to bottom,rgba(247,244,234,0.4),rgba(247,244,234,0));
+    animation:scrollLine 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollBounce{
+    0%,100%{opacity:0.45;transform:translateX(-50%) translateY(0);}
+    50%{opacity:0.8;transform:translateX(-50%) translateY(6px);}
+  }
+  @keyframes scrollLine{
+    0%{transform:scaleY(0);transform-origin:top;}
+    50%{transform:scaleY(1);transform-origin:top;}
+    51%{transform:scaleY(1);transform-origin:bottom;}
+    100%{transform:scaleY(0);transform-origin:bottom;}
+  }
+  /* Badge fermé */
+  .badge-ferme{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(180,60,40,0.12);
+    color:#c0432a;
+    font-size:0.68rem;font-weight:600;
+    padding:3px 10px;border-radius:999px;
+    margin-left:auto;
+  }
+  .badge-ferme::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:#c0432a;
+  }
+
+  /* ============ TITULAIRE ============ */
+  .titulaire-block{
+    margin-top:32px;
+    padding-top:28px;
+    border-top:1px solid rgba(9,101,52,0.10);
+    display:flex;align-items:center;gap:16px;
+  }
+  .titulaire-avatar{
+    width:52px;height:52px;flex:none;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--green-deep),var(--green-vivid));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream);font-size:1.2rem;
+    font-family:'Rufina',serif;font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .titulaire-info .name{
+    font-family:'Rufina',serif;font-weight:700;
+    font-size:1.05rem;color:var(--text-main);
+    margin-bottom:3px;
+  }
+  .titulaire-info .role{
+    font-size:0.78rem;color:var(--text-mid);font-weight:400;
+    display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  }
+  .ordre-badge{
+    display:inline-flex;align-items:center;gap:4px;
+    background:rgba(9,101,52,0.08);
+    color:var(--green-deep);
+    font-size:0.65rem;font-weight:600;
+    padding:2px 8px;border-radius:999px;
+    letter-spacing:0.04em;
+  }
+
+  /* ============ TÉMOIGNAGES ============ */
+  .testimonials{
+    background:var(--cream);
+    padding:88px 28px;
+  }
+  .testi-wrap{max-width:1184px;margin:0 auto;}
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:52px;
+  }
+  .testi-card{
+    padding:32px;
+    background:var(--cream-2);
+    border-radius:20px;
+    border:1px solid rgba(9,101,52,0.08);
+    display:flex;flex-direction:column;gap:16px;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .testi-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 40px rgba(9,101,52,0.10);
+  }
+  .testi-stars{display:flex;gap:3px;}
+  .testi-stars span{color:var(--yellow-iris);font-size:1rem;line-height:1;}
+  .testi-quote{
+    font-family:'Rufina',serif;
+    font-size:1.05rem;
+    line-height:1.55;
+    color:var(--text-main);
+    font-style:italic;
+    flex:1;
+  }
+  .testi-quote::before{content:'«\00a0';color:var(--green-leaf);font-style:normal;}
+  .testi-quote::after{content:'\00a0»';color:var(--green-leaf);font-style:normal;}
+  .testi-author{
+    display:flex;align-items:center;gap:12px;
+    padding-top:16px;
+    border-top:1px solid rgba(9,101,52,0.08);
+  }
+  .testi-initials{
+    width:38px;height:38px;flex:none;border-radius:50%;
+    background:linear-gradient(135deg,rgba(9,101,52,0.12),rgba(56,157,51,0.15));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:0.8rem;color:var(--green-deep);
+  }
+  .testi-meta .testi-name{font-weight:600;font-size:0.88rem;color:var(--text-main);}
+  .testi-meta .testi-loc{font-size:0.75rem;color:var(--text-mid);font-weight:400;margin-top:1px;}
+  .testi-source{
+    font-size:0.65rem;color:rgba(58,80,64,0.4);
+    font-weight:400;letter-spacing:0.04em;
+    display:flex;align-items:center;gap:4px;
+    margin-left:auto;
+  }
+  @media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+  @media(min-width:560px) and (max-width:900px){.testi-grid{grid-template-columns:1fr 1fr;}}
+
+  /* ============ MAP EMBED ============ */
+  .map-embed{
+    margin-top:24px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(9,101,52,0.10);
+    height:220px;
+  }
+  .map-embed iframe{
+    width:100%;height:100%;
+    border:none;display:block;
+    filter:saturate(0.8) brightness(1.03);
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s var(--ease), transform .7s var(--ease);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{animation:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(247,244,234,0.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(9,101,52,0.10);
+    transition:box-shadow .35s cubic-bezier(0.16,1,0.3,1);
+  }
+  header.scrolled{
+    box-shadow:0 2px 20px rgba(9,101,52,0.10);
+  }
+  .header-inner{
+    max-width:1240px;
+    margin:0 auto;
+    padding:14px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{flex:none;width:42px;height:42px;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.05;}
+  .brand-text .b1{font-family:'Rufina',serif;font-weight:700;font-size:1.15rem;color:var(--green-deep);}
+  .brand-text .b2{font-size:0.6rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:2px;}
+
+  nav.main-nav{display:flex;align-items:center;gap:30px;}
+  nav.main-nav a{
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--text-mid);
+    position:relative;
+    padding:4px 0;
+    transition:color .25s var(--ease);
+  }
+  nav.main-nav a::after{
+    content:"";
+    position:absolute;left:0;bottom:-2px;
+    height:2px;width:100%;
+    background:var(--green-leaf);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s var(--ease);
+  }
+  nav.main-nav a:hover{color:var(--green-deep);}
+  nav.main-nav a:hover::after{transform:scaleX(1);}
+
+  .phone-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--green-deep);
+    color:var(--cream);
+    font-weight:600;
+    font-size:1.05rem;
+    padding:11px 20px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .25s var(--ease), transform .25s var(--ease);
+  }
+  .phone-pill i{font-size:1.1rem;}
+  .phone-pill:hover{background:var(--green-vivid);transform:translateY(-1px);}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    height:100dvh;
+    min-height:600px;
+    display:flex;
+    align-items:flex-start;
+    padding:clamp(72px,8dvh,90px) 28px clamp(40px,5dvh,60px);
+    overflow:hidden;
+  }
+  /* Wrapper parallax souris — se déplace avec le curseur */
+  .hero-bg-wrap{
+    position:absolute;inset:-4%;
+    z-index:0;
+    will-change:transform;
+    transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  /* Ken Burns — photo dans son propre layer */
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url("public/pharmacie-gensac.png");
+    background-size:cover;
+    background-position:center;
+    transform-origin:center;
+    animation:kenBurns 22s ease-in-out infinite alternate;
+    will-change:transform;
+  }
+  @keyframes kenBurns{
+    from{transform:scale(1);}
+    to{transform:scale(1.09) translate(-1%, 1%);}
+  }
+  /* Gradient directionnel — sombre à gauche pour le texte, photo visible à droite */
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(to right,
+        rgba(5,35,20,0.97) 0%,
+        rgba(7,50,30,0.88) 30%,
+        rgba(9,70,40,0.55) 58%,
+        rgba(5,25,15,0.18) 100%
+      ),
+      linear-gradient(to bottom,
+        rgba(5,25,15,0.4) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(5,25,15,0.5) 100%
+      );
+    z-index:1;
+  }
+  /* Typographie cinétique — chaque ligne sort du bas */
+  .hero-line{
+    display:block;
+    overflow:hidden;
+    line-height:1.1;
+  }
+  .hero-line-inner{
+    display:block;
+    transform:translateY(110%);
+    opacity:0;
+    animation:lineReveal 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .hero-line-inner.d1{animation-delay:0.15s;}
+  .hero-line-inner.d2{animation-delay:0.35s;}
+  .hero-line-inner.d3{animation-delay:0.52s;}
+  @keyframes lineReveal{
+    to{transform:translateY(0);opacity:1;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-bg{animation:none;}
+    .hero-line-inner{animation:none;transform:none;opacity:1;}
+  }
+  .hero-botanical{
+    position:absolute;
+    top:0;right:0;
+    height:100%;
+    width:46%;
+    z-index:2;
+    opacity:0.07;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:3;
+    max-width:680px;
+    width:100%;
+    margin:0 auto;
+    color:var(--cream);
+  }
+  @media(min-width:1100px){
+    .hero-inner{margin:0 auto 0 max(28px, calc((100vw - 1184px)/2));}
+  }
+
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:300;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:rgba(247,244,234,0.6);
+    border:1px solid rgba(247,244,234,0.22);
+    border-radius:999px;
+    padding:7px 15px;
+    margin-bottom:clamp(14px,2dvh,22px);
+  }
+  .hero-badge .dot-leaf{width:6px;height:6px;border-radius:50%;background:var(--green-leaf);}
+
+  .hero h1{
+    font-size:clamp(2.6rem,5.5vw,5rem);
+    margin-bottom:clamp(12px,1.8dvh,22px);
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .cream{color:var(--cream);display:block;}
+  .hero h1 .iris{color:var(--yellow-iris);font-style:italic;font-weight:400;display:block;}
+
+  .hero-sub{
+    font-weight:400;
+    font-size:1.1rem;
+    line-height:1.6;
+    color:rgba(247,244,234,0.88);
+    max-width:44ch;
+    margin-bottom:clamp(18px,2.5dvh,32px);
+  }
+
+  /* phone block */
+  .hero-phone-label{
+    font-weight:500;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:rgba(247,244,234,0.7);
+    margin-bottom:8px;
+  }
+  .hero-phone{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    min-height:60px;
+    width:100%;
+    max-width:380px;
+    background:rgba(247,244,234,0.15);
+    border:1.5px solid rgba(247,244,234,0.30);
+    border-radius:16px;
+    color:var(--cream);
+    font-weight:700;
+    font-size:2.1rem;
+    padding:10px 28px;
+    transition:background .25s var(--ease), border-color .25s var(--ease), transform .2s var(--ease);
+  }
+  .hero-phone i{font-size:1.7rem;color:var(--green-leaf);}
+  .hero-phone:hover{background:rgba(247,244,234,0.22);border-color:rgba(247,244,234,0.5);transform:translateY(-1px);}
+
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:clamp(10px,1.5dvh,16px);
+  }
+  .ghost-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid rgba(247,244,234,0.4);
+    color:var(--cream);
+    background:transparent;
+    font-family:'Figtree',sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    padding:14px 24px;
+    border-radius:999px;
+    cursor:pointer;
+    min-height:48px;
+    transition:background .25s var(--ease);
+  }
+  .ghost-cta i{font-size:1rem;}
+  .ghost-cta:hover{background:rgba(247,244,234,0.1);}
+
+  .hero-status{
+    position:absolute;
+    left:0;bottom:0;
+    z-index:3;
+    width:100%;
+    background:rgba(247,244,234,0.10);
+    border-top:1px solid rgba(247,244,234,0.12);
+    padding:12px 28px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-weight:500;
+    font-size:1rem;
+    color:rgba(247,244,234,0.85);
+  }
+  .pulse-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--green-leaf);
+    flex:none;
+    position:relative;
+  }
+  .pulse-dot::after{
+    content:"";
+    position:absolute;inset:0;border-radius:50%;
+    background:var(--green-leaf);
+    animation:pulse 2.4s var(--ease) infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);opacity:0.7;}
+    70%{transform:scale(3);opacity:0;}
+    100%{opacity:0;}
+  }
+
+  /* ============ QUICK ACTIONS ============ */
+  .quick{
+    background:var(--green-deep);
+    color:var(--cream);
+  }
+  .quick-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .quick-card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:44px 36px;
+    position:relative;
+    cursor:pointer;
+    transition:background .3s var(--ease);
+    overflow:hidden;
+  }
+  .quick-card + .quick-card{border-left:1px solid rgba(247,244,234,0.10);}
+  .quick-card::after{
+    content:"";
+    position:absolute;left:0;bottom:0;
+    height:3px;width:100%;
+    background:var(--blue-river);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .4s var(--ease);
+  }
+  .quick-card:hover{background:rgba(247,244,234,0.08);}
+  .quick-card:hover::after{transform:scaleX(1);}
+  .quick-card .qc-icon{font-size:1.7rem;color:var(--green-leaf);}
+  .quick-card .qc-top{display:flex;align-items:center;justify-content:space-between;}
+  .quick-card .qc-arrow{font-size:1.1rem;color:rgba(247,244,234,0.4);transition:transform .3s var(--ease),color .3s var(--ease);}
+  .quick-card:hover .qc-arrow{transform:translateX(4px);color:var(--cream);}
+  .quick-card h3{font-family:'Figtree',sans-serif;font-weight:600;font-size:1.2rem;color:var(--cream);}
+  .quick-card p{font-weight:400;font-size:0.95rem;color:rgba(247,244,234,0.78);line-height:1.5;}
+
+  /* ============ SECTION SHELL ============ */
+  .section-wrap{max-width:1184px;margin:0 auto;padding:0 28px;}
+
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--green-deep);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:24px;height:2px;
+    background:var(--green-leaf);
+    flex:none;
+  }
+
+  /* ============ SERVICES ============ */
+  .services{background:var(--cream);padding:96px 0;}
+  .services h2{
+    font-size:clamp(2rem,3.5vw,2.8rem);
+    margin-bottom:16px;
+  }
+  .services h2 .it{font-style:italic;font-weight:400;display:block;color:var(--green-deep);}
+  .services-sub{
+    font-weight:300;
+    font-size:1.05rem;
+    line-height:1.6;
+    color:var(--text-mid);
+    max-width:54ch;
+    margin-bottom:48px;
+  }
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+  }
+  .service-card{
+    background:var(--cream-2);
+    border:1px solid rgba(9,101,52,0.10);
+    border-radius:20px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .service-card::after{
+    content:"";
+    position:absolute;left:0;bottom:0;
+    height:2px;width:100%;
+    background:var(--blue-river);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .4s var(--ease);
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px -20px rgba(9,101,52,0.35);
+  }
+  .service-card:hover::after{transform:scaleX(1);}
+  .sc-icon{
+    width:44px;height:44px;
+    border-radius:12px;
+    background:rgba(9,101,52,0.08);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--green-deep);
+    font-size:1.35rem;
+    margin-bottom:18px;
+  }
+  .service-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .service-card p{font-weight:400;font-size:0.95rem;line-height:1.6;color:var(--text-mid);}
+
+  /* ============ BLOC HUMAIN ============ */
+  .human{background:var(--cream-2);padding:96px 0;}
+  .human-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:64px;
+    align-items:center;
+  }
+  .human h2{
+    font-size:clamp(2rem,3.5vw,2.8rem);
+    margin-bottom:28px;
+  }
+  .human h2 .it{font-style:italic;font-weight:400;display:block;color:var(--green-deep);}
+  .pull-quote{
+    font-family:'Rufina',serif;
+    font-style:italic;
+    font-size:1.8rem;
+    line-height:1.3;
+    color:var(--text-main);
+    margin-bottom:28px;
+    text-indent:-0.1em;
+  }
+  .pull-quote .guill{color:var(--green-leaf);font-style:normal;}
+  .human p.body{
+    font-weight:400;
+    font-size:1rem;
+    line-height:1.65;
+    color:var(--text-mid);
+    margin-bottom:16px;
+    max-width:52ch;
+  }
+  .human-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:26px;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(9,101,52,0.06);
+    border:1px solid rgba(9,101,52,0.12);
+    border-radius:999px;
+    padding:8px 15px;
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--green-deep);
+  }
+  .tag i{font-size:0.95rem;color:var(--green-vivid);}
+
+  .human-media{display:flex;flex-direction:column;gap:20px;}
+  .photo-frame{
+    background:rgba(9,101,52,0.06);
+    border:1px solid rgba(9,101,52,0.10);
+    padding:8px;
+    border-radius:28px;
+  }
+  .photo-inner{
+    aspect-ratio:3/4;
+    border-radius:22px;
+    overflow:hidden;
+    background:linear-gradient(160deg,#b8d4a8,#3a7a2c);
+    position:relative;
+  }
+  .photo-inner img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center 30%;
+    display:block;
+  }
+  .photo-inner .photo-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top,rgba(9,101,52,0.7) 0%,transparent 100%);
+    padding:24px 20px 18px;
+    font-family:'Rufina',serif;
+    font-style:italic;
+    font-size:0.9rem;
+    color:rgba(255,255,255,0.9);
+  }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+  .stat{
+    background:var(--cream);
+    border:1px solid rgba(9,101,52,0.12);
+    border-radius:16px;
+    padding:18px 14px;
+    text-align:center;
+  }
+  .stat .num{font-family:'Rufina',serif;font-weight:700;font-size:1.7rem;color:var(--green-deep);line-height:1;}
+  .stat .lbl{font-size:0.72rem;color:var(--text-mid);margin-top:6px;font-weight:500;}
+
+  /* ============ INFOS PRATIQUES ============ */
+  .infos{background:var(--cream);padding:96px 0;}
+  .infos h2{
+    font-size:clamp(2rem,3.5vw,2.8rem);
+    margin-bottom:48px;
+  }
+  .infos h2 .it{font-style:italic;font-weight:400;display:block;color:var(--green-deep);}
+  .infos-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .info-card{
+    background:var(--cream-2);
+    border:1px solid rgba(9,101,52,0.10);
+    border-radius:20px;
+    padding:36px;
+  }
+  .info-card h3{
+    font-family:'Figtree',sans-serif;
+    font-weight:600;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--green-leaf);
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .info-card h3 i{font-size:1rem;}
+  .horaires-list{list-style:none;}
+  .horaires-list li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:1px solid rgba(9,101,52,0.08);
+    font-size:0.9rem;
+  }
+  .horaires-list li:last-child{border-bottom:none;}
+  .horaires-list .jour{font-weight:500;color:var(--text-mid);}
+  .horaires-list .heure{font-weight:600;color:var(--text-main);}
+  .horaires-list .ferme{color:rgba(58,80,64,0.45);font-weight:400;}
+  .badge-ouvert{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(56,157,51,0.10);
+    color:var(--green-vivid);
+    font-size:0.68rem;font-weight:600;
+    padding:3px 10px;border-radius:999px;
+    margin-left:auto;
+  }
+  .badge-ouvert::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--green-vivid);
+    animation:pulse 2.4s var(--ease) infinite;
+  }
+  .contact-list{list-style:none;}
+  .contact-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(9,101,52,0.08);
+    font-size:0.9rem;
+  }
+  .contact-list li:last-child{border-bottom:none;}
+  .ci-ico{
+    width:36px;height:36px;flex:none;
+    background:rgba(9,101,52,0.07);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--green-deep);font-size:1rem;
+  }
+  .ci-body strong{display:block;font-weight:600;color:var(--text-main);margin-bottom:2px;}
+  .ci-body span,.ci-body a{font-weight:400;color:var(--text-mid);}
+  .ci-body a:hover{color:var(--green-deep);text-decoration:underline;}
+  .map-placeholder{
+    margin-top:24px;
+    height:220px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#e0ead8,#c8dbb8);
+    border:1px solid rgba(9,101,52,0.10);
+    display:flex;align-items:center;justify-content:center;
+    gap:10px;
+    color:var(--text-mid);font-size:0.85rem;
+  }
+  .map-placeholder i{font-size:1.4rem;color:var(--green-vivid);opacity:0.6;}
+
+  /* ============ MOBILE STICKY BAR ============ */
+  .mobile-sticky{
+    display:none;
+    position:fixed;bottom:0;left:0;right:0;
+    z-index:200;
+    background:var(--cream-2);
+    border-top:1px solid rgba(9,101,52,0.12);
+    padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+    box-shadow:0 -4px 24px rgba(9,101,52,0.10);
+  }
+  .sticky-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+  }
+  .sticky-btn{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:12px 6px;border-radius:12px;
+    font-size:0.75rem;font-weight:600;
+    color:var(--text-mid);
+    text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .sticky-btn i{font-size:1.4rem;}
+  .sticky-btn:hover{background:rgba(9,101,52,0.06);color:var(--green-deep);}
+  .sticky-btn.primary{background:var(--green-deep);color:var(--cream);}
+  .sticky-btn.primary:hover{background:#0a7a3e;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--green-deep);
+    color:rgba(247,244,234,0.85);
+    padding:56px 28px 40px;
+  }
+  .footer-inner{
+    max-width:1184px;margin:0 auto;
+    display:flex;flex-wrap:wrap;gap:40px;
+    justify-content:space-between;
+  }
+  .footer-brand{max-width:320px;}
+  .footer-brand .fb1{font-family:'Rufina',serif;font-weight:700;font-size:1.3rem;color:var(--cream);margin-bottom:8px;}
+  .footer-brand p{font-weight:300;font-size:0.9rem;line-height:1.6;color:rgba(247,244,234,0.6);}
+  .footer-col h4{font-family:'Figtree',sans-serif;font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--green-leaf);margin-bottom:14px;}
+  .footer-col p, .footer-col a{display:flex;align-items:center;gap:9px;font-weight:300;font-size:0.92rem;color:rgba(247,244,234,0.78);margin-bottom:10px;}
+  .footer-col a:hover{color:var(--cream);}
+  .footer-col i{color:var(--green-leaf);font-size:1rem;}
+  .footer-bottom{
+    max-width:1184px;margin:36px auto 0;
+    padding-top:22px;
+    border-top:1px solid rgba(247,244,234,0.12);
+    font-size:0.78rem;
+    color:rgba(247,244,234,0.5);
+    font-weight:300;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:900px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .human-grid{grid-template-columns:1fr;gap:40px;}
+    .human-media{order:-1;}
+    .human p.body{max-width:none;}
+  }
+  @media(max-width:780px){
+    nav.main-nav{display:none;}
+    .quick-grid{grid-template-columns:1fr;}
+    .quick-card + .quick-card{border-left:none;border-top:1px solid rgba(247,244,234,0.10);}
+    .header-inner{padding:12px 18px;}
+    .brand-text .b2{display:none;}
+    .infos-grid{grid-template-columns:1fr;}
+    .mobile-sticky{display:block;}
+    footer{padding-bottom:96px;}
+  }
+  @media(max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(3,1fr);}
+    .hero{padding:108px 20px 80px;}
+    .hero-phone{max-width:none;}
+    .ghost-cta{flex:1;justify-content:center;}
+    .pull-quote{font-size:1.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#" aria-label="Pharmacie de Gensac-la-Pallue">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="#F7F4EA" stroke="#096534" stroke-width="1.4"/>
+        <!-- pharmacy cross -->
+        <path d="M20 11h8v9h9v8h-9v9h-8v-9h-9v-8h9z" fill="#389D33"/>
+        <!-- vine leaf overlay -->
+        <path d="M30 14c4-1 8 1 9 5-3 1-5 0-6-1 2 2 3 4 3 7-3-1-5-3-6-5 1 3 1 5 0 7-2-3-3-6-2-9-1 1-2 2-2 4-1-4 1-7 4-8z" fill="#94BE24"/>
+      </svg>
+      <span class="brand-text">
+        <span class="b1">Pharmacie</span>
+        <span class="b2">de Gensac-la-Pallue</span>
+      </span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#infos">Infos pratiques</a>
+    </nav>
+
+    <a class="phone-pill" href="tel:+33545824012">
+      <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
+  <svg class="hero-botanical" viewBox="0 0 300 600" fill="none" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#F7F4EA" stroke-width="2" fill="none" opacity="1">
+      <path d="M260 0c-30 60-20 130 0 180-50-20-90-10-120 20 40 10 70 40 90 80"/>
+      <path d="M230 200c-40 30-60 80-50 140 30-30 70-40 110-30"/>
+      <path d="M270 360c-20 60-10 130 20 180"/>
+    </g>
+    <g fill="#F7F4EA">
+      <!-- iris silhouettes -->
+      <path d="M150 320c-6-30 4-58 22-72-4 28-2 50 6 64-12 4-22 6-28 8z"/>
+      <path d="M190 330c14-26 38-40 60-40-18 18-30 36-34 52-10-6-18-10-26-12z"/>
+      <ellipse cx="170" cy="118" rx="9" ry="26"/>
+      <ellipse cx="150" cy="128" rx="22" ry="9"/>
+      <ellipse cx="190" cy="128" rx="22" ry="9"/>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <span class="hero-badge reveal"><span class="dot-leaf"></span>Gensac-la-Pallue · Charente</span>
+    <h1>
+      <span class="hero-line"><span class="hero-line-inner cream d1">Votre pharmacie</span></span>
+      <span class="hero-line"><span class="hero-line-inner iris d2">de proximité</span></span>
+      <span class="hero-line"><span class="hero-line-inner cream d3">en Charente</span></span>
+    </h1>
+    <p class="hero-sub reveal">Ordonnances, conseils santé, matériel médical. Une équipe du village, disponible, qui vous connaît.</p>
+
+    <div class="reveal">
+      <div class="hero-phone-label">Appeler directement</div>
+      <a class="hero-phone" href="tel:+33545824012">
+        <i class="ph ph-phone-call"></i>05 45 82 40 12
+      </a>
+    </div>
+
+    <div class="hero-ctas reveal">
+      <a class="ghost-cta" href="#infos"><i class="ph ph-clock"></i>Voir les horaires</a>
+      <a class="ghost-cta" href="mailto:contact@pharmacie-gensac.fr"><i class="ph ph-envelope-simple"></i>Envoyer une ordonnance</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true"><div class="hero-scroll-line"></div>Défiler</div>
+
+  <div class="hero-status">
+    <span class="pulse-dot"></span>
+    <span>Ouvert · Lun–Ven 9h–19h · Sam 9h–13h</span>
+  </div>
+</section>
+
+<!-- ============ QUICK ACTIONS ============ -->
+<section class="quick">
+  <div class="quick-grid">
+    <a class="quick-card reveal" href="#infos">
+      <div class="qc-top">
+        <i class="ph-light ph-clock qc-icon"></i>
+        <i class="ph ph-arrow-right qc-arrow"></i>
+      </div>
+      <h3>Horaires &amp; garde</h3>
+      <p>Lun–Ven 9h–19h · Sam 9h–13h</p>
+    </a>
+    <a class="quick-card reveal" href="#infos">
+      <div class="qc-top">
+        <i class="ph-light ph-map-pin qc-icon"></i>
+        <i class="ph ph-arrow-right qc-arrow"></i>
+      </div>
+      <h3>Nous trouver</h3>
+      <p>Route de Merpins, Gensac-la-Pallue</p>
+    </a>
+    <a class="quick-card reveal" href="mailto:contact@pharmacie-gensac.fr">
+      <div class="qc-top">
+        <i class="ph-light ph-envelope qc-icon"></i>
+        <i class="ph ph-arrow-right qc-arrow"></i>
+      </div>
+      <h3>Ordonnance par email</h3>
+      <p>Réponse sous 2h en journée</p>
+    </a>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Ce que nous faisons</div>
+    <h2 class="reveal">Tous vos besoins santé,<span class="it">sous un même toit</span></h2>
+    <p class="services-sub reveal">Médicaments, vaccins, orthopédie, matériel médical, conseils bébé. Tout se passe ici, avec la même équipe.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-prescription"></i></div>
+        <h3>Ordonnances</h3>
+        <p>Délivrance, renouvellement et suivi de vos traitements au quotidien.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-heartbeat"></i></div>
+        <h3>Conseils santé</h3>
+        <p>Un pharmacien à votre écoute pour les petits maux comme les grandes questions.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-syringe"></i></div>
+        <h3>Vaccination</h3>
+        <p>Vaccins grippe, Covid et rappels, réalisés sur place sans rendez-vous.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-first-aid-kit"></i></div>
+        <h3>Matériel médical</h3>
+        <p>Pansements, tensiomètres, thermomètres et tout le nécessaire à domicile.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-person-simple-walk"></i></div>
+        <h3>Orthopédie</h3>
+        <p>Ceintures, attelles, bas de contention et conseils d'adaptation.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-house-line"></i></div>
+        <h3>Maintien à domicile</h3>
+        <p>Location et vente de matériel pour rester chez soi en toute sécurité.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-baby"></i></div>
+        <h3>Bébé &amp; famille</h3>
+        <p>Lait, soins, accessoires et conseils pour accompagner les jeunes parents.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="sc-icon"><i class="ph-light ph-leaf"></i></div>
+        <h3>Conseils naturels</h3>
+        <p>Phytothérapie, aromathérapie et compléments choisis avec soin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOC HUMAIN ============ -->
+<section class="human" id="equipe">
+  <div class="section-wrap">
+    <div class="human-grid">
+      <div class="human-text">
+        <div class="eyebrow reveal">Notre équipe</div>
+        <h2 class="reveal">Une pharmacie de village,<span class="it">une équipe qui vous connaît.</span></h2>
+        <p class="pull-quote reveal"><span class="guill">«&nbsp;</span>On connaît vos noms. Parfois depuis avant votre naissance.<span class="guill">&nbsp;»</span></p>
+        <p class="body reveal">À Gensac-la-Pallue, on se connaît. Nos pharmaciens suivent les mêmes familles depuis des années. Ils connaissent vos traitements, vos habitudes, votre médecin.</p>
+        <p class="body reveal">Quand vous avez une question, vous parlez à quelqu'un qui vous connaît. Pas à un algorithme.</p>
+        <div class="human-tags reveal">
+          <span class="tag"><i class="ph-bold ph-check"></i>Équipe diplômée</span>
+          <span class="tag"><i class="ph-bold ph-check"></i>Entretiens pharmaceutiques</span>
+          <span class="tag"><i class="ph-bold ph-check"></i>Sans rendez-vous</span>
+        </div>
+        <div class="titulaire-block reveal">
+          <div class="titulaire-avatar">MC</div>
+          <div class="titulaire-info">
+            <div class="name">Marie-Claire Bernard</div>
+            <div class="role">
+              Pharmacienne titulaire depuis 2008
+              <span class="ordre-badge"><i class="ph-bold ph-seal-check"></i>Ordre des Pharmaciens</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="human-media reveal">
+        <div class="photo-frame">
+          <div class="photo-inner">
+            <img src="public/pharmacie-gensac.png" alt="Façade de la Pharmacie de Gensac-la-Pallue au coucher du soleil" />
+            <div class="photo-caption">Photo équipe à remplacer</div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><div class="num">15+</div><div class="lbl">ans d'histoire</div></div>
+          <div class="stat"><div class="num">3</div><div class="lbl">pharmaciens</div></div>
+          <div class="stat"><div class="num">6j/7</div><div class="lbl">ouverts</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============ -->
+<section class="testimonials">
+  <div class="testi-wrap">
+    <div class="eyebrow reveal">Ce qu'ils disent</div>
+    <h2 class="reveal">Ils nous font confiance,<span class="it">depuis des années</span></h2>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">La pharmacie qu'on cherche tous : une équipe qui vous connaît par votre prénom, qui se souvient de vos traitements. Irremplaçable dans un village.</p>
+        <div class="testi-author">
+          <div class="testi-initials">MR</div>
+          <div class="testi-meta">
+            <div class="testi-name">Martine R.</div>
+            <div class="testi-loc">Gensac-la-Pallue</div>
+          </div>
+          <span class="testi-source">Google</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">Toujours un conseil pertinent, jamais à la va-vite. Ils prennent le temps d'expliquer. En ville, ça n'existe plus.</p>
+        <div class="testi-author">
+          <div class="testi-initials">JD</div>
+          <div class="testi-meta">
+            <div class="testi-name">Jean-Pierre D.</div>
+            <div class="testi-loc">Merpins</div>
+          </div>
+          <span class="testi-source">Google</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-quote">Ma fille avait besoin d'aide un soir tard. Ils ont trouvé la pharmacie de garde immédiatement et l'ont rappelée. C'est ça, une vraie pharmacie de village.</p>
+        <div class="testi-author">
+          <div class="testi-initials">SM</div>
+          <div class="testi-meta">
+            <div class="testi-name">Sylvie M.</div>
+            <div class="testi-loc">Saint-Fort-sur-le-Né</div>
+          </div>
+          <span class="testi-source">Google</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFOS PRATIQUES ============ -->
+<section class="infos" id="infos">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Infos pratiques</div>
+    <h2 class="reveal">Tout ce qu'il faut savoir<span class="it">avant de venir</span></h2>
+
+    <div class="infos-grid">
+      <!-- Horaires -->
+      <div class="info-card reveal">
+        <h3><i class="ph-light ph-clock"></i>Horaires d'ouverture <span class="badge-ouvert">Ouvert</span></h3>
+        <ul class="horaires-list">
+          <li><span class="jour">Lundi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+          <li><span class="jour">Mardi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+          <li><span class="jour">Mercredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+          <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+          <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+          <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
+          <li><span class="jour">Dimanche</span><span class="ferme">Fermé — pharmacie de garde</span></li>
+        </ul>
+      </div>
+
+      <!-- Coordonnées -->
+      <div>
+        <div class="info-card reveal">
+          <h3><i class="ph-light ph-map-pin"></i>Coordonnées &amp; accès</h3>
+          <ul class="contact-list">
+            <li>
+              <div class="ci-ico"><i class="ph-light ph-map-pin"></i></div>
+              <div class="ci-body"><strong>Adresse</strong><span>Route de Merpins, 16130 Gensac-la-Pallue</span></div>
+            </li>
+            <li>
+              <div class="ci-ico"><i class="ph-light ph-phone-call"></i></div>
+              <div class="ci-body"><strong>Téléphone</strong><a href="tel:+33545824012">05 45 82 40 12</a></div>
+            </li>
+            <li>
+              <div class="ci-ico"><i class="ph-light ph-envelope-simple"></i></div>
+              <div class="ci-body"><strong>E-mail ordonnances</strong><a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a></div>
+            </li>
+            <li>
+              <div class="ci-ico"><i class="ph-light ph-car"></i></div>
+              <div class="ci-body"><strong>Parking</strong><span>Parking gratuit devant la pharmacie</span></div>
+            </li>
+            <li>
+              <div class="ci-ico"><i class="ph-light ph-wheelchair"></i></div>
+              <div class="ci-body"><strong>Accessibilité PMR</strong><span>Accès de plain-pied, espace adapté</span></div>
+            </li>
+          </ul>
+        </div>
+        <div class="map-embed reveal">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.2453%2C45.6279%2C-0.1853%2C45.6479&layer=mapnik&marker=45.6379%2C-0.2153"
+            title="Localisation Pharmacie de Gensac-la-Pallue"
+            loading="lazy"
+            referrerpolicy="no-referrer">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fb1">Pharmacie de Gensac-la-Pallue</div>
+      <p>Votre pharmacie de proximité au cœur de la Charente, au service des familles du village depuis plus de 15 ans.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Horaires</h4>
+      <p><i class="ph ph-clock"></i>Lun–Ven · 9h–19h</p>
+      <p><i class="ph ph-clock"></i>Samedi · 9h–13h</p>
+      <p><i class="ph ph-moon"></i>Dimanche · Pharmacie de garde</p>
+    </div>
+    <div class="footer-col">
+      <h4>Nous joindre</h4>
+      <a href="tel:+33545824012"><i class="ph ph-phone-call"></i>05 45 82 40 12</a>
+      <a href="mailto:contact@pharmacie-gensac.fr"><i class="ph ph-envelope-simple"></i>contact@pharmacie-gensac.fr</a>
+      <p><i class="ph ph-map-pin"></i>Route de Merpins, 16130 Gensac-la-Pallue</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Pharmacie de Gensac-la-Pallue · Charente · Tous droits réservés
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BAR ============ -->
+<nav class="mobile-sticky" aria-label="Actions rapides">
+  <div class="sticky-grid">
+    <a href="tel:+33545824012" class="sticky-btn primary">
+      <i class="ph-bold ph-phone-call"></i>Appeler
+    </a>
+    <a href="https://maps.google.com/?q=Pharmacie+Gensac-la-Pallue+Route+de+Merpins+16130" target="_blank" rel="noopener" class="sticky-btn">
+      <i class="ph-light ph-map-pin"></i>Itinéraire
+    </a>
+    <a href="mailto:contact@pharmacie-gensac.fr" class="sticky-btn">
+      <i class="ph-light ph-envelope-simple"></i>Ordonnance
+    </a>
+  </div>
+</nav>
+
+<script>
+  /* ===== Header scroll state ===== */
+  (function(){
+    var hdr = document.querySelector('header');
+    window.addEventListener('scroll', function(){
+      hdr.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  })();
+
+  /* ===== Parallax souris hero ===== */
+  (function(){
+    var wrap = document.querySelector('.hero-bg-wrap');
+    var hero = document.querySelector('.hero');
+    if(!wrap || !hero || window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * -14;
+      ty = ((e.clientY - r.top)  / r.height - 0.5) * -9;
+    }, {passive:true});
+    hero.addEventListener('mouseleave', function(){ tx = 0; ty = 0; });
+    (function tick(){
+      cx += (tx - cx) * 0.07;
+      cy += (ty - cy) * 0.07;
+      wrap.style.transform = 'translate('+cx.toFixed(2)+'px,'+cy.toFixed(2)+'px)';
+      requestAnimationFrame(tick);
+    })();
+  })();
+
+  /* ===== Badge ouvert / fermé dynamique ===== */
+  (function(){
+    function isOpen(){
+      var d = new Date(), day = d.getDay(), m = d.getHours()*60 + d.getMinutes();
+      if(day === 0) return false;
+      if(day >= 1 && day <= 5) return (m >= 540 && m < 750) || (m >= 840 && m < 1140);
+      if(day === 6) return m >= 540 && m < 780;
+      return false;
+    }
+    var open = isOpen();
+    // Hero status bar
+    var statusEl = document.querySelector('.hero-status span:last-child');
+    var dotEl    = document.querySelector('.hero-status .pulse-dot');
+    if(statusEl && dotEl){
+      if(!open){
+        statusEl.textContent = 'Fermé en ce moment · Ouverture Lun–Ven 9h';
+        dotEl.style.background = '#c0432a';
+        dotEl.style.setProperty('--pulse-color','#c0432a');
+      }
+    }
+    // Badge dans les horaires
+    var badge = document.querySelector('.badge-ouvert');
+    if(badge){
+      if(!open){
+        badge.className = 'badge-ferme';
+        badge.textContent = 'Fermé';
+      }
+    }
+  })();
+
+  /* ===== Scroll reveal via IntersectionObserver ===== */
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if(reduce){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var group = Array.prototype.slice.call(
+            entry.target.parentElement.querySelectorAll('.reveal')
+          );
+          var idx = group.indexOf(entry.target);
+          var delay = idx > -1 ? idx * 80 : 0;
+          setTimeout(function(){ entry.target.classList.add('in'); }, delay);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+
+</body>
+</html>
