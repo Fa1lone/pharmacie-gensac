@@ -10,6 +10,8 @@ const {
   description = "Votre pharmacie de proximité à Gensac-la-Pallue, Charente. Ordonnances, vaccination, matériel médical, conseils santé. Tél : 05 45 82 40 12.",
   canonical = "https://pharmacie-gensac.fr/",
 } = Astro.props;
+
+const path = Astro.url.pathname;
 ---
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +22,9 @@ const {
 <meta name="description" content={description} />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={canonical} />
-<link rel="icon" type="image/png" href="/logo-rond.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -92,30 +96,129 @@ nav.main-nav a.active{color:var(--green-deep);}
 .phone-pill{display:inline-flex;align-items:center;gap:9px;background:var(--green-deep);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;padding:10px 20px;border-radius:999px;white-space:nowrap;transition:background .25s var(--ease),transform .2s var(--ease);}
 .phone-pill:hover{background:var(--green-vivid);transform:translateY(-1px);}
 
-/* page hero (inner pages) */
+/* ── PAGE HERO (sous-pages) ─────────────────────────── */
 .page-hero{
-  background:var(--green-deep);
-  padding:clamp(80px,8vw,120px) 28px clamp(60px,6vw,90px);
+  position:relative;
+  height:100dvh;min-height:640px;
+  padding:clamp(80px,9dvh,110px) 28px 52px;
+  overflow:hidden;
+  display:flex;align-items:flex-start;
 }
-.page-hero-inner{max-width:1280px;margin:0 auto;}
+/* Ken Burns */
+.page-hero::before{
+  content:"";position:absolute;inset:-4%;z-index:0;
+  background-image:var(--hero-img,none);
+  background-color:var(--green-deep);
+  background-size:cover;
+  background-position:var(--hero-pos,center);
+  animation:pageKenBurns 28s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes pageKenBurns{from{transform:scale(1);}to{transform:scale(1.08) translate(-1.5%,1%);}}
+/* Dual gradient */
+.page-hero::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right,
+      rgba(3,26,14,0.97) 0%,
+      rgba(4,50,26,0.88) 32%,
+      rgba(4,70,36,0.50) 60%,
+      rgba(3,16,8,0.10) 100%
+    ),
+    linear-gradient(to bottom,
+      rgba(3,16,8,0.40) 0%,
+      transparent 25%,
+      transparent 68%,
+      rgba(3,16,8,0.60) 100%
+    );
+}
+/* Grain */
+.page-hero-grain{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+/* Decors */
+.page-hero-decor{
+  position:absolute;right:-60px;top:-60px;width:480px;height:480px;
+  border-radius:50%;border:1.5px solid rgba(151,215,0,0.07);
+  pointer-events:none;z-index:3;
+}
+.page-hero-decor2{
+  position:absolute;right:60px;top:20px;width:290px;height:290px;
+  border-radius:50%;border:1px solid rgba(0,114,206,0.09);
+  pointer-events:none;z-index:3;
+}
+/* Content */
+.page-hero-inner{
+  position:relative;z-index:4;width:100%;color:var(--cream);
+  max-width:780px;
+}
+@media(min-width:1100px){
+  .page-hero-inner{margin:0 auto 0 max(28px,calc((100vw - 1280px)/2));}
+}
+/* Status bar */
+.page-hero-status{
+  position:absolute;left:0;bottom:0;z-index:4;width:100%;
+  padding:13px 28px;display:flex;align-items:center;gap:12px;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.75rem;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:rgba(247,244,234,0.78);
+  background:rgba(3,16,8,0.28);border-top:1px solid rgba(247,244,234,0.08);
+}
+.page-hero-status .ph-pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--green-leaf);flex:none;position:relative;
+}
+.page-hero-status .ph-pulse::after{
+  content:"";position:absolute;inset:0;border-radius:50%;background:var(--green-leaf);
+  animation:pulse 2.4s var(--ease) infinite;
+}
+/* Eyebrow badge */
 .page-eyebrow{
-  display:flex;align-items:center;gap:10px;
-  font-family:'Montserrat',sans-serif;font-weight:700;
-  font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;
-  color:rgba(247,244,234,0.50);margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Montserrat',sans-serif;font-weight:600;
+  font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(247,244,234,0.6);
+  border:1px solid rgba(247,244,234,0.2);
+  border-radius:999px;padding:7px 16px;
+  margin-bottom:clamp(18px,2.8dvh,30px);
 }
-.page-eyebrow::before{content:"";width:20px;height:2px;background:var(--blue-river);}
+.page-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--green-leaf);}
+/* h1 */
 .page-hero h1{
   font-weight:800;
-  font-size:clamp(2.4rem,5.5vw,5rem);
-  letter-spacing:-0.03em;line-height:0.95;
-  color:var(--cream);max-width:22ch;
+  font-size:clamp(2.8rem,6.2vw,5.8rem);
+  letter-spacing:-0.025em;line-height:0.95;
+  color:var(--cream);
+  margin-bottom:clamp(18px,2.4dvh,26px);
 }
 .page-hero h1 em{font-style:italic;color:var(--yellow-iris);}
-.page-hero .page-subtitle{
-  font-size:1rem;line-height:1.7;
-  color:rgba(247,244,234,0.72);max-width:52ch;margin-top:20px;
+.page-hero h1 .l-cream{color:var(--cream);display:block;}
+.page-hero h1 .l-iris{color:var(--yellow-iris);font-style:italic;font-weight:800;display:block;}
+/* Subtitle */
+.page-subtitle{
+  font-size:1.05rem;font-weight:400;line-height:1.68;
+  color:rgba(247,244,234,0.82);
+  max-width:46ch;margin-bottom:clamp(22px,3dvh,36px);
 }
+/* Shared buttons (réutilisés dans sub-pages) */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--yellow-iris);color:var(--green-deep);
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;
+  padding:13px 26px;border-radius:999px;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,205,0,0.45);}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(247,244,234,0.38);color:var(--cream);background:transparent;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.95rem;
+  padding:13px 22px;border-radius:999px;
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.btn-outline:hover{background:rgba(247,244,234,0.10);border-color:rgba(247,244,234,0.60);}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:clamp(20px,3dvh,36px);}
 .blue-top{height:3px;background:var(--blue-river);}
 
 /* section shell */
@@ -218,11 +321,11 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
       <img class="brand-logo" src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" width="220" height="52" />
     </a>
     <nav class="main-nav">
-      <a href="/">Accueil</a>
-      <a href="/la-pharmacie">La pharmacie</a>
-      <a href="/produits">Produits</a>
-      <a href="/services">Services</a>
-      <a href="/contact">Contact</a>
+      <a href="/" class={path === '/' ? 'active' : ''}>Accueil</a>
+      <a href="/la-pharmacie" class={path === '/la-pharmacie' ? 'active' : ''}>La pharmacie</a>
+      <a href="/produits" class={path === '/produits' ? 'active' : ''}>Produits</a>
+      <a href="/services" class={path === '/services' ? 'active' : ''}>Services</a>
+      <a href="/contact" class={path === '/contact' ? 'active' : ''}>Contact</a>
     </nav>
     <div class="header-right">
       <a class="phone-pill" href="tel:+33545824012">
@@ -255,7 +358,7 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
       <h4>Horaires</h4>
       <p><i class="ph ph-clock"></i>Lun–Ven · 9h–19h</p>
       <p><i class="ph ph-clock"></i>Samedi · 9h–13h</p>
-      <p><i class="ph ph-moon"></i>Dimanche · Pharmacie de garde</p>
+      <p><i class="ph ph-moon"></i>Dimanche · Fermé</p>
     </div>
     <div class="footer-col">
       <h4>Nous joindre</h4>

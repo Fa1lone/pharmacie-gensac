@@ -9,7 +9,9 @@
 <meta name="description" content="Pharmacie de Gensac-la-Pallue, votre pharmacie de proximité en Charente. Ordonnances, vaccins, matériel médical. Lun–Ven 9h–19h, Sam 9h–13h. Tél : 05 45 82 40 12." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://pharmacie-gensac.fr/" />
-<link rel="icon" type="image/png" href="/logo-rond.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -168,7 +170,8 @@ nav.main-nav a::after{
   transition:transform .35s var(--ease);
 }
 nav.main-nav a:hover{color:var(--blue-river);}
-nav.main-nav a:hover::after{transform:scaleX(1);}
+nav.main-nav a:hover::after,nav.main-nav a.active::after{transform:scaleX(1);}
+nav.main-nav a.active{color:var(--green-deep);}
 .header-right{display:flex;align-items:center;gap:12px;}
 .phone-pill{
   display:inline-flex;align-items:center;gap:9px;
@@ -317,6 +320,40 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
 }
 .btn-blue:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,114,206,0.38);}
 .btn-blue i{font-size:0.95rem;}
+/* Garde banner in hero */
+.hero-garde-bar{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(255,205,0,0.13);
+  border:1px solid rgba(255,205,0,0.42);
+  border-radius:10px;padding:10px 18px;
+  margin-bottom:28px;
+}
+.hero-garde-bar .garde-pulse{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--yellow-iris);flex:none;position:relative;
+}
+.hero-garde-bar .garde-pulse::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:var(--yellow-iris);
+  animation:pulse 2.2s var(--ease) infinite;
+}
+.hero-garde-bar strong{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;
+  color:var(--yellow-iris);letter-spacing:0.02em;
+}
+.hero-garde-bar .gbar-horaire{
+  font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:600;
+  color:rgba(255,205,0,0.75);
+  border-left:1px solid rgba(255,205,0,0.25);padding-left:12px;
+}
+.hero-garde-bar .gbar-sep{color:rgba(255,205,0,0.35);margin:0 2px;}
+.hero-garde-note{
+  font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:600;
+  color:rgba(247,244,234,0.38);font-style:italic;
+  display:block;margin-top:8px;padding:0 2px;
+  letter-spacing:0.01em;
+}
+
 .hero-status{
   position:absolute;left:0;bottom:0;z-index:3;width:100%;
   padding:13px 28px;
@@ -371,7 +408,7 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
 /* ====== NUMBERS — fond green-deep, chiffres yellow-iris ====== */
 .numbers{
   background:var(--green-deep);
-  padding:clamp(56px,6vw,80px) 28px;
+  padding:clamp(28px,3vw,44px) 28px;
 }
 .numbers-inner{
   max-width:1280px;margin:0 auto;
@@ -389,19 +426,19 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
 }
 .num-val{
   font-family:'Montserrat',sans-serif;font-weight:800;
-  font-size:clamp(3.8rem,8vw,6.5rem);
+  font-size:clamp(2.4rem,5vw,3.8rem);
   line-height:1;letter-spacing:-0.025em;
   color:var(--yellow-iris);display:block;
 }
 .num-lbl{
-  display:block;margin-top:10px;
+  display:block;margin-top:6px;
   font-family:'Montserrat',sans-serif;font-weight:700;
   font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
   color:rgba(247,244,234,0.50);
 }
 .num-val-date{
   font-family:'Montserrat',sans-serif;font-weight:800;
-  font-size:clamp(2.4rem,5vw,4.2rem);
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
   line-height:1;letter-spacing:-0.02em;
   color:var(--yellow-iris);display:block;
 }
@@ -469,26 +506,46 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
 }
 .service-item p{font-size:0.9rem;color:var(--text-mid);line-height:1.55;}
 
-/* ====== QUOTE — fond yellow-iris ====== */
+/* ====== QUOTE — compact ====== */
 .quote-section{
   background:var(--yellow-iris);
-  padding:clamp(72px,8vw,108px) 28px;
+  padding:clamp(24px,3vw,36px) 28px;
 }
-.quote-inner{max-width:1060px;margin:0 auto;}
+.quote-inner{max-width:900px;margin:0 auto;display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;}
 .quote-text{
   font-family:'Montserrat',sans-serif;
   font-weight:800;font-style:italic;
-  font-size:clamp(2rem,4.5vw,3.8rem);
-  line-height:1.1;letter-spacing:-0.025em;
-  color:var(--green-deep);
-  margin-bottom:28px;
+  font-size:clamp(1.1rem,2.2vw,1.55rem);
+  line-height:1.3;letter-spacing:-0.01em;
+  color:var(--green-deep);flex:1;min-width:200px;
 }
 .quote-attr{
   font-family:'Montserrat',sans-serif;
-  font-size:0.75rem;font-weight:700;
-  letter-spacing:0.16em;text-transform:uppercase;
-  color:rgba(4,106,56,0.52);
+  font-size:0.68rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(4,106,56,0.55);white-space:nowrap;flex:none;
 }
+
+/* ====== GARDE CALENDAR ====== */
+.garde-calendar{display:flex;flex-direction:column;gap:8px;min-width:280px;}
+.garde-cal-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.50);margin-bottom:6px;}
+.garde-date-row{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;padding:11px 16px;
+}
+.garde-date-row .gd-date{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.88rem;
+  color:#fff;white-space:nowrap;min-width:90px;
+}
+.garde-date-row .gd-horaire{
+  font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:600;
+  color:rgba(255,255,255,0.65);border-left:1px solid rgba(255,255,255,0.18);
+  padding-left:14px;
+}
+.garde-date-row.next{background:rgba(255,205,0,0.15);border-color:rgba(255,205,0,0.35);}
+.garde-date-row.next .gd-date{color:var(--yellow-iris);}
+.gd-badge{font-family:'Montserrat',sans-serif;font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;background:var(--yellow-iris);color:var(--green-deep);padding:2px 8px;border-radius:999px;margin-left:auto;white-space:nowrap;}
 
 /* ====== ÉQUIPE ====== */
 .equipe{background:var(--cream-2);padding:clamp(80px,8vw,116px) 0;}
@@ -559,32 +616,42 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
   font-size:0.82rem;color:rgba(247,244,234,0.9);
 }
 
-/* ====== TÉMOIGNAGES — fond green-deep ====== */
+/* ====== AVIS — fond green-deep ====== */
 .testimonials{
   background:var(--green-deep);
-  padding:clamp(80px,8vw,116px) 28px;
+  padding:clamp(52px,6vw,80px) 28px;
 }
-.testi-wrap{max-width:1280px;margin:0 auto;}
+.testi-wrap{max-width:960px;margin:0 auto;}
 .testi-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:56px;margin-top:56px;
+  gap:20px;margin-top:40px;
 }
-.testi-item{}
-.testi-mark{
-  font-family:'Montserrat',sans-serif;font-weight:800;
-  font-size:5.5rem;line-height:0.75;
-  color:var(--yellow-iris);display:block;margin-bottom:18px;
+.testi-item{
+  background:rgba(247,244,234,0.06);border:1px solid rgba(247,244,234,0.10);
+  border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;
 }
+.testi-stars{display:flex;gap:3px;}
+.testi-star{color:var(--yellow-iris);font-size:0.95rem;}
 .testi-text{
-  font-style:italic;font-size:1.05rem;line-height:1.72;
-  color:rgba(247,244,234,0.88);margin-bottom:22px;
+  font-style:italic;font-size:0.9rem;line-height:1.68;
+  color:rgba(247,244,234,0.85);flex:1;
 }
+.testi-footer{display:flex;align-items:center;gap:10px;margin-top:4px;padding-top:12px;border-top:1px solid rgba(247,244,234,0.08);}
+.testi-avatar{
+  width:32px;height:32px;border-radius:50%;flex:none;
+  background:rgba(151,215,0,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.75rem;
+  color:var(--green-leaf);
+}
+.testi-meta{flex:1;}
 .testi-author{
   font-family:'Montserrat',sans-serif;
   font-size:0.72rem;font-weight:700;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--green-leaf);
+  color:rgba(247,244,234,0.75);display:block;
 }
+.testi-date{font-size:0.65rem;color:rgba(247,244,234,0.35);margin-top:1px;}
+.testi-google-ico{color:rgba(247,244,234,0.30);font-size:0.85rem;}
 
 /* ====== INFOS PRATIQUES ====== */
 .infos{background:var(--cream);padding:clamp(80px,8vw,116px) 0;}
@@ -771,38 +838,95 @@ footer{
 /* ====== SITES UTILES ====== */
 .sites-utiles{
   background:var(--green-deep);
-  padding:clamp(52px,5vw,72px) 28px;
+  padding:clamp(52px,5vw,72px) 0;
 }
-.sites-utiles-inner{max-width:1280px;margin:0 auto;}
-.sites-utiles h2{
+.sites-utiles-header{
+  max-width:1280px;margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  margin-bottom:32px;
+}
+.sites-utiles-header h2{
   font-family:'Montserrat',sans-serif;font-weight:800;
   font-size:clamp(1.2rem,2.2vw,1.6rem);
-  color:var(--cream);margin-bottom:24px;letter-spacing:-0.01em;
+  color:var(--cream);letter-spacing:-0.01em;
   display:flex;align-items:center;gap:12px;
 }
-.sites-utiles h2 i{color:var(--blue-river);font-size:1.1em;}
-.sites-list{display:flex;gap:10px;flex-wrap:wrap;}
-.site-chip{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(247,244,234,0.07);
-  border:1px solid rgba(247,244,234,0.14);
-  border-radius:999px;padding:9px 18px;
-  font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:600;
+.sites-utiles-header h2 i{color:var(--blue-river);font-size:1.1em;}
+.carousel-arrows{display:flex;gap:8px;}
+.carousel-arrow{
+  width:40px;height:40px;border-radius:999px;
+  border:1.5px solid rgba(247,244,234,0.22);
+  background:rgba(247,244,234,0.06);
   color:rgba(247,244,234,0.78);
-  transition:background .2s,color .2s,border-color .2s;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s,border-color .2s,color .2s;
+  font-size:1.1rem;flex:none;
 }
-.site-chip:hover{
-  background:var(--blue-river);color:#fff;
+.carousel-arrow:hover{background:var(--blue-river);border-color:var(--blue-river);color:#fff;}
+.sites-track-outer{
+  overflow-x:auto;
+  overflow-y:hidden;
+  width:100%;
+  padding:0 28px 16px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  cursor:grab;
+  /* masque les bords en fondu */
+  mask-image:linear-gradient(to right, transparent 0%, black 60px, black calc(100% - 60px), transparent 100%);
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 60px, black calc(100% - 60px), transparent 100%);
+  /* cacher la scrollbar */
+  scrollbar-width:none;
+}
+.sites-track-outer::-webkit-scrollbar{display:none;}
+.sites-track-outer.dragging{cursor:grabbing;scroll-snap-type:none;}
+.sites-track{
+  display:flex;gap:16px;
+  width:max-content;
+}
+.site-card{scroll-snap-align:start;}
+.site-card{
+  flex:none;width:220px;
+  background:rgba(247,244,234,0.07);
+  border:1px solid rgba(247,244,234,0.12);
+  border-radius:8px;padding:20px 18px;
+  transition:background .2s,border-color .2s,transform .25s var(--ease);
+  cursor:pointer;
+  text-decoration:none;display:block;
+}
+.site-card:hover{
+  background:rgba(247,244,234,0.13);
   border-color:var(--blue-river);
+  transform:translateY(-2px);
 }
-.site-chip i{font-size:0.85rem;color:var(--blue-river);}
-.site-chip:hover i{color:#fff;}
+.site-card-logo{
+  width:36px;height:36px;border-radius:8px;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;margin-bottom:12px;
+  flex:none;
+}
+.site-card-logo img{width:24px;height:24px;object-fit:contain;}
+.site-card h3{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:0.82rem;color:rgba(247,244,234,0.95);
+  margin-bottom:6px;line-height:1.3;
+}
+.site-card p{
+  font-size:0.75rem;color:rgba(247,244,234,0.65);
+  line-height:1.55;
+}
+.site-card-ext{
+  margin-top:10px;display:inline-flex;align-items:center;gap:4px;
+  font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow-iris);
+}
 
 /* ====== AVIS GOOGLE ====== */
-.avis-google{background:var(--cream-2);padding:clamp(72px,8vw,108px) 0;}
+.avis-google{background:var(--cream-2);padding:clamp(52px,6vw,80px) 0;}
 .avis-inner{
   display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(40px,5vw,72px);align-items:center;
+  gap:clamp(32px,4vw,56px);align-items:center;
+  max-width:860px;margin:0 auto;
 }
 .avis-text h2{
   font-weight:800;font-size:clamp(2rem,3.8vw,3.2rem);
@@ -937,7 +1061,7 @@ footer{
       <img class="brand-logo" src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" width="220" height="52" />
     </a>
     <nav class="main-nav">
-      <a href="/">Accueil</a>
+      <a href="/" class="active">Accueil</a>
       <a href="/la-pharmacie">La pharmacie</a>
       <a href="/produits">Produits</a>
       <a href="/services">Services</a>
@@ -965,6 +1089,12 @@ footer{
         <span class="status-dot"></span><span class="status-text">Ouvert</span>
       </span>
     </div>
+    <div class="hero-garde-bar reveal">
+      <span class="garde-pulse"></span>
+      <strong><i class="ph ph-first-aid-kit"></i> Pharmacie de garde</strong>
+      <span class="gbar-horaire">9h – 12h<span class="gbar-sep"> / </span>15h – 19h</span>
+    </div>
+
     <h1>
       <span class="hero-line"><span class="hero-line-inner d1 l-cream">Votre</span></span>
       <span class="hero-line"><span class="hero-line-inner d2 l-cream">pharmacie</span></span>
@@ -990,6 +1120,10 @@ footer{
   <div class="hero-status">
     <span class="pulse-dot"></span>
     <span>Ouvert · Lun–Ven 9h–19h · Sam 9h–13h</span>
+    <span style="margin-left:auto;display:flex;align-items:center;gap:8px;background:rgba(255,205,0,0.12);border:1px solid rgba(255,205,0,0.30);border-radius:999px;padding:3px 12px 3px 8px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--yellow-iris);flex:none;"></span>
+      <span style="color:var(--yellow-iris);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;">DE GARDE AUJOURD'HUI</span>
+    </span>
   </div>
 </section>
 
@@ -1085,11 +1219,11 @@ footer{
   </div>
 </section>
 
-<!-- ====== QUOTE — fond yellow-iris ====== -->
+<!-- ====== QUOTE — compact ====== -->
 <section class="quote-section">
   <div class="quote-inner">
-    <p class="quote-text reveal">On connaît vos noms. Parfois depuis avant votre naissance.</p>
-    <span class="quote-attr reveal">— L'équipe, Pharmacie de Gensac-la-Pallue</span>
+    <p class="quote-text">"On connaît vos noms. Parfois depuis avant votre naissance.</p>
+    <span class="quote-attr">— L'équipe, Pharmacie de Gensac-la-Pallue</span>
   </div>
 </section>
 
@@ -1132,25 +1266,58 @@ footer{
 <!-- ====== TÉMOIGNAGES ====== -->
 <section class="testimonials">
   <div class="testi-wrap">
-    <div class="eyebrow-light reveal">Ce qu'ils disent</div>
+    <div class="eyebrow-light reveal">Avis Google</div>
     <div class="testi-grid">
 
       <div class="testi-item reveal">
-        <span class="testi-mark">"</span>
-        <p class="testi-text">La pharmacie qu'on cherche tous : une équipe qui vous connaît par votre prénom, qui se souvient de vos traitements. Irremplaçable dans un village.</p>
-        <cite class="testi-author">Martine R. · Gensac-la-Pallue</cite>
+        <div class="testi-stars">
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i>
+        </div>
+        <p class="testi-text">"La pharmacie qu'on cherche tous : une équipe qui vous connaît par votre prénom, qui se souvient de vos traitements. Irremplaçable dans un village."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">M</div>
+          <div class="testi-meta">
+            <span class="testi-author">Martine R.</span>
+            <span class="testi-date">Il y a 2 semaines · Google</span>
+          </div>
+          <i class="ph ph-google-logo testi-google-ico"></i>
+        </div>
       </div>
 
       <div class="testi-item reveal">
-        <span class="testi-mark">"</span>
-        <p class="testi-text">Toujours un conseil pertinent, jamais à la va-vite. Ils prennent le temps d'expliquer. En ville, ça n'existe plus.</p>
-        <cite class="testi-author">Jean-Pierre D. · Merpins</cite>
+        <div class="testi-stars">
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i>
+        </div>
+        <p class="testi-text">"Toujours un conseil pertinent, jamais à la va-vite. Ils prennent le temps d'expliquer. En ville, ça n'existe plus."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">J</div>
+          <div class="testi-meta">
+            <span class="testi-author">Jean-Pierre D.</span>
+            <span class="testi-date">Il y a 1 mois · Google</span>
+          </div>
+          <i class="ph ph-google-logo testi-google-ico"></i>
+        </div>
       </div>
 
       <div class="testi-item reveal">
-        <span class="testi-mark">"</span>
-        <p class="testi-text">Ma fille avait besoin d'aide un soir tard. Ils ont trouvé la pharmacie de garde et l'ont rappelée. C'est ça, une vraie pharmacie de village.</p>
-        <cite class="testi-author">Sylvie M. · Saint-Fort-sur-le-Né</cite>
+        <div class="testi-stars">
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i><i class="ph-fill ph-star testi-star"></i>
+          <i class="ph-fill ph-star testi-star"></i>
+        </div>
+        <p class="testi-text">"Ma fille avait besoin d'aide un soir tard. Ils ont trouvé la pharmacie de garde et l'ont rappelée. C'est ça, une vraie pharmacie de village."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">S</div>
+          <div class="testi-meta">
+            <span class="testi-author">Sylvie M.</span>
+            <span class="testi-date">Il y a 3 semaines · Google</span>
+          </div>
+          <i class="ph ph-google-logo testi-google-ico"></i>
+        </div>
       </div>
 
     </div>
@@ -1195,12 +1362,36 @@ footer{
   <div class="garde-inner">
     <div class="garde-text reveal">
       <div class="garde-eyebrow">Urgences &amp; garde</div>
-      <h2>Pharmacie de garde :<br>comment trouver la bonne ?</h2>
-      <p>La nuit, le dimanche ou un jour férié, toutes les pharmacies ferment à tour de rôle. Pour connaître la pharmacie de garde la plus proche de Gensac-la-Pallue, appelez le <strong>15</strong> (SAMU) ou le <strong>3237</strong>, ou consultez le site officiel du Conseil de l'Ordre.</p>
+      <h2>Nos prochains<br>dimanches de garde</h2>
+      <p>Les pharmacies du secteur assurent une permanence à tour de rôle. Les dates ci-contre sont indicatives — appelez le <strong>3237</strong> pour confirmer ou trouver la pharmacie la plus proche en cas d'urgence.</p>
+      <a class="garde-btn" href="https://www.ordre.pharmacien.fr/les-pharmacies/trouver-une-pharmacie-de-garde" target="_blank" rel="noopener" style="margin-top:20px;display:inline-flex;">
+        <i class="ph ph-first-aid-kit"></i>Toutes les gardes — 3237
+      </a>
     </div>
-    <a class="garde-btn" href="https://www.ordre.pharmacien.fr/les-pharmacies/trouver-une-pharmacie-de-garde" target="_blank" rel="noopener">
-      <i class="ph ph-first-aid-kit"></i>Trouver une pharmacie de garde
-    </a>
+    <div class="garde-calendar reveal">
+      <div class="garde-cal-title">Calendrier 2026</div>
+      <div class="garde-date-row next">
+        <span class="gd-date">Dim. 14 juin</span>
+        <span class="gd-horaire">9h – 12h &nbsp;/&nbsp; 15h – 19h</span>
+        <span class="gd-badge">Prochain</span>
+      </div>
+      <div class="garde-date-row">
+        <span class="gd-date">Dim. 12 juil.</span>
+        <span class="gd-horaire">9h – 12h &nbsp;/&nbsp; 15h – 19h</span>
+      </div>
+      <div class="garde-date-row">
+        <span class="gd-date">Dim. 9 août</span>
+        <span class="gd-horaire">9h – 12h &nbsp;/&nbsp; 15h – 19h</span>
+      </div>
+      <div class="garde-date-row">
+        <span class="gd-date">Dim. 6 sept.</span>
+        <span class="gd-horaire">9h – 12h &nbsp;/&nbsp; 15h – 19h</span>
+      </div>
+      <div class="garde-date-row">
+        <span class="gd-date">Dim. 4 oct.</span>
+        <span class="gd-horaire">9h – 12h &nbsp;/&nbsp; 15h – 19h</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1244,20 +1435,79 @@ footer{
 </section>
 
 <!-- ====== SITES UTILES ====== -->
-<section class="sites-utiles">
-  <div class="sites-utiles-inner">
-    <h2 class="reveal"><i class="ph ph-link"></i>Sites utiles en santé</h2>
-    <div class="sites-list reveal">
-      <a class="site-chip" href="https://www.ansm.sante.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>ANSM</a>
-      <a class="site-chip" href="https://ansm.sante.fr/vos-demarches/consumers/declarer-un-effet-indesirable" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Déclarer un effet indésirable</a>
-      <a class="site-chip" href="https://base-donnees-publique.medicaments.gouv.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Base médicaments</a>
-      <a class="site-chip" href="https://www.anses.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>ANSES</a>
-      <a class="site-chip" href="https://www.lecrat.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>CRAT</a>
-      <a class="site-chip" href="https://www.santepubliquefrance.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Santé Publique France</a>
-      <a class="site-chip" href="https://www.pollens.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Pollens</a>
-      <a class="site-chip" href="https://www.orpha.net/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Orphanet</a>
-      <a class="site-chip" href="https://www.cyclamed.org/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>CYCLAMED</a>
-      <a class="site-chip" href="https://www.dastri.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>DASTRI</a>
+<section class="sites-utiles" aria-label="Sites utiles en santé">
+  <div class="sites-utiles-header reveal">
+    <h2><i class="ph ph-link"></i>Sites utiles en santé</h2>
+    <div class="carousel-arrows">
+      <button class="carousel-arrow" id="su-prev" aria-label="Précédent"><i class="ph ph-caret-left"></i></button>
+      <button class="carousel-arrow" id="su-next" aria-label="Suivant"><i class="ph ph-caret-right"></i></button>
+    </div>
+  </div>
+  <div class="sites-track-outer">
+    <div class="sites-track" id="sites-track">
+
+      <!-- SET 1 -->
+      <a class="site-card" href="https://www.ansm.sante.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=ansm.sante.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>ANSM</h3>
+        <p>Agence nationale de sécurité du médicament — autorisations, vigilance et information officielle.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://signalement.social-sante.gouv.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=signalement.social-sante.gouv.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>Déclarer un effet indésirable</h3>
+        <p>Portail officiel pour signaler un effet secondaire lié à un médicament ou vaccin.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://base-donnees-publique.medicaments.gouv.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=medicaments.gouv.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>Base de données médicaments</h3>
+        <p>Toutes les informations officielles sur les médicaments disponibles en France.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.anses.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=anses.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>ANSES</h3>
+        <p>Agence nationale de sécurité sanitaire — alimentation, environnement et travail.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.lecrat.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=lecrat.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>CRAT</h3>
+        <p>Centre de référence sur les agents tératogènes — médicaments pendant la grossesse.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.santepubliquefrance.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=santepubliquefrance.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>Santé Publique France</h3>
+        <p>Agence nationale de santé publique — campagnes, épidémies, données officielles.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.pollens.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=pollens.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>Réseau National Surveillance Aérobiologique</h3>
+        <p>Carte et alertes pollens en temps réel sur toute la France.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.orpha.net/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=orpha.net&sz=64" alt="" loading="lazy" /></div>
+        <h3>Orphanet</h3>
+        <p>Base de données de référence sur les maladies rares et les médicaments orphelins.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.cyclamed.org/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=cyclamed.org&sz=64" alt="" loading="lazy" /></div>
+        <h3>CYCLAMED</h3>
+        <p>Rapportez vos médicaments non utilisés en pharmacie pour un recyclage responsable.</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+      <a class="site-card" href="https://www.dastri.fr/" target="_blank" rel="noopener">
+        <div class="site-card-logo"><img src="https://www.google.com/s2/favicons?domain=dastri.fr&sz=64" alt="" loading="lazy" /></div>
+        <h3>DASTRI</h3>
+        <p>Collecte gratuite des déchets d'activités de soins à risque infectieux (DASRI).</p>
+        <span class="site-card-ext"><i class="ph ph-arrow-square-out"></i>Consulter</span>
+      </a>
+
     </div>
   </div>
 </section>
@@ -1278,7 +1528,7 @@ footer{
           <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
           <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
           <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
-          <li><span class="jour">Dimanche</span><span class="ferme">Fermé — pharmacie de garde</span></li>
+          <li><span class="jour">Dimanche</span><span class="ferme">Fermé</span></li>
         </ul>
       </div>
 
@@ -1339,7 +1589,7 @@ footer{
       <h4>Horaires</h4>
       <p><i class="ph ph-clock"></i>Lun–Ven · 9h–19h</p>
       <p><i class="ph ph-clock"></i>Samedi · 9h–13h</p>
-      <p><i class="ph ph-moon"></i>Dimanche · Pharmacie de garde</p>
+      <p><i class="ph ph-moon"></i>Dimanche · Fermé</p>
     </div>
     <div class="footer-col">
       <h4>Nous joindre</h4>
@@ -1442,6 +1692,46 @@ footer{
   btn.addEventListener('click', function(){ btn.classList.contains('open') ? closeMenu() : openMenu(); });
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+})();
+
+/* ===== Carousel sites utiles — drag to scroll ===== */
+(function(){
+  var outer = document.querySelector('.sites-track-outer');
+  if(!outer) return;
+  var CARD_STEP = 236; // 220 + 16 gap
+
+  /* ── Drag souris ── */
+  var dragging = false, startX, startScroll;
+  outer.addEventListener('mousedown', function(e){
+    dragging = true;
+    startX = e.pageX;
+    startScroll = outer.scrollLeft;
+    outer.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    outer.scrollLeft = startScroll - (e.pageX - startX);
+  });
+  document.addEventListener('mouseup', function(){
+    if(!dragging) return;
+    dragging = false;
+    outer.classList.remove('dragging');
+  });
+
+  /* empêche les liens de s'ouvrir si on a dragué */
+  outer.addEventListener('click', function(e){
+    if(Math.abs(outer.scrollLeft - startScroll) > 6) e.preventDefault();
+  }, true);
+
+  /* ── Flèches ── */
+  var prev = document.getElementById('su-prev');
+  var next = document.getElementById('su-next');
+  function scrollBy(dir){
+    outer.scrollBy({ left: dir * CARD_STEP, behavior: 'smooth' });
+  }
+  if(prev) prev.addEventListener('click', function(){ scrollBy(-1); });
+  if(next) next.addEventListener('click', function(){ scrollBy(1); });
 })();
 
 /* ===== Scroll reveal ===== */

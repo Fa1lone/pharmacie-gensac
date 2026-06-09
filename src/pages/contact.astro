@@ -3,137 +3,181 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 ---
 <LayoutV2
   title="Contactez-nous | Pharmacie de Gensac-la-Pallue"
-  description="Contactez la Pharmacie de Gensac-la-Pallue : téléphone, mail, adresse, formulaire de contact. Envoi d'ordonnances par mail. Ouvert Lun–Ven 9h–19h, Sam 9h–13h."
+  description="Contactez la Pharmacie de Gensac-la-Pallue : téléphone, mail, adresse, formulaire. Tél : 05 45 82 40 12. Ouvert Lun–Ven 9h–19h, Sam 9h–13h."
   canonical="https://pharmacie-gensac.fr/contact"
 >
 <style>
-.contact-layout{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;
-  padding:clamp(72px,8vw,108px) 0;
+/* ── HERO image — câblé via CSS var sur l'élément ── */
+
+/* ── QUICK CONTACT BAND ── */
+.quick-band{background:var(--yellow-iris);padding:clamp(28px,3vw,40px) 28px;}
+.quick-band-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.quick-item{
+  display:flex;align-items:center;gap:14px;padding:0 24px;
+  position:relative;
 }
-.contact-infos{}
-.contact-form-section{}
-.info-block{margin-bottom:36px;}
-.info-block h3{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.65rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--green-leaf);
-  margin-bottom:14px;
+.quick-item+.quick-item::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1px;background:rgba(4,106,56,0.15);}
+.quick-ico{width:44px;height:44px;flex:none;border-radius:12px;background:rgba(4,106,56,0.10);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.2rem;}
+.quick-label{font-family:'Montserrat',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(4,106,56,0.60);margin-bottom:3px;}
+.quick-value{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.95rem;color:var(--green-deep);}
+.quick-value a{color:inherit;text-decoration:none;}
+.quick-value a:hover{text-decoration:underline;}
+@media(max-width:700px){
+  .quick-band-inner{grid-template-columns:1fr;}
+  .quick-item+.quick-item::before{display:none;}
+  .quick-item{padding:10px 0;border-top:1px solid rgba(4,106,56,0.10);}
+  .quick-item:first-child{border-top:none;}
 }
-.contact-row{
-  display:flex;align-items:flex-start;gap:14px;
-  padding:14px 0;border-bottom:1px solid rgba(4,106,56,0.08);
-}
+
+/* ── URGENCE ── */
+.urgence-band{background:var(--green-deep);padding:clamp(32px,3.5vw,48px) 28px;}
+.urgence-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.urgence-inner h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--cream);margin-bottom:6px;letter-spacing:-0.015em;}
+.urgence-inner p{font-size:0.88rem;color:rgba(247,244,234,0.72);max-width:52ch;line-height:1.6;}
+.urgence-btn{display:inline-flex;align-items:center;gap:9px;background:var(--yellow-iris);color:var(--green-deep);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.88rem;padding:11px 22px;border-radius:999px;white-space:nowrap;flex:none;transition:transform .25s;}
+.urgence-btn:hover{transform:translateY(-2px);}
+@media(max-width:700px){.urgence-inner{flex-direction:column;align-items:flex-start;}}
+
+/* ── MAIN LAYOUT ── */
+.contact-section{padding:clamp(64px,7vw,100px) 0;}
+.contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(48px,6vw,80px);}
+
+/* ── INFOS ── */
+.info-group{margin-bottom:40px;}
+.info-group:last-child{margin-bottom:0;}
+.info-group-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--green-vivid);margin-bottom:14px;}
+.contact-row{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(4,106,56,0.08);}
 .contact-row:last-child{border-bottom:none;}
-.c-ico{
-  width:40px;height:40px;flex:none;border-radius:10px;
-  background:rgba(0,114,206,0.08);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--blue-river);font-size:1.1rem;
-}
-.c-text strong{display:block;font-weight:700;color:var(--text-main);font-size:0.88rem;margin-bottom:3px;}
+.c-ico{width:40px;height:40px;flex:none;border-radius:10px;background:rgba(0,114,206,0.08);display:flex;align-items:center;justify-content:center;color:var(--blue-river);font-size:1.1rem;}
+.c-text strong{display:block;font-weight:700;color:var(--text-main);font-size:0.86rem;margin-bottom:3px;}
 .c-text span,.c-text a{font-size:0.9rem;color:var(--text-mid);}
 .c-text a:hover{color:var(--green-deep);text-decoration:underline;}
+
+/* ── HORAIRES ── */
 .horaires-table{list-style:none;margin-top:4px;}
-.horaires-table li{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(4,106,56,0.06);font-size:0.88rem;}
+.horaires-table li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(4,106,56,0.06);font-size:0.88rem;}
 .horaires-table li:last-child{border-bottom:none;}
 .jour{font-weight:600;color:var(--text-mid);}
 .heure{font-weight:700;color:var(--text-main);}
-.ferme{color:rgba(58,80,64,0.45);}
-.form-title{
-  font-family:'Montserrat',sans-serif;font-weight:800;
-  font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:-0.02em;
-  color:var(--text-main);margin-bottom:8px;
-}
-.form-subtitle{font-size:0.9rem;color:var(--text-mid);margin-bottom:28px;line-height:1.65;}
+.ferme{color:rgba(58,80,64,0.40);}
+
+/* ── MAP ── */
+.map-block{margin-top:28px;}
+.map-frame{border-radius:4px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:220px;}
+.map-frame iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.80);}
+
+/* ── FORM ── */
+.form-card{background:var(--cream-2);border:1px solid rgba(4,106,56,0.08);border-radius:6px;padding:clamp(28px,4vw,44px);}
+.form-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,2.5vw,1.9rem);letter-spacing:-0.02em;color:var(--text-main);margin-bottom:6px;}
+.form-subtitle{font-size:0.88rem;color:var(--text-mid);margin-bottom:28px;line-height:1.65;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.form-field label{font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-main);letter-spacing:0.04em;}
+.form-field input,.form-field textarea,.form-field select{
+  font-family:'Figtree',sans-serif;font-size:0.93rem;
+  padding:11px 14px;border-radius:4px;
+  border:1.5px solid rgba(4,106,56,0.16);
+  background:#fff;color:var(--text-main);
+  transition:border-color .25s;width:100%;
+}
+.form-field textarea{min-height:110px;resize:vertical;}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{outline:none;border-color:var(--blue-river);}
 .form-notice{
-  background:rgba(0,114,206,0.06);border:1px solid rgba(0,114,206,0.14);
-  border-radius:3px;padding:14px 16px;margin-top:8px;
-  font-size:0.82rem;color:var(--text-mid);line-height:1.6;
+  background:rgba(0,114,206,0.05);border:1px solid rgba(0,114,206,0.12);
+  border-radius:4px;padding:13px 15px;margin-bottom:18px;
+  font-size:0.80rem;color:var(--text-mid);line-height:1.6;
   display:flex;gap:10px;align-items:flex-start;
 }
 .form-notice i{color:var(--blue-river);font-size:1rem;flex:none;margin-top:2px;}
-.map-block{margin-top:32px;}
-.map-block h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--green-leaf);margin-bottom:14px;}
-.map-frame{border-radius:3px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:240px;}
-.map-frame iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.82);}
-.success-note{
-  background:rgba(67,176,42,0.08);border:1px solid rgba(67,176,42,0.18);
-  border-radius:3px;padding:14px 16px;margin-top:14px;
-  font-size:0.85rem;color:var(--green-deep);display:none;
-  align-items:center;gap:10px;
+.btn-submit{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--green-deep);color:var(--cream);
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.95rem;
+  padding:13px 30px;border-radius:999px;border:none;cursor:pointer;
+  transition:background .25s,transform .2s;
 }
-.urgence-band{
-  background:var(--yellow-iris);padding:clamp(40px,4vw,60px) 28px;
-}
-.urgence-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
-.urgence-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--green-deep);margin-bottom:8px;letter-spacing:-0.02em;}
-.urgence-band p{font-size:0.92rem;color:rgba(4,106,56,0.72);max-width:52ch;line-height:1.65;}
-.urgence-btn{display:inline-flex;align-items:center;gap:9px;background:var(--green-deep);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:999px;white-space:nowrap;flex:none;transition:transform .25s var(--ease);}
-.urgence-btn:hover{transform:translateY(-2px);}
+.btn-submit:hover{background:var(--green-vivid);transform:translateY(-2px);}
+
 @media(max-width:900px){.contact-layout{grid-template-columns:1fr;}}
-@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+@media(max-width:520px){.form-row{grid-template-columns:1fr;}}
 </style>
 
-<section class="page-hero">
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section class="page-hero" style="--hero-img:url('/hero-contact.jpg');--hero-pos:center 70%;">
+  <div class="page-hero-grain" aria-hidden="true"></div>
+  <div class="page-hero-decor" aria-hidden="true"></div>
+  <div class="page-hero-decor2" aria-hidden="true"></div>
   <div class="page-hero-inner">
-    <div class="page-eyebrow">Nous joindre</div>
-    <h1>Contactez-<em>nous</em></h1>
-    <p class="page-subtitle">Téléphone, mail, formulaire ou itinéraire — toutes les façons de nous trouver et de nous écrire.</p>
+    <div class="page-eyebrow"><span class="dot"></span>Nous joindre</div>
+    <h1>
+      <span class="l-cream">Contactez-</span>
+      <span class="l-iris">nous</span>
+    </h1>
+    <p class="page-subtitle">Téléphone, mail ou formulaire — une équipe disponible pour répondre à vos questions depuis Gensac-la-Pallue.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="tel:+33545824012">
+        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
+      </a>
+      <a class="btn-outline" href="mailto:contact@pharmacie-gensac.fr">
+        <i class="ph ph-envelope-simple"></i>Nous écrire
+      </a>
+    </div>
+  </div>
+  <div class="page-hero-status">
+    <span class="ph-pulse"></span>
+    <span>05 45 82 40 12 &nbsp;·&nbsp; Lun–Ven 9h–19h &nbsp;·&nbsp; Sam 9h–13h</span>
   </div>
 </section>
 
-<!-- URGENCE -->
+<div class="blue-divider" aria-hidden="true"></div>
+
+<!-- ══ QUICK CONTACT ══════════════════════════════════ -->
+<section class="quick-band">
+  <div class="quick-band-inner">
+    <div class="quick-item">
+      <div class="quick-ico"><i class="ph ph-phone-call"></i></div>
+      <div>
+        <div class="quick-label">Téléphone</div>
+        <div class="quick-value"><a href="tel:+33545824012">05 45 82 40 12</a></div>
+      </div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-ico"><i class="ph ph-envelope-simple"></i></div>
+      <div>
+        <div class="quick-label">E-mail</div>
+        <div class="quick-value"><a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a></div>
+      </div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-ico"><i class="ph ph-map-pin"></i></div>
+      <div>
+        <div class="quick-label">Adresse</div>
+        <div class="quick-value">Route de Merpins, 16130 Gensac-la-Pallue</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ URGENCE ═══════════════════════════════════════ -->
 <section class="urgence-band">
-  <div class="urgence-band-inner">
+  <div class="urgence-inner">
     <div class="reveal">
       <h2>Urgence médicale ?</h2>
-      <p>En cas d'urgence, appelez le <strong>15 (SAMU)</strong> ou le <strong>112</strong>. Pour une pharmacie de garde, appelez le <strong>3237</strong> ou le 15.</p>
+      <p>En cas d'urgence, appelez le <strong style="color:var(--yellow-iris);">15 (SAMU)</strong> ou le <strong style="color:var(--yellow-iris);">112</strong>. Pour une pharmacie de garde, appelez le <strong style="color:var(--yellow-iris);">3237</strong>.</p>
     </div>
     <a class="urgence-btn reveal" href="tel:15"><i class="ph ph-phone-call"></i>Appeler le 15</a>
   </div>
 </section>
 
-<section>
+<!-- ══ CONTACT PRINCIPAL ══════════════════════════════ -->
+<section class="contact-section">
   <div class="section-wrap">
     <div class="contact-layout">
 
-      <!-- INFOS -->
-      <div class="contact-infos reveal">
-        <div class="info-block">
-          <h3>Nous joindre directement</h3>
-          <div class="contact-row">
-            <div class="c-ico"><i class="ph ph-phone-call"></i></div>
-            <div class="c-text">
-              <strong>Téléphone</strong>
-              <a href="tel:+33545824012">05 45 82 40 12</a>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="c-ico"><i class="ph ph-envelope-simple"></i></div>
-            <div class="c-text">
-              <strong>E-mail (ordonnances, questions, mutuelles)</strong>
-              <a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="c-ico"><i class="ph ph-map-pin"></i></div>
-            <div class="c-text">
-              <strong>Adresse</strong>
-              <span>Route de Merpins, 16130 Gensac-la-Pallue</span>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="c-ico"><i class="ph ph-wheelchair"></i></div>
-            <div class="c-text">
-              <strong>Accessibilité</strong>
-              <span>Accès PMR · Salle de confidentialité</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-block">
-          <h3>Horaires d'ouverture</h3>
+      <!-- INFOS COLONNE GAUCHE -->
+      <div class="reveal">
+        <div class="info-group">
+          <div class="info-group-title">Horaires d'ouverture</div>
           <ul class="horaires-table">
             <li><span class="jour">Lundi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
             <li><span class="jour">Mardi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
@@ -141,12 +185,28 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
             <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
             <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
             <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
-            <li><span class="jour">Dimanche</span><span class="ferme">Fermé — pharmacie de garde</span></li>
+            <li><span class="jour">Dimanche</span><span class="ferme">Fermé</span></li>
           </ul>
         </div>
 
+        <div class="info-group">
+          <div class="info-group-title">Accès &amp; commodités</div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-wheelchair"></i></div>
+            <div class="c-text"><strong>Accès PMR</strong><span>Entrée de plain-pied, espace adapté</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-lock-key"></i></div>
+            <div class="c-text"><strong>Salle de confidentialité</strong><span>Entretiens pharmaceutiques en toute discrétion</span></div>
+          </div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-car"></i></div>
+            <div class="c-text"><strong>Parking gratuit</strong><span>Stationnement devant la pharmacie</span></div>
+          </div>
+        </div>
+
         <div class="map-block reveal">
-          <h3>Nous trouver</h3>
+          <div class="info-group-title">Nous trouver</div>
           <div class="map-frame">
             <iframe
               src="https://maps.google.com/maps?q=45.6514669,-0.2530952&z=16&output=embed"
@@ -156,72 +216,71 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
               allowfullscreen>
             </iframe>
           </div>
-          <a href="https://maps.google.com/?q=45.6514669,-0.2530952" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:0.85rem;font-weight:600;color:var(--blue-river);">
+          <a href="https://maps.google.com/?q=45.6514669,-0.2530952" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:0.83rem;font-weight:600;color:var(--blue-river);">
             <i class="ph ph-navigation-arrow"></i>Ouvrir dans Google Maps
           </a>
         </div>
       </div>
 
-      <!-- FORMULAIRE -->
-      <div class="contact-form-section reveal">
-        <h2 class="form-title">Envoyer un message</h2>
-        <p class="form-subtitle">Vous pouvez nous écrire pour toute question. Pour les ordonnances et mutuelles, envoyez-les directement à <a href="mailto:contact@pharmacie-gensac.fr" style="color:var(--green-deep);font-weight:600;">contact@pharmacie-gensac.fr</a> ou utilisez le formulaire ci-dessous.</p>
+      <!-- FORMULAIRE COLONNE DROITE -->
+      <div class="reveal">
+        <div class="form-card">
+          <h2 class="form-title">Envoyer un message</h2>
+          <p class="form-subtitle">Pour vos ordonnances et mutuelles, envoyez directement à <a href="mailto:contact@pharmacie-gensac.fr" style="color:var(--green-deep);font-weight:600;">contact@pharmacie-gensac.fr</a>.</p>
 
-        <form id="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="prenom">Prénom</label>
-              <input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" />
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" />
+              </div>
+              <div class="form-field">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" />
+              </div>
             </div>
             <div class="form-field">
-              <label for="nom">Nom</label>
-              <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" />
+              <label for="email">E-mail <span style="color:var(--green-vivid);">*</span></label>
+              <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email" />
             </div>
-          </div>
-          <div class="form-field">
-            <label for="email">E-mail <span style="color:var(--green-vivid);">*</span></label>
-            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email" />
-          </div>
-          <div class="form-field">
-            <label for="telephone">Téléphone (optionnel)</label>
-            <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" autocomplete="tel" />
-          </div>
-          <div class="form-field">
-            <label for="objet">Objet</label>
-            <select id="objet" name="objet">
-              <option value="">-- Choisir un objet --</option>
-              <option>Ordonnance / mutuelle</option>
-              <option>Question sur un médicament</option>
-              <option>Demande de rendez-vous</option>
-              <option>Matériel médical</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="message">Message <span style="color:var(--green-vivid);">*</span></label>
-            <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
-          </div>
+            <div class="form-field">
+              <label for="telephone">Téléphone (optionnel)</label>
+              <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" autocomplete="tel" />
+            </div>
+            <div class="form-field">
+              <label for="objet">Objet</label>
+              <select id="objet" name="objet">
+                <option value="">-- Choisir un objet --</option>
+                <option>Ordonnance / mutuelle</option>
+                <option>Question sur un médicament</option>
+                <option>Demande de rendez-vous</option>
+                <option>Matériel médical</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message">Message <span style="color:var(--green-vivid);">*</span></label>
+              <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+            </div>
 
-          <div class="form-notice">
-            <i class="ph ph-info"></i>
-            <span>Pour envoyer une ordonnance ou un document médical, privilégiez l'envoi direct par e-mail à <strong>contact@pharmacie-gensac.fr</strong>. La solution d'upload de pièces jointes est en cours d'étude pour garantir la sécurité de vos données personnelles.</span>
-          </div>
+            <div class="form-notice">
+              <i class="ph ph-info"></i>
+              <span>Pour envoyer une ordonnance ou un document médical, privilégiez l'e-mail direct à <strong>contact@pharmacie-gensac.fr</strong>. L'upload de pièces jointes est en cours d'étude pour garantir la sécurité de vos données.</span>
+            </div>
 
-          <div class="form-field" style="margin-top:18px;">
-            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
-              <input type="checkbox" name="rgpd" required style="margin-top:3px;accent-color:var(--green-deep);" />
-              <span style="font-size:0.82rem;color:var(--text-mid);line-height:1.55;">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</span>
-            </label>
-          </div>
+            <div class="form-field">
+              <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-weight:400;">
+                <input type="checkbox" name="rgpd" required style="margin-top:3px;accent-color:var(--green-deep);flex:none;" />
+                <span style="font-size:0.80rem;color:var(--text-mid);line-height:1.55;">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</span>
+              </label>
+            </div>
 
-          <button class="btn-submit" type="submit">
-            <i class="ph ph-paper-plane-tilt"></i>Envoyer le message
-          </button>
-        </form>
-
-        <p style="margin-top:16px;font-size:0.78rem;color:var(--text-mid);font-style:italic;">
-          Nous répondons généralement sous 24h en jours ouvrés.
-        </p>
+            <button class="btn-submit" type="submit">
+              <i class="ph ph-paper-plane-tilt"></i>Envoyer le message
+            </button>
+            <p style="margin-top:12px;font-size:0.75rem;color:var(--text-mid);font-style:italic;">Réponse sous 24h en jours ouvrés.</p>
+          </form>
+        </div>
       </div>
 
     </div>
