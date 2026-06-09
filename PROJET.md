@@ -1,30 +1,37 @@
 # Pharmacie de Gensac-la-Pallue — Site Web
 
 ## Statut
-- **Phase** : V1 homepage complète — à enrichir
-- **Stack** : HTML/CSS/JS vanilla (aucune dépendance, no-build)
-- **Port local** : ouvrir `index.html` directement dans le navigateur
+- **Phase** : V2 — DA officielle intégrée (charte 26/05/26)
+- **Stack** : Astro 6.4, HTML/CSS/JS vanilla, port 3010 (dev sur 4322)
+- **Port local** : `npm run dev` → http://localhost:4322
 
 ## Direction artistique : "Pharmacie Jardin"
 
 ### Concept
 Seul site de pharmacie française avec une identité végétale assumée, inspirée du logo existant (vigne, iris, ruban bleu rivière). Ambiance domaine viticole premium + officine de village. 100% différenciant vs concurrence (template WordPress bleu/blanc générique).
 
-### Palette
-| Token | Valeur | Usage |
-|---|---|---|
-| `--cream` | `#F7F4EA` | Fond principal (70%) |
-| `--cream-2` | `#FFFDF7` | Cards, surfaces (fond blanc cassé) |
-| `--green-deep` | `#096534` | Vert profond, CTA, titres |
-| `--green-vivid` | `#389D33` | Vert vivant, accents |
-| `--green-leaf` | `#94BE24` | Vert feuille, décorations |
-| `--blue-river` | `#2DA1D9` | Bleu rivière, hover effects |
-| `--yellow-iris` | `#F9CE07` | Jaune iris, touches 3% |
-| `--text-main` | `#102418` | Texte principal |
+### Palette — valeurs officielles Pantone (charte 26/05/26)
+| Token | Valeur | Pantone | Usage |
+|---|---|---|---|
+| `--cream` | `#F7F4EA` | — | Fond principal (70%) |
+| `--cream-2` | `#FFFDF7` | — | Cards, surfaces |
+| `--green-deep` | `#046A38` | 349C | Vert profond, CTA, titres |
+| `--green-vivid` | `#43B02A` | 361C | Vert vivant, accents |
+| `--green-leaf` | `#97D700` | 375C | Vert lime, décorations |
+| `--blue-river` | `#0072CE` | 285C | Bleu eau, hover effects |
+| `--yellow-iris` | `#FFCD00` | 116C | Jaune iris, touches 3% |
+| `--brown-trunk` | `#623412` | 732C | Brun tronc |
+| `--text-main` | `#0D2118` | — | Texte principal |
 
-### Typographies
-- **Titres** : Rufina (serif botanique, Google Fonts, non dans la liste interdite)
-- **Corps** : Figtree (clean moderne 2024+, non dans la liste interdite)
+### Typographies — charte officielle
+- **Titres** : **Montserrat Bold/SemiBold** (alternative Google Fonts à Gotham Bold)
+- **Corps** : **Figtree** (alternative à Gotham Book)
+- **Script** : police Japan Regular dans la charte → non utilisée sur le web
+
+### Assets logos (public/)
+- `logo-vertical.png` — logo officiel vertical (header)
+- `logo-horizontal.png` — logo officiel horizontal (footer, fond blanc obligatoire)
+- `logo-rond.png` — logo officiel rond (réseaux sociaux, favicon futur)
 
 ### Éléments de DA
 - Fond texture papier (SVG noise, fixed, pointer-events:none)
@@ -39,8 +46,8 @@ Seul site de pharmacie française avec une identité végétale assumée, inspir
 
 | Section | Statut | Notes |
 |---|---|---|
-| Header sticky | ✅ | Logo SVG inline, nav, CTA Appeler |
-| Mobile menu overlay | ✅ | Hamburger → X morph, stagger links |
+| Header sticky | ✅ | Logo PNG officiel, nav, CTA Appeler |
+| Mobile menu overlay | ✅ | Hamburger → X morph, stagger links, overlay plein écran |
 | Hero | ✅ | Split layout, motif SVG végétal, 2 badges flottants |
 | Quick Actions | ✅ | 3 cartes fond vert, ligne bleue hover |
 | Services (8) | ✅ | Grid 4col → 2col → 1col, hover blue river |
