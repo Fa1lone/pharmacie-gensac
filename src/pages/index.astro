@@ -27,8 +27,8 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 45.6379,
-    "longitude": -0.2153
+    "latitude": 45.6514669,
+    "longitude": -0.2530952
   },
   "openingHoursSpecification": [
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"12:30"},
@@ -43,6 +43,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script defer data-domain="pharmacie-gensac.fr" src="https://plausible.io/js/script.js"></script>
 
 <style>
 /* ====== RESET & TOKENS ====== */
@@ -151,18 +152,8 @@ header.scrolled{box-shadow:0 2px 24px rgba(4,106,56,0.10);}
   padding:12px 28px;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-logo{flex:none;height:48px;width:auto;display:block;object-fit:contain;}
-.brand-text{display:flex;flex-direction:column;line-height:1.05;}
-.brand-text .b1{
-  font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;
-  color:var(--green-deep);
-}
-.brand-text .b2{
-  font-size:0.58rem;font-weight:600;
-  letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--text-mid);margin-top:2px;
-}
+.brand{display:flex;align-items:center;}
+.brand-logo{flex:none;height:52px;width:auto;display:block;object-fit:contain;}
 nav.main-nav{display:flex;align-items:center;gap:28px;}
 nav.main-nav a{
   font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:600;
@@ -188,6 +179,41 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
 }
 .phone-pill i{font-size:1rem;}
 .phone-pill:hover{background:var(--green-vivid);transform:translateY(-1px);}
+
+/* ====== HERO LOCATION + STATUS ====== */
+.hero-location{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-bottom:clamp(18px,2.8dvh,32px);
+}
+.location-name{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:clamp(1.1rem,2.4vw,1.55rem);
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:rgba(247,244,234,0.90);
+}
+.status-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(0,0,0,0.30);border:1px solid rgba(247,244,234,0.18);
+  border-radius:999px;padding:6px 14px;
+  font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:800;
+  color:rgba(247,244,234,0.90);letter-spacing:0.08em;text-transform:uppercase;
+  transition:background .3s;
+}
+.status-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green-leaf);flex:none;
+  box-shadow:0 0 0 0 rgba(151,215,0,0.6);
+  animation:statusPulse 2.4s ease infinite;
+}
+.status-pill.ferme .status-dot{
+  background:#e05c44;
+  box-shadow:none;animation:none;
+}
+@keyframes statusPulse{
+  0%{box-shadow:0 0 0 0 rgba(151,215,0,0.55);}
+  70%{box-shadow:0 0 0 7px rgba(151,215,0,0);}
+  100%{box-shadow:0 0 0 0 rgba(151,215,0,0);}
+}
 
 /* ====== HERO ====== */
 .hero{
@@ -315,6 +341,17 @@ nav.main-nav a:hover::after{transform:scaleX(1);}
   70%{transform:scale(3);opacity:0;}
   100%{opacity:0;}
 }
+/* ====== HERO LANG BADGE ====== */
+.hero-lang{margin:14px 0 20px;}
+.lang-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(0,114,206,0.20);border:1px solid rgba(0,114,206,0.38);
+  border-radius:999px;padding:7px 16px;
+  font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;
+  color:rgba(247,244,234,0.92);letter-spacing:0.05em;
+}
+.lang-pill i{color:#6db8f5;font-size:0.85rem;}
+
 /* Line reveal */
 .hero-line{display:block;overflow:hidden;line-height:1.0;}
 .hero-line-inner{
@@ -634,10 +671,10 @@ footer{
 }
 .footer-brand{max-width:300px;}
 .footer-logo{
-  display:block;height:48px;width:auto;
+  display:block;height:62px;width:auto;
   object-fit:contain;
-  background:white;padding:8px 14px;
-  border-radius:3px;margin-bottom:18px;
+  background:white;padding:10px 18px;
+  border-radius:6px;margin-bottom:18px;
 }
 .footer-brand p{font-size:0.88rem;line-height:1.65;color:rgba(247,244,234,0.52);}
 .footer-col h4{
@@ -761,6 +798,50 @@ footer{
 .site-chip i{font-size:0.85rem;color:var(--blue-river);}
 .site-chip:hover i{color:#fff;}
 
+/* ====== AVIS GOOGLE ====== */
+.avis-google{background:var(--cream-2);padding:clamp(72px,8vw,108px) 0;}
+.avis-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,5vw,72px);align-items:center;
+}
+.avis-text h2{
+  font-weight:800;font-size:clamp(2rem,3.8vw,3.2rem);
+  letter-spacing:-0.025em;margin-bottom:16px;
+}
+.avis-text h2 em{font-style:italic;font-weight:800;color:var(--green-deep);}
+.avis-sub{font-size:1rem;line-height:1.72;color:var(--text-mid);max-width:48ch;margin-bottom:28px;}
+.avis-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.avis-btn-google{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--blue-river);color:#fff;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.88rem;
+  padding:12px 22px;border-radius:999px;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.avis-btn-google:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,114,206,0.35);}
+.avis-btn-write{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(4,106,56,0.28);color:var(--green-deep);background:transparent;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.88rem;
+  padding:12px 20px;border-radius:999px;
+  transition:background .25s,border-color .25s;
+}
+.avis-btn-write:hover{background:rgba(4,106,56,0.06);border-color:rgba(4,106,56,0.50);}
+.avis-card{
+  background:var(--cream);border:1px solid rgba(4,106,56,0.10);
+  border-radius:3px;padding:36px 40px;text-align:center;
+}
+.avis-stars-row{display:flex;justify-content:center;gap:4px;margin-bottom:14px;}
+.avis-star{color:var(--yellow-iris);font-size:1.7rem;}
+.avis-score{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:3.8rem;letter-spacing:-0.03em;color:var(--text-main);
+  line-height:1;margin-bottom:6px;
+}
+.avis-platform{font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);margin-bottom:4px;}
+.avis-coming{font-size:0.82rem;color:rgba(44,61,50,0.48);font-style:italic;margin-top:12px;line-height:1.5;}
+@media(max-width:900px){.avis-inner{grid-template-columns:1fr;}}
+
 /* ====== SOCIAL ICONS ====== */
 .footer-social{display:flex;gap:10px;margin-top:18px;}
 .social-ico{
@@ -852,12 +933,8 @@ footer{
 <!-- ====== HEADER ====== -->
 <header>
   <div class="header-inner">
-    <a class="brand" href="#" aria-label="Pharmacie de Gensac-la-Pallue">
-      <img class="brand-logo" src="/logo-vertical.png" alt="Logo Pharmacie de Gensac-la-Pallue" width="44" height="52" />
-      <span class="brand-text">
-        <span class="b1">Pharmacie</span>
-        <span class="b2">de Gensac-la-Pallue</span>
-      </span>
+    <a class="brand" href="/" aria-label="Pharmacie de Gensac-la-Pallue — Accueil">
+      <img class="brand-logo" src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" width="220" height="52" />
     </a>
     <nav class="main-nav">
       <a href="/">Accueil</a>
@@ -882,15 +959,21 @@ footer{
   <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
 
   <div class="hero-inner">
-    <span class="hero-badge reveal">
-      <span class="dot"></span>Gensac-la-Pallue · Charente
-    </span>
+    <div class="hero-location reveal">
+      <span class="location-name">Gensac-la-Pallue</span>
+      <span class="status-pill" id="hero-status-pill">
+        <span class="status-dot"></span><span class="status-text">Ouvert</span>
+      </span>
+    </div>
     <h1>
       <span class="hero-line"><span class="hero-line-inner d1 l-cream">Votre</span></span>
       <span class="hero-line"><span class="hero-line-inner d2 l-cream">pharmacie</span></span>
       <span class="hero-line"><span class="hero-line-inner d3 l-iris">de proximité</span></span>
     </h1>
     <p class="hero-sub reveal">Ordonnances, conseils santé, matériel médical. Une équipe du village, disponible, qui vous connaît.</p>
+    <div class="hero-lang reveal">
+      <span class="lang-pill"><i class="ph ph-flag"></i>English spoken</span>
+    </div>
     <div class="hero-ctas reveal">
       <a class="btn-primary" href="tel:+33545824012">
         <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
@@ -898,8 +981,8 @@ footer{
       <a class="btn-blue" href="mailto:contact@pharmacie-gensac.fr">
         <i class="ph ph-envelope-simple"></i>contact@pharmacie-gensac.fr
       </a>
-      <a class="btn-ghost" href="#infos">
-        <i class="ph ph-clock"></i>Horaires
+      <a class="btn-ghost" href="https://maps.google.com/?q=45.6514669,-0.2530952" target="_blank" rel="noopener">
+        <i class="ph ph-navigation-arrow"></i>Itinéraire
       </a>
     </div>
   </div>
@@ -1074,6 +1157,39 @@ footer{
   </div>
 </section>
 
+<!-- ====== AVIS GOOGLE ====== -->
+<section class="avis-google" id="avis">
+  <div class="section-wrap">
+    <div class="avis-inner">
+      <div class="avis-text reveal">
+        <div class="eyebrow">Avis Google</div>
+        <h2>Votre avis nous <em>aide</em></h2>
+        <p class="avis-sub">Retrouvez notre fiche Google et laissez-nous un avis après votre visite. Chaque retour compte — pour nous, et pour les familles de Gensac qui cherchent une pharmacie de confiance.</p>
+        <div class="avis-ctas">
+          <a class="avis-btn-google" href="https://search.google.com/local/reviews?placeid=ChIJR6W5RLmLAEgRnxACJSnlhEc" target="_blank" rel="noopener">
+            <i class="ph ph-map-pin-line"></i>Voir nos avis Google
+          </a>
+          <a class="avis-btn-write" href="https://search.google.com/local/writereview?placeid=ChIJR6W5RLmLAEgRnxACJSnlhEc" target="_blank" rel="noopener">
+            <i class="ph ph-star"></i>Laisser un avis
+          </a>
+        </div>
+      </div>
+      <div class="avis-card reveal">
+        <div class="avis-stars-row" aria-label="5 étoiles sur 5">
+          <i class="ph-fill ph-star avis-star"></i>
+          <i class="ph-fill ph-star avis-star"></i>
+          <i class="ph-fill ph-star avis-star"></i>
+          <i class="ph-fill ph-star avis-star"></i>
+          <i class="ph-fill ph-star avis-star"></i>
+        </div>
+        <div class="avis-score">5.0</div>
+        <div class="avis-platform">sur Google Maps</div>
+        <p class="avis-coming">Les avis seront mis à jour dès l'ouverture officielle le 1<sup>er</sup> août 2026. Soyez parmi les premiers à donner votre retour !</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ====== PHARMACIE DE GARDE ====== -->
 <section class="garde">
   <div class="garde-inner">
@@ -1139,6 +1255,7 @@ footer{
       <a class="site-chip" href="https://www.lecrat.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>CRAT</a>
       <a class="site-chip" href="https://www.santepubliquefrance.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Santé Publique France</a>
       <a class="site-chip" href="https://www.pollens.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Pollens</a>
+      <a class="site-chip" href="https://www.orpha.net/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Orphanet</a>
       <a class="site-chip" href="https://www.cyclamed.org/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>CYCLAMED</a>
       <a class="site-chip" href="https://www.dastri.fr/" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>DASTRI</a>
     </div>
@@ -1209,8 +1326,8 @@ footer{
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/logo-horizontal.png" alt="Pharmacie de Gensac-la-Pallue" class="footer-logo" width="220" height="60" />
-      <p>Votre pharmacie de proximité au cœur de la Charente, au service des familles du village depuis plus de 15 ans.</p>
+      <img src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" class="footer-logo" width="260" height="62" />
+      <p>Votre pharmacie de proximité au cœur de Gensac-la-Pallue, au service des familles du village depuis plus de 15 ans.</p>
       <div class="footer-social">
         <a class="social-ico" href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="ph ph-facebook-logo"></i></a>
         <a class="social-ico" href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i></a>
@@ -1232,7 +1349,7 @@ footer{
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Pharmacie de Gensac-la-Pallue · Charente · Tous droits réservés
+    © 2026 Pharmacie de Gensac-la-Pallue · Tous droits réservés
   </div>
 </footer>
 
@@ -1290,12 +1407,24 @@ footer{
     return false;
   }
   var open = isOpen();
+  /* Hero status pill */
+  var pill = document.getElementById('hero-status-pill');
+  if(pill){
+    var txt = pill.querySelector('.status-text');
+    if(!open){
+      pill.classList.add('ferme');
+      if(txt) txt.textContent = 'Fermé';
+    }
+  }
+  /* Hero status bar */
   var statusEl = document.querySelector('.hero-status span:last-child');
   var dotEl    = document.querySelector('.hero-status .pulse-dot');
   if(statusEl && dotEl && !open){
     statusEl.textContent = 'Fermé en ce moment · Ouverture Lun–Ven 9h';
-    dotEl.style.background = '#c0432a';
+    dotEl.style.background = '#e05c44';
+    dotEl.style.setProperty('--pulse-color','rgba(224,92,68,0.5)');
   }
+  /* Infos section badge */
   var badge = document.querySelector('.badge-ouvert');
   if(badge && !open){
     badge.className = 'badge-ferme';

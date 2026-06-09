@@ -26,6 +26,7 @@ const {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script defer data-domain="pharmacie-gensac.fr" src="https://plausible.io/js/script.js"></script>
 
 <style>
 :root{
@@ -79,11 +80,8 @@ i[class^="ph"]{display:inline-block;line-height:1;}
 header{position:sticky;top:0;z-index:100;background:rgba(247,244,234,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(4,106,56,0.08);transition:box-shadow .35s var(--ease);}
 header.scrolled{box-shadow:0 2px 24px rgba(4,106,56,0.10);}
 .header-inner{max-width:1280px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-logo{flex:none;height:48px;width:auto;display:block;object-fit:contain;}
-.brand-text{display:flex;flex-direction:column;line-height:1.05;}
-.brand-text .b1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;color:var(--green-deep);}
-.brand-text .b2{font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-mid);margin-top:2px;}
+.brand{display:flex;align-items:center;}
+.brand-logo{flex:none;height:52px;width:auto;display:block;object-fit:contain;}
 nav.main-nav{display:flex;align-items:center;gap:28px;}
 nav.main-nav a{font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:600;color:var(--text-mid);position:relative;padding:4px 0;transition:color .25s var(--ease);}
 nav.main-nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--blue-river);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
@@ -166,7 +164,7 @@ nav.main-nav a.active{color:var(--green-deep);}
 footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28px 40px;}
 .footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px;justify-content:space-between;}
 .footer-brand{max-width:300px;}
-.footer-logo{display:block;height:48px;width:auto;object-fit:contain;background:white;padding:8px 14px;border-radius:3px;margin-bottom:18px;}
+.footer-logo{display:block;height:62px;width:auto;object-fit:contain;background:white;padding:10px 18px;border-radius:6px;margin-bottom:18px;}
 .footer-brand p{font-size:0.88rem;line-height:1.65;color:rgba(247,244,234,0.52);}
 .footer-social{display:flex;gap:10px;margin-top:18px;}
 .social-ico{width:36px;height:36px;border-radius:8px;background:rgba(247,244,234,0.07);border:1px solid rgba(247,244,234,0.12);display:flex;align-items:center;justify-content:center;color:rgba(247,244,234,0.62);font-size:1rem;transition:background .2s,color .2s,border-color .2s;flex:none;}
@@ -217,11 +215,7 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
 <header>
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Pharmacie de Gensac-la-Pallue — Accueil">
-      <img class="brand-logo" src="/logo-vertical.png" alt="Logo Pharmacie de Gensac-la-Pallue" width="44" height="52" />
-      <span class="brand-text">
-        <span class="b1">Pharmacie</span>
-        <span class="b2">de Gensac-la-Pallue</span>
-      </span>
+      <img class="brand-logo" src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" width="220" height="52" />
     </a>
     <nav class="main-nav">
       <a href="/">Accueil</a>
@@ -248,7 +242,7 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
 <footer id="contact-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/logo-horizontal.png" alt="Pharmacie de Gensac-la-Pallue" class="footer-logo" width="220" height="60" />
+      <img src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" class="footer-logo" width="260" height="62" />
       <p>Votre pharmacie de proximité au cœur de la Charente, au service des familles du village depuis plus de 15 ans.</p>
       <div class="footer-social">
         <a class="social-ico" href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="ph ph-facebook-logo"></i></a>
@@ -271,7 +265,7 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Pharmacie de Gensac-la-Pallue · Charente · Tous droits réservés
+    © 2026 Pharmacie de Gensac La Pallue · Tous droits réservés
   </div>
 </footer>
 
