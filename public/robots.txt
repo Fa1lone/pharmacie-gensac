@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pharmacie-gensac.fr/sitemap-index.xml

@@ -1,0 +1,247 @@
+---
+import LayoutV2 from '../layouts/LayoutV2.astro';
+---
+<LayoutV2
+  title="Contactez-nous | Pharmacie de Gensac-la-Pallue"
+  description="Contactez la Pharmacie de Gensac-la-Pallue : téléphone, mail, adresse, formulaire de contact. Envoi d'ordonnances par mail. Ouvert Lun–Ven 9h–19h, Sam 9h–13h."
+  canonical="https://pharmacie-gensac.fr/contact"
+>
+<style>
+.contact-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  padding:clamp(72px,8vw,108px) 0;
+}
+.contact-infos{}
+.contact-form-section{}
+.info-block{margin-bottom:36px;}
+.info-block h3{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:0.16em;color:var(--green-leaf);
+  margin-bottom:14px;
+}
+.contact-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid rgba(4,106,56,0.08);
+}
+.contact-row:last-child{border-bottom:none;}
+.c-ico{
+  width:40px;height:40px;flex:none;border-radius:10px;
+  background:rgba(0,114,206,0.08);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue-river);font-size:1.1rem;
+}
+.c-text strong{display:block;font-weight:700;color:var(--text-main);font-size:0.88rem;margin-bottom:3px;}
+.c-text span,.c-text a{font-size:0.9rem;color:var(--text-mid);}
+.c-text a:hover{color:var(--green-deep);text-decoration:underline;}
+.horaires-table{list-style:none;margin-top:4px;}
+.horaires-table li{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(4,106,56,0.06);font-size:0.88rem;}
+.horaires-table li:last-child{border-bottom:none;}
+.jour{font-weight:600;color:var(--text-mid);}
+.heure{font-weight:700;color:var(--text-main);}
+.ferme{color:rgba(58,80,64,0.45);}
+.form-title{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:-0.02em;
+  color:var(--text-main);margin-bottom:8px;
+}
+.form-subtitle{font-size:0.9rem;color:var(--text-mid);margin-bottom:28px;line-height:1.65;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-notice{
+  background:rgba(0,114,206,0.06);border:1px solid rgba(0,114,206,0.14);
+  border-radius:3px;padding:14px 16px;margin-top:8px;
+  font-size:0.82rem;color:var(--text-mid);line-height:1.6;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.form-notice i{color:var(--blue-river);font-size:1rem;flex:none;margin-top:2px;}
+.map-block{margin-top:32px;}
+.map-block h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--green-leaf);margin-bottom:14px;}
+.map-frame{border-radius:3px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:240px;}
+.map-frame iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.82);}
+.success-note{
+  background:rgba(67,176,42,0.08);border:1px solid rgba(67,176,42,0.18);
+  border-radius:3px;padding:14px 16px;margin-top:14px;
+  font-size:0.85rem;color:var(--green-deep);display:none;
+  align-items:center;gap:10px;
+}
+.urgence-band{
+  background:var(--yellow-iris);padding:clamp(40px,4vw,60px) 28px;
+}
+.urgence-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.urgence-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--green-deep);margin-bottom:8px;letter-spacing:-0.02em;}
+.urgence-band p{font-size:0.92rem;color:rgba(4,106,56,0.72);max-width:52ch;line-height:1.65;}
+.urgence-btn{display:inline-flex;align-items:center;gap:9px;background:var(--green-deep);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:999px;white-space:nowrap;flex:none;transition:transform .25s var(--ease);}
+.urgence-btn:hover{transform:translateY(-2px);}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr;}}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+</style>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Nous joindre</div>
+    <h1>Contactez-<em>nous</em></h1>
+    <p class="page-subtitle">Téléphone, mail, formulaire ou itinéraire — toutes les façons de nous trouver et de nous écrire.</p>
+  </div>
+</section>
+
+<!-- URGENCE -->
+<section class="urgence-band">
+  <div class="urgence-band-inner">
+    <div class="reveal">
+      <h2>Urgence médicale ?</h2>
+      <p>En cas d'urgence, appelez le <strong>15 (SAMU)</strong> ou le <strong>112</strong>. Pour une pharmacie de garde, appelez le <strong>3237</strong> ou le 15.</p>
+    </div>
+    <a class="urgence-btn reveal" href="tel:15"><i class="ph ph-phone-call"></i>Appeler le 15</a>
+  </div>
+</section>
+
+<section>
+  <div class="section-wrap">
+    <div class="contact-layout">
+
+      <!-- INFOS -->
+      <div class="contact-infos reveal">
+        <div class="info-block">
+          <h3>Nous joindre directement</h3>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-phone-call"></i></div>
+            <div class="c-text">
+              <strong>Téléphone</strong>
+              <a href="tel:+33545824012">05 45 82 40 12</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-envelope-simple"></i></div>
+            <div class="c-text">
+              <strong>E-mail (ordonnances, questions, mutuelles)</strong>
+              <a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-map-pin"></i></div>
+            <div class="c-text">
+              <strong>Adresse</strong>
+              <span>Route de Merpins, 16130 Gensac-la-Pallue</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-ico"><i class="ph ph-wheelchair"></i></div>
+            <div class="c-text">
+              <strong>Accessibilité</strong>
+              <span>Accès PMR · Salle de confidentialité</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h3>Horaires d'ouverture</h3>
+          <ul class="horaires-table">
+            <li><span class="jour">Lundi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+            <li><span class="jour">Mardi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+            <li><span class="jour">Mercredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+            <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+            <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+            <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
+            <li><span class="jour">Dimanche</span><span class="ferme">Fermé — pharmacie de garde</span></li>
+          </ul>
+        </div>
+
+        <div class="map-block reveal">
+          <h3>Nous trouver</h3>
+          <div class="map-frame">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-0.2453%2C45.6279%2C-0.1853%2C45.6479&layer=mapnik&marker=45.6379%2C-0.2153"
+              title="Localisation Pharmacie de Gensac-la-Pallue"
+              loading="lazy"
+              referrerpolicy="no-referrer">
+            </iframe>
+          </div>
+          <a href="https://maps.google.com/?q=Pharmacie+Gensac-la-Pallue+Route+de+Merpins+16130" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:0.85rem;font-weight:600;color:var(--blue-river);">
+            <i class="ph ph-navigation-arrow"></i>Ouvrir dans Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- FORMULAIRE -->
+      <div class="contact-form-section reveal">
+        <h2 class="form-title">Envoyer un message</h2>
+        <p class="form-subtitle">Vous pouvez nous écrire pour toute question. Pour les ordonnances et mutuelles, envoyez-les directement à <a href="mailto:contact@pharmacie-gensac.fr" style="color:var(--green-deep);font-weight:600;">contact@pharmacie-gensac.fr</a> ou utilisez le formulaire ci-dessous.</p>
+
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" />
+            </div>
+            <div class="form-field">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail <span style="color:var(--green-vivid);">*</span></label>
+            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="telephone">Téléphone (optionnel)</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" autocomplete="tel" />
+          </div>
+          <div class="form-field">
+            <label for="objet">Objet</label>
+            <select id="objet" name="objet">
+              <option value="">-- Choisir un objet --</option>
+              <option>Ordonnance / mutuelle</option>
+              <option>Question sur un médicament</option>
+              <option>Demande de rendez-vous</option>
+              <option>Matériel médical</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">Message <span style="color:var(--green-vivid);">*</span></label>
+            <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+          </div>
+
+          <div class="form-notice">
+            <i class="ph ph-info"></i>
+            <span>Pour envoyer une ordonnance ou un document médical, privilégiez l'envoi direct par e-mail à <strong>contact@pharmacie-gensac.fr</strong>. La solution d'upload de pièces jointes est en cours d'étude pour garantir la sécurité de vos données personnelles.</span>
+          </div>
+
+          <div class="form-field" style="margin-top:18px;">
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" name="rgpd" required style="margin-top:3px;accent-color:var(--green-deep);" />
+              <span style="font-size:0.82rem;color:var(--text-mid);line-height:1.55;">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</span>
+            </label>
+          </div>
+
+          <button class="btn-submit" type="submit">
+            <i class="ph ph-paper-plane-tilt"></i>Envoyer le message
+          </button>
+        </form>
+
+        <p style="margin-top:16px;font-size:0.78rem;color:var(--text-mid);font-style:italic;">
+          Nous répondons généralement sous 24h en jours ouvrés.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = form.querySelector('[name=email]').value;
+    var msg = form.querySelector('[name=message]').value;
+    var rgpd = form.querySelector('[name=rgpd]').checked;
+    if(!email || !msg || !rgpd){ alert('Merci de remplir les champs obligatoires et d\'accepter la politique de confidentialité.'); return; }
+    var subject = encodeURIComponent(form.querySelector('[name=objet]').value || 'Contact site web');
+    var body = encodeURIComponent(msg);
+    window.location.href = 'mailto:contact@pharmacie-gensac.fr?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
+
+</LayoutV2>

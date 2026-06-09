@@ -1,0 +1,224 @@
+---
+import LayoutV2 from '../layouts/LayoutV2.astro';
+---
+<LayoutV2
+  title="La pharmacie & l'équipe | Pharmacie de Gensac-la-Pallue"
+  description="Découvrez l'équipe de la Pharmacie de Gensac-la-Pallue, son histoire, ses locaux accessibles PMR et sa salle de confidentialité. Reprise officielle au 1er août 2026."
+  canonical="https://pharmacie-gensac.fr/la-pharmacie"
+>
+<style>
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:48px;}
+.team-card{background:var(--cream-2);border:1px solid rgba(4,106,56,0.09);border-radius:3px;overflow:hidden;}
+.team-avatar{
+  height:200px;background:var(--green-deep);
+  display:flex;align-items:center;justify-content:center;
+}
+.avatar-initials{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:3rem;
+  color:rgba(247,244,234,0.40);
+}
+.team-body{padding:24px 26px;}
+.team-body h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text-main);margin-bottom:4px;}
+.team-role{font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-vivid);margin-bottom:10px;}
+.team-body p{font-size:0.88rem;color:var(--text-mid);line-height:1.6;}
+.team-affinite{margin-top:12px;display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:600;color:var(--green-deep);}
+.team-affinite i{color:var(--yellow-iris);}
+.history-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.history-img{border:3px solid var(--brown-trunk);border-radius:3px;overflow:hidden;background:var(--green-deep);height:320px;display:flex;align-items:center;justify-content:center;}
+.history-img img{width:100%;height:100%;object-fit:cover;}
+.history-img span{font-family:'Montserrat',sans-serif;font-size:0.85rem;color:rgba(247,244,234,0.40);font-style:italic;}
+.locaux-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.local-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--cream-2);border:1px solid rgba(4,106,56,0.09);border-radius:3px;}
+.local-ico{width:38px;height:38px;flex:none;background:rgba(0,114,206,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--blue-river);font-size:1.1rem;}
+.local-item h4{font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:700;color:var(--text-main);margin-bottom:4px;}
+.local-item p{font-size:0.83rem;color:var(--text-mid);line-height:1.55;}
+.reprise-band{
+  background:var(--yellow-iris);padding:clamp(48px,5vw,72px) 28px;
+}
+.reprise-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+.reprise-date{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,6rem);color:var(--green-deep);line-height:1;letter-spacing:-0.03em;white-space:nowrap;}
+.reprise-date sup{font-size:0.4em;vertical-align:super;}
+.reprise-text h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--green-deep);margin-bottom:10px;letter-spacing:-0.02em;}
+.reprise-text p{font-size:0.95rem;color:rgba(4,106,56,0.72);max-width:52ch;line-height:1.65;}
+.lang-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,114,206,0.08);border:1px solid rgba(0,114,206,0.18);border-radius:999px;padding:8px 16px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;color:var(--blue-river);}
+@media(max-width:780px){
+  .history-grid{grid-template-columns:1fr;}
+  .locaux-list{grid-template-columns:1fr;}
+  .reprise-band-inner{flex-direction:column;align-items:flex-start;gap:16px;}
+}
+</style>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Notre histoire</div>
+    <h1>La pharmacie<br><em>&amp; l'équipe</em></h1>
+    <p class="page-subtitle">Qui nous sommes, d'où nous venons, et comment nous vous accueillons chaque jour à Gensac-la-Pallue.</p>
+  </div>
+</section>
+
+<!-- REPRISE -->
+<section class="reprise-band">
+  <div class="reprise-band-inner">
+    <div class="reprise-date reveal">1<sup>er</sup> août</div>
+    <div class="reprise-text reveal">
+      <h2>Reprise officielle de la pharmacie</h2>
+      <p>À compter du 1er août 2026, une nouvelle titulaire reprend la pharmacie de Gensac-la-Pallue. Même équipe de confiance, nouvelle énergie, même engagement de proximité envers les familles du village.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRÉSENTATION TITULAIRE -->
+<section class="content-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">La nouvelle titulaire</div>
+    <div class="history-grid">
+      <div>
+        <h2 class="section-h2 reveal">Une pharmacienne <em>engagée</em></h2>
+        <p class="reveal" style="font-size:1rem;line-height:1.72;color:var(--text-mid);margin-bottom:16px;max-width:52ch;">
+          Pharmacienne diplômée, 32 ans, avec un parcours qui l'a menée des blocs opératoires aux officines. Depuis la 4e, les stages dans les hôpitaux et la pharmacie ont forgé sa vocation. C'est avec enthousiasme qu'elle reprend cet établissement ancré dans la vie du village.
+        </p>
+        <p class="reveal" style="font-size:1rem;line-height:1.72;color:var(--text-mid);margin-bottom:24px;max-width:52ch;">
+          <em style="color:var(--text-main);font-style:italic;">"Texte de présentation de la titulaire à venir — elle rédigera elle-même son parcours, sa vision, et son lien avec la pharmacie."</em>
+        </p>
+        <div class="reveal">
+          <span class="lang-badge"><i class="ph ph-flag"></i>English spoken here</span>
+        </div>
+      </div>
+      <div class="history-img reveal">
+        <span>Photo portrait à venir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTOIRE DE LA PHARMACIE -->
+<section class="content-section bg-cream-2">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Histoire</div>
+    <h2 class="section-h2 reveal">La pharmacie <em>de Gensac-la-Pallue</em></h2>
+    <div class="history-grid">
+      <div class="history-img reveal">
+        <img src="/pharmacie-hero.png" alt="Façade de la pharmacie" />
+      </div>
+      <div>
+        <p class="reveal" style="font-size:1rem;line-height:1.72;color:var(--text-mid);margin-bottom:16px;max-width:52ch;">
+          Depuis plus de 15 ans, cette officine est un pilier de la vie de Gensac-la-Pallue. Connue et reconnue par les habitants, elle a servi des générations de familles, toujours avec la même philosophie : proximité, disponibilité, humanité.
+        </p>
+        <p class="reveal" style="font-size:1rem;line-height:1.72;color:var(--text-mid);max-width:52ch;">
+          Avec la reprise en 2026, l'histoire continue sous un nouveau nom — <strong>Pharmacie de Gensac-la-Pallue</strong> — en rupture avec Pharmacie Laurent, pour affirmer pleinement l'identité du lieu.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAUX -->
+<section class="content-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Nos locaux</div>
+    <h2 class="section-h2 reveal">Un espace <em>pensé pour vous</em></h2>
+    <ul class="locaux-list">
+      <li class="local-item reveal">
+        <div class="local-ico"><i class="ph ph-wheelchair"></i></div>
+        <div>
+          <h4>Accès PMR</h4>
+          <p>Entrée de plain-pied, espace adapté aux personnes à mobilité réduite, largeur de passage conforme.</p>
+        </div>
+      </li>
+      <li class="local-item reveal">
+        <div class="local-ico"><i class="ph ph-lock-key"></i></div>
+        <div>
+          <h4>Salle de confidentialité</h4>
+          <p>Un espace dédié pour les entretiens pharmaceutiques et les échanges sensibles, en toute discrétion.</p>
+        </div>
+      </li>
+      <li class="local-item reveal">
+        <div class="local-ico"><i class="ph ph-car"></i></div>
+        <div>
+          <h4>Parking gratuit</h4>
+          <p>Stationnement gratuit directement devant la pharmacie pour une visite rapide et sans contrainte.</p>
+        </div>
+      </li>
+      <li class="local-item reveal">
+        <div class="local-ico"><i class="ph ph-map-pin"></i></div>
+        <div>
+          <h4>Centre-bourg</h4>
+          <p>Idéalement situé au cœur de Gensac-la-Pallue, accessible à pied depuis tout le village.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="content-section bg-cream-2" id="equipe">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">L'équipe</div>
+    <h2 class="section-h2 reveal">Trois professionnelles <em>à votre écoute</em></h2>
+    <div class="team-grid">
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <span class="avatar-initials">T</span>
+        </div>
+        <div class="team-body">
+          <h3>La titulaire</h3>
+          <div class="team-role">Pharmacienne titulaire</div>
+          <p>Diplômée en pharmacie, 32 ans. Forte d'un parcours hospitalier et officinal, elle reprend la pharmacie avec l'ambition de renforcer la proximité et les services.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <span class="avatar-initials">A</span>
+        </div>
+        <div class="team-body">
+          <h3>Adjointe</h3>
+          <div class="team-role">Pharmacienne adjointe</div>
+          <p>Présente depuis plusieurs années dans l'officine, elle assure la continuité et la qualité de conseil que les habitués connaissent bien.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <span class="avatar-initials">P</span>
+        </div>
+        <div class="team-body">
+          <h3>Préparatrice</h3>
+          <div class="team-role">Préparatrice en pharmacie</div>
+          <p>Indispensable au bon fonctionnement quotidien de l'officine, elle vous accueille et vous conseille avec attention.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:28px;font-size:0.82rem;color:var(--text-mid);font-style:italic;">
+      Les portraits et présentations détaillées seront mis à jour dès que l'équipe sera prête. Les collaboratrices pourront également choisir d'utiliser des portraits retouchés à l'IA.
+    </p>
+  </div>
+</section>
+
+<!-- LOCALISATION -->
+<section class="content-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Localisation</div>
+    <h2 class="section-h2 reveal">Nous trouver à <em>Gensac-la-Pallue</em></h2>
+    <div style="margin-top:32px;border-radius:3px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:320px;" class="reveal">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-0.2453%2C45.6279%2C-0.1853%2C45.6479&layer=mapnik&marker=45.6379%2C-0.2153"
+        title="Localisation Pharmacie de Gensac-la-Pallue"
+        style="width:100%;height:100%;border:none;display:block;filter:saturate(0.82);"
+        loading="lazy"
+        referrerpolicy="no-referrer">
+      </iframe>
+    </div>
+    <p style="margin-top:14px;font-size:0.88rem;color:var(--text-mid);">
+      <i class="ph ph-map-pin" style="color:var(--green-deep);margin-right:6px;"></i>Route de Merpins, 16130 Gensac-la-Pallue
+    </p>
+  </div>
+</section>
+
+</LayoutV2>
