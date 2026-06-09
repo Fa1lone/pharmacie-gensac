@@ -235,6 +235,21 @@ nav.main-nav a.active{color:var(--green-deep);}
 .section-h2.light em{color:var(--yellow-iris);}
 .section-h2.light{color:var(--cream);}
 
+/* botanical motif — CDC §3.4 */
+.section-motif{position:relative;overflow:hidden;}
+.section-motif::after{
+  content:"";pointer-events:none;
+  position:absolute;right:-80px;top:-60px;
+  width:420px;height:420px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 8 C130 8 165 38 170 80 C175 122 150 162 100 192 C50 162 25 122 30 80 C35 38 70 8 100 8Z' fill='%23046A38'/%3E%3Cpath d='M100 8 L100 192' stroke='%23F7F4EA' stroke-width='2' stroke-opacity='0.4'/%3E%3Cpath d='M100 60 Q130 80 100 130 Q70 80 100 60Z' fill='%2397D700' fill-opacity='0.35'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:contain;
+  opacity:0.045;transform:rotate(22deg);
+  z-index:0;
+}
+.section-motif > *{position:relative;z-index:1;}
+.section-motif-left::after{right:auto;left:-80px;transform:rotate(-18deg);}
+.section-motif-top::after{top:auto;bottom:-60px;}
+
 /* cards grid */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
 .card{background:var(--cream-2);border:1px solid rgba(4,106,56,0.09);border-radius:3px;padding:28px 30px;}

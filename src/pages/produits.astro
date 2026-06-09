@@ -1,5 +1,6 @@
 ---
 import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
 
 const groupes = [
   {
@@ -11,7 +12,8 @@ const groupes = [
       { icon: "ph-first-aid-kit", titre: "Perfusion", desc: "Matériel de perfusion sur prescription médicale. Accompagnement et conseils à domicile." },
       { icon: "ph-person-simple-walk", titre: "Orthopédie", desc: "Ceintures lombaires, attelles, colliers cervicaux, semelles orthopédiques, genouillères et conseils d'adaptation." },
       { icon: "ph-sock", titre: "Compression veineuse", desc: "Chaussettes, bas et collants de contention. Mesure et adaptation aux recommandations de votre médecin." },
-      { icon: "ph-shoe-prints", titre: "Podologie & chaussures orthopédiques", desc: "Semelles de confort, orthèses plantaires de série, chaussures orthopédiques adaptées aux pieds difficiles." },
+      { icon: "ph-shoe-prints", titre: "Podologie de série", desc: "Semelles de confort, orthèses plantaires de série, talonnettes et accessoires podologiques conseillés." },
+      { icon: "ph-sneaker", titre: "Chaussures orthopédiques de série", desc: "Chaussures orthopédiques de série adaptées aux pieds sensibles ou difficiles, avec conseil d'adaptation." },
     ]
   },
   {
@@ -107,32 +109,21 @@ const groupes = [
 @media(max-width:780px){.cta-band-inner{flex-direction:column;align-items:flex-start;}}
 </style>
 
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<section class="page-hero" style="--hero-img:url('/hero-produits.jpg');--hero-pos:center 40%;">
-  <div class="page-hero-grain" aria-hidden="true"></div>
-  <div class="page-hero-decor" aria-hidden="true"></div>
-  <div class="page-hero-decor2" aria-hidden="true"></div>
-  <div class="page-hero-inner">
-    <div class="page-eyebrow"><span class="dot"></span>Notre offre complète</div>
-    <h1>
-      <span class="l-cream">Produits &amp;</span>
-      <span class="l-iris">matériel médical</span>
-    </h1>
-    <p class="page-subtitle">Médicaments, orthopédie, bébé, aromathérapie, soins naturels — tout pour votre santé, conseillé par nos pharmaciens.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="tel:+33545824012">
-        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
-      </a>
-      <a class="btn-outline" href="/services">
-        <i class="ph ph-stethoscope"></i>Voir nos services
-      </a>
-    </div>
-  </div>
-  <div class="page-hero-status">
-    <span class="ph-pulse"></span>
-    <span>Sur ordonnance &amp; sans ordonnance &nbsp;·&nbsp; Conseil gratuit &nbsp;·&nbsp; Lun–Sam</span>
-  </div>
-</section>
+<HeroPage
+  eyebrow="Notre offre complète"
+  line1="Produits &"
+  line2="matériel médical"
+  subtitle="Médicaments, orthopédie, bébé, aromathérapie, soins naturels — tout pour votre santé, conseillé par nos pharmaciens."
+  statusText="Sur ordonnance & sans ordonnance · Conseil gratuit · Lun–Sam"
+  heroImg="/pharmacie-hero.png"
+  heroPos="center 30%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Voir nos services"
+  cta2Href="/services"
+  cta2Icon="ph-stethoscope"
+/>
 
 <div class="blue-divider" aria-hidden="true"></div>
 

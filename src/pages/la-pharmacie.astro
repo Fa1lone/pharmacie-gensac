@@ -1,9 +1,10 @@
 ---
 import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
 ---
 <LayoutV2
   title="La pharmacie & l'équipe | Pharmacie de Gensac-la-Pallue"
-  description="Découvrez l'équipe de la Pharmacie de Gensac-la-Pallue, son histoire, ses locaux accessibles PMR et sa salle de confidentialité. Reprise officielle au 1er août 2026."
+  description="Découvrez l'équipe de la Pharmacie de Gensac-la-Pallue, son histoire, ses locaux accessibles PMR et sa salle de confidentialité."
   canonical="https://pharmacie-gensac.fr/la-pharmacie"
 >
 <style>
@@ -77,6 +78,26 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 @media(max-width:860px){.team-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.team-grid{grid-template-columns:1fr;}}
 
+/* ── HORAIRES ───────────────────────────────────── */
+.horaires-section{background:var(--cream-2);}
+.horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px);align-items:start;margin-top:36px;}
+.horaires-table{list-style:none;}
+.horaires-table li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(4,106,56,0.07);font-size:0.9rem;}
+.horaires-table li:last-child{border-bottom:none;}
+.jour{font-weight:600;color:var(--text-mid);}
+.heure{font-weight:700;color:var(--text-main);}
+.ferme{color:rgba(58,80,64,0.40);font-style:italic;}
+.horaires-note{margin-top:22px;display:flex;align-items:flex-start;gap:10px;font-size:0.83rem;color:var(--text-mid);line-height:1.6;}
+.horaires-note i{color:var(--blue-river);font-size:1rem;flex:none;margin-top:2px;}
+.horaires-cta-col{display:flex;flex-direction:column;gap:14px;}
+.h-cta-card{background:var(--cream);border:1px solid rgba(4,106,56,0.10);border-radius:4px;padding:22px 24px;display:flex;align-items:flex-start;gap:14px;}
+.h-cta-ico{width:40px;height:40px;flex:none;border-radius:10px;background:rgba(4,106,56,0.08);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.1rem;}
+.h-cta-card strong{display:block;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.88rem;color:var(--text-main);margin-bottom:4px;}
+.h-cta-card span,.h-cta-card a{font-size:0.85rem;color:var(--text-mid);}
+.h-cta-card a{color:var(--blue-river);font-weight:600;}
+.h-cta-card a:hover{text-decoration:underline;}
+@media(max-width:700px){.horaires-grid{grid-template-columns:1fr;}}
+
 /* ── MAP ────────────────────────────────────────── */
 .map-wrap{margin-top:36px;border-radius:4px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:340px;}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.8);}
@@ -94,32 +115,21 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 @media(max-width:780px){.cta-band-inner{flex-direction:column;align-items:flex-start;}}
 </style>
 
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<section class="page-hero" style="--hero-img:url('/hero-pharmacie.jpg');--hero-pos:center 60%;">
-  <div class="page-hero-grain" aria-hidden="true"></div>
-  <div class="page-hero-decor" aria-hidden="true"></div>
-  <div class="page-hero-decor2" aria-hidden="true"></div>
-  <div class="page-hero-inner">
-    <div class="page-eyebrow"><span class="dot"></span>Notre histoire</div>
-    <h1>
-      <span class="l-cream">La pharmacie</span>
-      <span class="l-iris">&amp; l'équipe</span>
-    </h1>
-    <p class="page-subtitle">Une pharmacie de village qui vous connaît — votre prénom, vos traitements, votre médecin. Depuis des années à Gensac-la-Pallue.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="tel:+33545824012">
-        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
-      </a>
-      <a class="btn-outline" href="#equipe">
-        <i class="ph ph-users"></i>Rencontrer l'équipe
-      </a>
-    </div>
-  </div>
-  <div class="page-hero-status">
-    <span class="ph-pulse"></span>
-    <span>Lun–Ven 9h–19h &nbsp;·&nbsp; Sam 9h–13h &nbsp;·&nbsp; Gensac-la-Pallue (16)</span>
-  </div>
-</section>
+<HeroPage
+  eyebrow="Notre histoire"
+  line1="La pharmacie"
+  line2="& l'équipe"
+  subtitle="Une pharmacie de village qui vous connaît — votre prénom, vos traitements, votre médecin. Depuis des années à Gensac-la-Pallue."
+  statusText="Lun–Ven 9h–19h · Sam 9h–13h · Gensac-la-Pallue (16)"
+  heroImg="/hero-pharmacie.jpg"
+  heroPos="center 60%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Rencontrer l'équipe"
+  cta2Href="#equipe"
+  cta2Icon="ph-users"
+/>
 
 <div class="blue-divider" aria-hidden="true"></div>
 
@@ -154,7 +164,7 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 </section>
 
 <!-- ══ TITULAIRE ═════════════════════════════════════ -->
-<section class="content-section">
+<section class="content-section section-motif">
   <div class="section-wrap">
     <div class="eyebrow reveal">La nouvelle titulaire</div>
     <div class="split-grid">
@@ -205,7 +215,7 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 </section>
 
 <!-- ══ LOCAUX ════════════════════════════════════════ -->
-<section class="content-section">
+<section class="content-section section-motif section-motif-left">
   <div class="section-wrap">
     <div class="eyebrow reveal">Nos locaux</div>
     <h2 class="section-h2 reveal">Un espace <em>pensé pour vous</em></h2>
@@ -292,6 +302,52 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
     <p style="margin-top:24px;font-size:0.82rem;color:var(--text-mid);font-style:italic;">
       Portraits et présentations détaillées à venir. Les collaboratrices pourront opter pour des portraits retouchés à l'IA si elles le souhaitent.
     </p>
+  </div>
+</section>
+
+<!-- ══ HORAIRES ═══════════════════════════════════════ -->
+<section class="content-section horaires-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Horaires</div>
+    <h2 class="section-h2 reveal">Quand nous <em>trouver</em></h2>
+    <div class="horaires-grid">
+      <ul class="horaires-table reveal">
+        <li><span class="jour">Lundi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Mardi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Mercredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
+        <li><span class="jour">Dimanche</span><span class="ferme">Fermé</span></li>
+      </ul>
+      <div class="horaires-cta-col reveal">
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-phone-call"></i></div>
+          <div>
+            <strong>Téléphone</strong>
+            <a href="tel:+33545824012">05 45 82 40 12</a>
+          </div>
+        </div>
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-envelope-simple"></i></div>
+          <div>
+            <strong>E-mail</strong>
+            <a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a>
+          </div>
+        </div>
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-flag"></i></div>
+          <div>
+            <strong>English spoken here</strong>
+            <span>Notre équipe peut vous accueillir en anglais.</span>
+          </div>
+        </div>
+        <div class="horaires-note">
+          <i class="ph ph-info"></i>
+          <span>Pour une pharmacie de garde hors horaires, appelez le <strong>3237</strong>.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

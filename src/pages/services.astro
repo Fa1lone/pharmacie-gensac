@@ -1,5 +1,6 @@
 ---
 import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
 ---
 <LayoutV2
   title="Services pharmaceutiques | Pharmacie de Gensac-la-Pallue"
@@ -99,32 +100,21 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 }
 </style>
 
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<section class="page-hero" style="--hero-img:url('/hero-services.jpg');--hero-pos:center 25%;">
-  <div class="page-hero-grain" aria-hidden="true"></div>
-  <div class="page-hero-decor" aria-hidden="true"></div>
-  <div class="page-hero-decor2" aria-hidden="true"></div>
-  <div class="page-hero-inner">
-    <div class="page-eyebrow"><span class="dot"></span>Actes pharmaceutiques</div>
-    <h1>
-      <span class="l-cream">Nos</span>
-      <span class="l-iris">services</span>
-    </h1>
-    <p class="page-subtitle">Vaccination, tests rapides, entretiens personnalisés, bilan de prévention, prise de tension — sans rendez-vous pour la plupart des actes.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="tel:+33545824012">
-        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
-      </a>
-      <a class="btn-outline" href="/contact">
-        <i class="ph ph-envelope-simple"></i>Nous écrire
-      </a>
-    </div>
-  </div>
-  <div class="page-hero-status">
-    <span class="ph-pulse"></span>
-    <span>Sans rendez-vous &nbsp;·&nbsp; Actes remboursés &nbsp;·&nbsp; Salle de confidentialité disponible</span>
-  </div>
-</section>
+<HeroPage
+  eyebrow="Actes pharmaceutiques"
+  line1="Nos"
+  line2="services"
+  subtitle="Vaccination, tests rapides, entretiens personnalisés, bilan de prévention, prise de tension — sans rendez-vous pour la plupart des actes."
+  statusText="Sans rendez-vous · Actes remboursés · Salle de confidentialité disponible"
+  heroImg="/hero-services.jpg"
+  heroPos="center 25%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Nous écrire"
+  cta2Href="/contact"
+  cta2Icon="ph-envelope-simple"
+/>
 
 <div class="blue-divider" aria-hidden="true"></div>
 
@@ -139,7 +129,7 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 </nav>
 
 <!-- ══ RÉASSURANCE ═══════════════════════════════════ -->
-<section class="reassurance">
+<section class="reassurance section-motif">
   <div class="reassurance-inner">
     <div class="reassurance-item reveal">
       <div class="reassurance-ico"><i class="ph ph-check-circle"></i></div>

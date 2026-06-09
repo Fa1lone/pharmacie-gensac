@@ -1,5 +1,6 @@
 ---
 import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
 ---
 <LayoutV2
   title="Contactez-nous | Pharmacie de Gensac-la-Pallue"
@@ -102,32 +103,21 @@ import LayoutV2 from '../layouts/LayoutV2.astro';
 @media(max-width:520px){.form-row{grid-template-columns:1fr;}}
 </style>
 
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<section class="page-hero" style="--hero-img:url('/hero-contact.jpg');--hero-pos:center 70%;">
-  <div class="page-hero-grain" aria-hidden="true"></div>
-  <div class="page-hero-decor" aria-hidden="true"></div>
-  <div class="page-hero-decor2" aria-hidden="true"></div>
-  <div class="page-hero-inner">
-    <div class="page-eyebrow"><span class="dot"></span>Nous joindre</div>
-    <h1>
-      <span class="l-cream">Contactez-</span>
-      <span class="l-iris">nous</span>
-    </h1>
-    <p class="page-subtitle">Téléphone, mail ou formulaire — une équipe disponible pour répondre à vos questions depuis Gensac-la-Pallue.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="tel:+33545824012">
-        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
-      </a>
-      <a class="btn-outline" href="mailto:contact@pharmacie-gensac.fr">
-        <i class="ph ph-envelope-simple"></i>Nous écrire
-      </a>
-    </div>
-  </div>
-  <div class="page-hero-status">
-    <span class="ph-pulse"></span>
-    <span>05 45 82 40 12 &nbsp;·&nbsp; Lun–Ven 9h–19h &nbsp;·&nbsp; Sam 9h–13h</span>
-  </div>
-</section>
+<HeroPage
+  eyebrow="Nous joindre"
+  line1="Contactez-"
+  line2="nous"
+  subtitle="Téléphone, mail ou formulaire — une équipe disponible pour répondre à vos questions depuis Gensac-la-Pallue."
+  statusText="05 45 82 40 12 · Lun–Ven 9h–19h · Sam 9h–13h"
+  heroImg="/hero-contact.jpg"
+  heroPos="center 70%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Nous écrire"
+  cta2Href="mailto:contact@pharmacie-gensac.fr"
+  cta2Icon="ph-envelope-simple"
+/>
 
 <div class="blue-divider" aria-hidden="true"></div>
 
