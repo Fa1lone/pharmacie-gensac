@@ -1,0 +1,324 @@
+---
+import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
+---
+<LayoutV2
+  title="Services pharmaceutiques | Pharmacie de Gensac-la-Pallue"
+  description="Vaccination, TROD, entretiens pharmaceutiques, bilan de prévention, prise de tension, piluliers : tous les services de la Pharmacie de Gensac-la-Pallue."
+  canonical="https://pharmacie-gensac.fr/services"
+>
+<style>
+/* ── CHIPS NAVIGATION ── */
+.svc-nav{background:var(--cream-2);border-bottom:1px solid rgba(4,106,56,0.08);padding:0 28px;overflow-x:auto;scrollbar-width:none;}
+.svc-nav::-webkit-scrollbar{display:none;}
+.svc-nav-inner{max-width:1280px;margin:0 auto;display:flex;gap:4px;padding:12px 0;}
+.svc-chip{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'Montserrat',sans-serif;font-size:0.75rem;font-weight:700;
+  padding:8px 16px;border-radius:999px;white-space:nowrap;
+  color:var(--text-mid);background:transparent;border:1.5px solid rgba(4,106,56,0.12);
+  transition:background .2s,color .2s,border-color .2s;text-decoration:none;
+}
+.svc-chip:hover,.svc-chip.active{background:var(--green-deep);color:var(--cream);border-color:var(--green-deep);}
+.svc-chip i{font-size:0.9rem;}
+
+/* ── SECTIONS ── */
+.services-wrap{padding:clamp(60px,7vw,96px) 0;}
+.svc-block{margin-bottom:72px;}
+.svc-block:last-child{margin-bottom:0;}
+.svc-block-header{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:32px;padding-bottom:18px;
+  border-bottom:2px solid rgba(4,106,56,0.10);
+}
+.svc-block-ico{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--green-deep);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--yellow-iris);font-size:1.4rem;flex:none;
+}
+.svc-block-header h2{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-0.02em;
+  color:var(--text-main);
+}
+
+/* ── ITEMS ── */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.svc-item{
+  padding:22px 0;border-bottom:1px solid rgba(4,106,56,0.07);
+  display:flex;align-items:flex-start;gap:16px;
+}
+.svc-item:nth-child(odd){border-right:1px solid rgba(4,106,56,0.07);padding-right:40px;}
+.svc-item:nth-child(even){padding-left:40px;}
+.svc-item:nth-last-child(-n+2){border-bottom:none;}
+.svc-bullet{
+  width:34px;height:34px;flex:none;border-radius:9px;
+  background:rgba(4,106,56,0.07);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green-vivid);font-size:1rem;margin-top:1px;
+}
+.svc-item h3{font-family:'Montserrat',sans-serif;font-size:0.93rem;font-weight:700;color:var(--text-main);margin-bottom:5px;line-height:1.3;}
+.svc-item p{font-size:0.83rem;color:var(--text-mid);line-height:1.58;}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-family:'Montserrat',sans-serif;font-size:0.58rem;font-weight:700;
+  padding:3px 9px;border-radius:999px;letter-spacing:0.04em;text-transform:uppercase;
+}
+.badge.sans-rdv{background:rgba(67,176,42,0.10);color:var(--green-vivid);}
+.badge.avec-rdv{background:rgba(0,114,206,0.10);color:var(--blue-river);}
+.badge.sur-ordo{background:rgba(98,52,18,0.10);color:var(--brown-trunk);}
+
+/* ── REASSURANCE BAND ── */
+.reassurance{background:var(--cream-2);padding:clamp(44px,5vw,64px) 28px;}
+.reassurance-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.reassurance-item{text-align:center;padding:28px 24px;}
+.reassurance-ico{width:52px;height:52px;border-radius:14px;background:rgba(4,106,56,0.08);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.4rem;margin:0 auto 14px;}
+.reassurance-item h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.92rem;color:var(--text-main);margin-bottom:6px;}
+.reassurance-item p{font-size:0.82rem;color:var(--text-mid);line-height:1.6;}
+@media(max-width:700px){.reassurance-inner{grid-template-columns:1fr;}}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--green-deep);padding:clamp(52px,5vw,72px) 28px;}
+.cta-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.cta-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;}
+.cta-band p{font-size:0.93rem;color:rgba(247,244,234,0.70);max-width:52ch;}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex:none;}
+.btn-yellow{display:inline-flex;align-items:center;gap:9px;background:var(--yellow-iris);color:var(--green-deep);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:999px;transition:transform .25s;}
+.btn-yellow:hover{transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(247,244,234,0.28);color:rgba(247,244,234,0.82);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.9rem;padding:12px 22px;border-radius:999px;transition:border-color .25s,background .25s;}
+.btn-ghost:hover{background:rgba(247,244,234,0.08);border-color:rgba(247,244,234,0.55);}
+
+@media(max-width:680px){
+  .svc-grid{grid-template-columns:1fr;}
+  .svc-item:nth-child(odd){border-right:none;padding-right:0;}
+  .svc-item:nth-child(even){padding-left:0;}
+  .svc-item:nth-last-child(-n+2){border-bottom:1px solid rgba(4,106,56,0.07);}
+  .svc-item:last-child{border-bottom:none;}
+  .cta-band-inner{flex-direction:column;align-items:flex-start;}
+}
+</style>
+
+<HeroPage
+  eyebrow="Actes pharmaceutiques"
+  line1="Nos"
+  line2="services"
+  subtitle="Vaccination, tests rapides, entretiens personnalisés, bilan de prévention, prise de tension — sans rendez-vous pour la plupart des actes."
+  statusText="Sans rendez-vous · Actes remboursés · Salle de confidentialité disponible"
+  heroImg="/hero-services.jpg"
+  heroPos="center 25%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Nous écrire"
+  cta2Href="/contact"
+  cta2Icon="ph-envelope-simple"
+/>
+
+<div class="blue-divider" aria-hidden="true"></div>
+
+<!-- ══ NAVIGATION CHIPS ══════════════════════════════ -->
+<nav class="svc-nav" aria-label="Sections services">
+  <div class="svc-nav-inner">
+    <a class="svc-chip" href="#vaccination"><i class="ph ph-syringe"></i>Vaccination</a>
+    <a class="svc-chip" href="#trod"><i class="ph ph-test-tube"></i>Tests rapides</a>
+    <a class="svc-chip" href="#entretiens"><i class="ph ph-chat-circle-text"></i>Entretiens</a>
+    <a class="svc-chip" href="#mesures"><i class="ph ph-stethoscope"></i>Mesures & soins</a>
+  </div>
+</nav>
+
+<!-- ══ RÉASSURANCE ═══════════════════════════════════ -->
+<section class="reassurance section-motif">
+  <div class="reassurance-inner">
+    <div class="reassurance-item reveal">
+      <div class="reassurance-ico"><i class="ph ph-check-circle"></i></div>
+      <h3>Sans rendez-vous</h3>
+      <p>La plupart de nos services sont accessibles directement, sans attendre.</p>
+    </div>
+    <div class="reassurance-item reveal">
+      <div class="reassurance-ico"><i class="ph ph-shield-check"></i></div>
+      <h3>Actes remboursés</h3>
+      <p>Vaccination, TROD et entretiens pris en charge selon votre situation.</p>
+    </div>
+    <div class="reassurance-item reveal">
+      <div class="reassurance-ico"><i class="ph ph-lock-key"></i></div>
+      <h3>Salle de confidentialité</h3>
+      <p>Entretiens en toute discrétion dans notre espace dédié.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══════════════════════════════════════ -->
+<section class="services-wrap">
+  <div class="section-wrap">
+
+    <!-- VACCINATION -->
+    <div class="svc-block reveal" id="vaccination">
+      <div class="svc-block-header">
+        <div class="svc-block-ico"><i class="ph ph-syringe"></i></div>
+        <h2>Vaccination</h2>
+      </div>
+      <ul class="svc-grid" style="list-style:none;">
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-check-circle"></i></div>
+          <div>
+            <h3>Vaccination selon le calendrier vaccinal</h3>
+            <p>Prescription et administration dans le cadre des recommandations du calendrier vaccinal en vigueur.</p>
+            <div class="badges"><span class="badge sans-rdv"><i class="ph ph-check"></i>Sans rendez-vous</span></div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-virus"></i></div>
+          <div>
+            <h3>Vaccination Covid-19</h3>
+            <p>Vaccins Covid disponibles selon les recommandations en cours et la disponibilité des stocks.</p>
+            <div class="badges"><span class="badge avec-rdv"><i class="ph ph-calendar"></i>Sur rendez-vous</span></div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-check-circle"></i></div>
+          <div>
+            <h3>Grippe saisonnière</h3>
+            <p>Vaccination antigrippale chaque automne. Ordonnance remise directement en pharmacie si nécessaire.</p>
+            <div class="badges"><span class="badge sans-rdv"><i class="ph ph-check"></i>Sans rendez-vous</span></div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-check-circle"></i></div>
+          <div>
+            <h3>Rappels de vaccination</h3>
+            <p>Diphtérie, tétanos, coqueluche, hépatite B et autres rappels selon votre carnet de vaccination.</p>
+            <div class="badges"><span class="badge sans-rdv"><i class="ph ph-check"></i>Sans rendez-vous</span></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- TROD -->
+    <div class="svc-block reveal" id="trod">
+      <div class="svc-block-header">
+        <div class="svc-block-ico"><i class="ph ph-test-tube"></i></div>
+        <h2>Tests rapides d'orientation diagnostique (TROD)</h2>
+      </div>
+      <ul class="svc-grid" style="list-style:none;">
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-virus"></i></div>
+          <div><h3>TROD Covid-19</h3><p>Test antigénique rapide pour détecter une infection au SARS-CoV-2.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-thermometer"></i></div>
+          <div><h3>TROD Grippe</h3><p>Test rapide de détection de l'influenza A et B.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-lungs"></i></div>
+          <div><h3>TROD VRS</h3><p>Test rapide pour le Virus Respiratoire Syncytial, utile pour les nourrissons.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-mouth"></i></div>
+          <div><h3>TROD Angine</h3><p>Test de détection du streptocoque A (SGA), pour éviter une antibiothérapie inutile.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-drop"></i></div>
+          <div><h3>TROD Cystite</h3><p>Test rapide pour orienter le diagnostic d'infection urinaire.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ENTRETIENS -->
+    <div class="svc-block reveal" id="entretiens">
+      <div class="svc-block-header">
+        <div class="svc-block-ico"><i class="ph ph-chat-circle-text"></i></div>
+        <h2>Entretiens &amp; accompagnements</h2>
+      </div>
+      <ul class="svc-grid" style="list-style:none;">
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-baby"></i></div>
+          <div><h3>Entretien femme enceinte</h3><p>Accompagnement sur les médicaments, les compléments et les risques à éviter pendant la grossesse.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-baby-carriage"></i></div>
+          <div><h3>Entretien allaitement maternel</h3><p>Conseils pratiques, solutions aux difficultés courantes, soutien à l'allaitement.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-first-aid-kit"></i></div>
+          <div><h3>Mise à disposition d'un tire-lait</h3><p>Entretien dédié à la mise en route du tire-lait, réglages et questions pratiques.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-shield-check"></i></div>
+          <div><h3>Bilan de prévention</h3><p>Entretien personnalisé de prévention santé selon les recommandations de Santé Publique France.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-lungs"></i></div>
+          <div><h3>Entretien asthme</h3><p>Suivi et optimisation du traitement pour les patients asthmatiques.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-heartbeat"></i></div>
+          <div><h3>Entretien anticoagulants oraux</h3><p>Accompagnement des patients sous AVK ou AOD, surveillance des interactions.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-pill"></i></div>
+          <div><h3>Entretien anticancéreux oraux</h3><p>Suivi des chimiothérapies par voie orale, gestion des effets indésirables.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-warning"></i></div>
+          <div><h3>Entretien opioïdes</h3><p>Accompagnement des patients sous traitements opioïdes, prévention des risques.</p><div class="badges"><span class="badge avec-rdv">Sur rendez-vous</span></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MESURES & SOINS -->
+    <div class="svc-block reveal" id="mesures">
+      <div class="svc-block-header">
+        <div class="svc-block-ico"><i class="ph ph-stethoscope"></i></div>
+        <h2>Mesures &amp; premiers soins</h2>
+      </div>
+      <ul class="svc-grid" style="list-style:none;">
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-heart"></i></div>
+          <div><h3>Prise de tension artérielle</h3><p>Mesure de votre pression artérielle, interprétation et orientation si nécessaire.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-drop-half"></i></div>
+          <div><h3>Mesure de glycémie</h3><p>Contrôle de la glycémie capillaire, conseils hygiéno-diététiques.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-bandaids"></i></div>
+          <div><h3>Premiers soins</h3><p>Conseils de premiers secours et orientation vers un médecin ou les urgences si nécessaire.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-clipboard-text"></i></div>
+          <div><h3>Kit dépistage cancer colorectal</h3><p>Remise du kit Hemoccult sur prescription ou dans le cadre du dépistage organisé.</p><div class="badges"><span class="badge sans-rdv">Sans rendez-vous</span></div></div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-bullet"><i class="ph ph-list-numbers"></i></div>
+          <div>
+            <h3>Réalisation de piluliers</h3>
+            <p>Préparation hebdomadaire pour patients polymédiqués, personnes âgées ou à mobilité réduite.</p>
+            <div class="badges">
+              <span class="badge avec-rdv">Sur rendez-vous</span>
+              <span class="badge sur-ordo">Sur prescription</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div class="reveal">
+      <h2>Une question sur un service ?</h2>
+      <p>Appelez-nous ou envoyez-nous un mail. Notre équipe vous répond dans les meilleurs délais.</p>
+    </div>
+    <div class="cta-btns reveal">
+      <a class="btn-yellow" href="tel:+33545824012"><i class="ph ph-phone-call"></i>05 45 82 40 12</a>
+      <a class="btn-ghost" href="mailto:contact@pharmacie-gensac.fr"><i class="ph ph-envelope-simple"></i>Envoyer un mail</a>
+    </div>
+  </div>
+</section>
+
+</LayoutV2>

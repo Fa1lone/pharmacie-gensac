@@ -1,0 +1,391 @@
+---
+import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
+---
+<LayoutV2
+  title="La pharmacie & l'équipe | Pharmacie de Gensac-la-Pallue"
+  description="Découvrez l'équipe de la Pharmacie de Gensac-la-Pallue, son histoire, ses locaux accessibles PMR et sa salle de confidentialité."
+  canonical="https://pharmacie-gensac.fr/la-pharmacie"
+>
+<style>
+/* ── REPRISE BAND ───────────────────────────────── */
+.reprise-band{background:var(--yellow-iris);padding:clamp(44px,5vw,68px) 28px;}
+.reprise-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+.reprise-date{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(3.2rem,8vw,6.5rem);color:var(--green-deep);line-height:1;letter-spacing:-0.04em;white-space:nowrap;flex:none;}
+.reprise-date sup{font-size:0.38em;vertical-align:super;}
+.reprise-sep{width:3px;height:80px;background:rgba(4,106,56,0.18);border-radius:2px;flex:none;}
+.reprise-text h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2rem);color:var(--green-deep);margin-bottom:8px;letter-spacing:-0.02em;}
+.reprise-text p{font-size:0.95rem;color:rgba(4,106,56,0.72);max-width:54ch;line-height:1.65;}
+@media(max-width:780px){.reprise-sep{display:none;}.reprise-band-inner{gap:18px;}}
+
+/* ── STATS BAND ─────────────────────────────────── */
+.stats-band{background:var(--green-deep);padding:clamp(32px,3.5vw,48px) 28px;}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.stat-item{text-align:center;padding:0 28px;position:relative;}
+.stat-item+.stat-item::before{content:"";position:absolute;left:0;top:15%;bottom:15%;width:1px;background:rgba(247,244,234,0.12);}
+.stat-val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--yellow-iris);line-height:1;letter-spacing:-0.025em;display:block;}
+.stat-lbl{display:block;margin-top:5px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(247,244,234,0.48);}
+@media(max-width:600px){.stats-inner{grid-template-columns:1fr;}.stat-item+.stat-item::before{display:none;}.stat-item{padding:12px 0;}}
+
+/* ── HISTORY GRID ───────────────────────────────── */
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;}
+.split-grid.reverse{direction:rtl;}
+.split-grid.reverse>*{direction:ltr;}
+.photo-bezel{position:relative;flex:none;}
+.photo-outer{border:2px solid var(--brown-trunk);border-radius:4px;padding:8px;background:var(--cream);}
+.photo-inner{border-radius:2px;overflow:hidden;background:var(--green-deep);height:340px;display:flex;align-items:center;justify-content:center;}
+.photo-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-placeholder{font-family:'Montserrat',sans-serif;font-size:0.82rem;color:rgba(247,244,234,0.38);font-style:italic;text-align:center;padding:24px;}
+.photo-badge{position:absolute;bottom:-14px;right:20px;background:var(--yellow-iris);color:var(--green-deep);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;padding:7px 16px;border-radius:999px;}
+.prose p{font-size:1rem;line-height:1.72;color:var(--text-mid);margin-bottom:16px;max-width:52ch;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text-main);}
+.prose em.quote{
+  display:block;font-style:italic;color:var(--text-main);
+  border-left:3px solid var(--yellow-iris);padding-left:18px;
+  margin:20px 0;line-height:1.65;
+}
+@media(max-width:780px){.split-grid{grid-template-columns:1fr;}.split-grid.reverse{direction:ltr;}}
+
+/* ── LANG BADGE ─────────────────────────────────── */
+.lang-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,114,206,0.08);border:1px solid rgba(0,114,206,0.20);border-radius:999px;padding:8px 18px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;color:var(--blue-river);}
+
+/* ── LOCAUX ─────────────────────────────────────── */
+.locaux-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px;}
+.local-card{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;background:var(--cream-2);border:1px solid rgba(4,106,56,0.09);border-radius:4px;position:relative;overflow:hidden;transition:box-shadow .25s var(--ease);}
+.local-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-river);transform:scaleY(0);transform-origin:bottom;transition:transform .35s var(--ease);}
+.local-card:hover::after{transform:scaleY(1);}
+.local-card:hover{box-shadow:0 8px 28px rgba(4,106,56,0.10);}
+.local-ico{width:42px;height:42px;flex:none;background:rgba(0,114,206,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue-river);font-size:1.2rem;}
+.local-card h4{font-family:'Montserrat',sans-serif;font-size:0.92rem;font-weight:700;color:var(--text-main);margin-bottom:5px;}
+.local-card p{font-size:0.83rem;color:var(--text-mid);line-height:1.55;}
+@media(max-width:600px){.locaux-grid{grid-template-columns:1fr;}}
+
+/* ── TEAM ───────────────────────────────────────── */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
+.team-card{background:var(--cream-2);border:1px solid rgba(4,106,56,0.09);border-radius:4px;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease);}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(4,106,56,0.12);}
+.team-avatar{height:180px;background:var(--green-deep);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.team-avatar::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(151,215,0,0.08),transparent 70%);}
+.avatar-initials{font-family:'Montserrat',sans-serif;font-weight:800;font-size:3.5rem;color:rgba(247,244,234,0.18);z-index:1;}
+.avatar-ring{position:absolute;width:110px;height:110px;border-radius:50%;border:1.5px solid rgba(247,244,234,0.12);}
+.team-body{padding:22px 24px;}
+.team-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;color:var(--text-main);margin-bottom:3px;}
+.team-role{font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--green-vivid);margin-bottom:10px;}
+.team-body p{font-size:0.85rem;color:var(--text-mid);line-height:1.6;}
+.team-affinite{margin-top:14px;display:flex;align-items:center;gap:7px;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;color:var(--green-deep);padding-top:12px;border-top:1px solid rgba(4,106,56,0.08);}
+.team-affinite i{color:var(--yellow-iris);font-size:0.9rem;}
+@media(max-width:860px){.team-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.team-grid{grid-template-columns:1fr;}}
+
+/* ── HORAIRES ───────────────────────────────────── */
+.horaires-section{background:var(--cream-2);}
+.horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px);align-items:start;margin-top:36px;}
+.horaires-table{list-style:none;}
+.horaires-table li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(4,106,56,0.07);font-size:0.9rem;}
+.horaires-table li:last-child{border-bottom:none;}
+.jour{font-weight:600;color:var(--text-mid);}
+.heure{font-weight:700;color:var(--text-main);}
+.ferme{color:rgba(58,80,64,0.40);font-style:italic;}
+.horaires-note{margin-top:22px;display:flex;align-items:flex-start;gap:10px;font-size:0.83rem;color:var(--text-mid);line-height:1.6;}
+.horaires-note i{color:var(--blue-river);font-size:1rem;flex:none;margin-top:2px;}
+.horaires-cta-col{display:flex;flex-direction:column;gap:14px;}
+.h-cta-card{background:var(--cream);border:1px solid rgba(4,106,56,0.10);border-radius:4px;padding:22px 24px;display:flex;align-items:flex-start;gap:14px;}
+.h-cta-ico{width:40px;height:40px;flex:none;border-radius:10px;background:rgba(4,106,56,0.08);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.1rem;}
+.h-cta-card strong{display:block;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.88rem;color:var(--text-main);margin-bottom:4px;}
+.h-cta-card span,.h-cta-card a{font-size:0.85rem;color:var(--text-mid);}
+.h-cta-card a{color:var(--blue-river);font-weight:600;}
+.h-cta-card a:hover{text-decoration:underline;}
+@media(max-width:700px){.horaires-grid{grid-template-columns:1fr;}}
+
+/* ── MAP ────────────────────────────────────────── */
+.map-wrap{margin-top:36px;border-radius:4px;overflow:hidden;border:1px solid rgba(4,106,56,0.10);height:340px;}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.8);}
+
+/* ── CTA BAND ───────────────────────────────────── */
+.cta-band{background:var(--green-deep);padding:clamp(52px,5vw,72px) 28px;}
+.cta-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.cta-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;}
+.cta-band p{font-size:0.93rem;color:rgba(247,244,234,0.70);max-width:52ch;}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex:none;}
+.btn-yellow{display:inline-flex;align-items:center;gap:9px;background:var(--yellow-iris);color:var(--green-deep);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:999px;transition:transform .25s var(--ease);}
+.btn-yellow:hover{transform:translateY(-2px);}
+.btn-ghost-light{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(247,244,234,0.28);color:rgba(247,244,234,0.82);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.9rem;padding:12px 22px;border-radius:999px;transition:border-color .25s,background .25s;}
+.btn-ghost-light:hover{background:rgba(247,244,234,0.08);border-color:rgba(247,244,234,0.55);}
+@media(max-width:780px){.cta-band-inner{flex-direction:column;align-items:flex-start;}}
+</style>
+
+<HeroPage
+  eyebrow="Notre histoire"
+  line1="La pharmacie"
+  line2="& l'équipe"
+  subtitle="Une pharmacie de village qui vous connaît — votre prénom, vos traitements, votre médecin. Depuis des années à Gensac-la-Pallue."
+  statusText="Lun–Ven 9h–19h · Sam 9h–13h · Gensac-la-Pallue (16)"
+  heroImg="/hero-pharmacie.jpg"
+  heroPos="center 60%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Rencontrer l'équipe"
+  cta2Href="#equipe"
+  cta2Icon="ph-users"
+/>
+
+<div class="blue-divider" aria-hidden="true"></div>
+
+<!-- ══ REPRISE BAND ══════════════════════════════════ -->
+<section class="reprise-band">
+  <div class="reprise-band-inner">
+    <div class="reprise-date reveal">1<sup>er</sup> août</div>
+    <div class="reprise-sep reveal" aria-hidden="true"></div>
+    <div class="reprise-text reveal">
+      <h2>Reprise officielle de la pharmacie</h2>
+      <p>À compter du 1<sup>er</sup> août 2026, une nouvelle titulaire reprend la pharmacie de Gensac-la-Pallue. Même équipe de confiance, nouvelle énergie, même engagement de proximité envers les familles du village.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS BAND ════════════════════════════════════ -->
+<section class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-val">15+</span>
+      <span class="stat-lbl">ans d'histoire</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-val">3</span>
+      <span class="stat-lbl">professionnelles</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-val">6j/7</span>
+      <span class="stat-lbl">ouverture</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TITULAIRE ═════════════════════════════════════ -->
+<section class="content-section section-motif">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">La nouvelle titulaire</div>
+    <div class="split-grid">
+      <div>
+        <h2 class="section-h2 reveal">Une pharmacienne <em>engagée</em></h2>
+        <div class="prose">
+          <p class="reveal">Pharmacienne diplômée, 32 ans. Son parcours l'a menée des blocs opératoires aux officines — des stages hospitaliers dès la 4e qui ont forgé une vocation profonde pour le soin et la proximité.</p>
+          <p class="reveal"><em class="quote">"Texte de présentation à venir — la titulaire rédigera elle-même son parcours, sa vision, et son lien avec la pharmacie de Gensac-la-Pallue."</em></p>
+        </div>
+        <div class="reveal" style="margin-top:24px;">
+          <span class="lang-badge"><i class="ph ph-flag"></i>English spoken here</span>
+        </div>
+      </div>
+      <div class="photo-bezel reveal">
+        <div class="photo-outer">
+          <div class="photo-inner">
+            <div class="photo-placeholder">Photo portrait à venir</div>
+          </div>
+        </div>
+        <div class="photo-badge">Titulaire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HISTOIRE ══════════════════════════════════════ -->
+<section class="content-section bg-cream-2">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Histoire</div>
+    <div class="split-grid reverse">
+      <div>
+        <h2 class="section-h2 reveal">La pharmacie <em>de Gensac-la-Pallue</em></h2>
+        <div class="prose">
+          <p class="reveal">Depuis plus de 15 ans, cette officine est un pilier de la vie locale. Connue et reconnue par les habitants, elle a servi des générations de familles avec la même philosophie : proximité, disponibilité, humanité.</p>
+          <p class="reveal">Avec la reprise en 2026, l'histoire continue sous un nouveau nom — <strong>Pharmacie de Gensac-la-Pallue</strong> — pour affirmer pleinement l'identité du lieu et rompre avec l'ancienne enseigne.</p>
+        </div>
+      </div>
+      <div class="photo-bezel reveal">
+        <div class="photo-outer">
+          <div class="photo-inner">
+            <img src="/pharmacie-hero.png" alt="Façade de la Pharmacie de Gensac-la-Pallue" />
+          </div>
+        </div>
+        <div class="photo-badge">Depuis 2010</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOCAUX ════════════════════════════════════════ -->
+<section class="content-section section-motif section-motif-left">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Nos locaux</div>
+    <h2 class="section-h2 reveal">Un espace <em>pensé pour vous</em></h2>
+    <ul class="locaux-grid" style="list-style:none;">
+      <li class="local-card reveal">
+        <div class="local-ico"><i class="ph ph-wheelchair"></i></div>
+        <div>
+          <h4>Accès PMR</h4>
+          <p>Entrée de plain-pied, espace adapté aux personnes à mobilité réduite, largeur de passage conforme aux normes.</p>
+        </div>
+      </li>
+      <li class="local-card reveal">
+        <div class="local-ico"><i class="ph ph-lock-key"></i></div>
+        <div>
+          <h4>Salle de confidentialité</h4>
+          <p>Un espace dédié pour les entretiens pharmaceutiques et les échanges sensibles, en toute discrétion.</p>
+        </div>
+      </li>
+      <li class="local-card reveal">
+        <div class="local-ico"><i class="ph ph-car"></i></div>
+        <div>
+          <h4>Parking gratuit</h4>
+          <p>Stationnement gratuit directement devant la pharmacie pour une visite rapide et sans contrainte.</p>
+        </div>
+      </li>
+      <li class="local-card reveal">
+        <div class="local-ico"><i class="ph ph-map-pin"></i></div>
+        <div>
+          <h4>Centre-bourg</h4>
+          <p>Idéalement situé au cœur de Gensac-la-Pallue, accessible à pied depuis tout le village.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ ÉQUIPE ════════════════════════════════════════ -->
+<section class="content-section bg-cream-2" id="equipe">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">L'équipe</div>
+    <h2 class="section-h2 reveal">Trois professionnelles <em>à votre écoute</em></h2>
+    <div class="team-grid">
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <div class="avatar-ring"></div>
+          <span class="avatar-initials">T</span>
+        </div>
+        <div class="team-body">
+          <div class="team-name">La titulaire</div>
+          <div class="team-role">Pharmacienne titulaire</div>
+          <p>Diplômée en pharmacie, 32 ans. Parcours hospitalier et officinal, elle reprend la pharmacie avec l'ambition de renforcer la proximité et les services.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <div class="avatar-ring"></div>
+          <span class="avatar-initials">A</span>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Adjointe</div>
+          <div class="team-role">Pharmacienne adjointe</div>
+          <p>Présente depuis plusieurs années dans l'officine, elle assure la continuité et la qualité de conseil que les habitués connaissent bien.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <div class="avatar-ring"></div>
+          <span class="avatar-initials">P</span>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Préparatrice</div>
+          <div class="team-role">Préparatrice en pharmacie</div>
+          <p>Indispensable au bon fonctionnement quotidien de l'officine, elle vous accueille et vous conseille avec attention.</p>
+          <div class="team-affinite"><i class="ph-bold ph-star"></i>Domaine d'affinité à préciser</div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:24px;font-size:0.82rem;color:var(--text-mid);font-style:italic;">
+      Portraits et présentations détaillées à venir. Les collaboratrices pourront opter pour des portraits retouchés à l'IA si elles le souhaitent.
+    </p>
+  </div>
+</section>
+
+<!-- ══ HORAIRES ═══════════════════════════════════════ -->
+<section class="content-section horaires-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Horaires</div>
+    <h2 class="section-h2 reveal">Quand nous <em>trouver</em></h2>
+    <div class="horaires-grid">
+      <ul class="horaires-table reveal">
+        <li><span class="jour">Lundi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Mardi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Mercredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Jeudi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Vendredi</span><span class="heure">9h00 – 12h30 · 14h00 – 19h00</span></li>
+        <li><span class="jour">Samedi</span><span class="heure">9h00 – 13h00</span></li>
+        <li><span class="jour">Dimanche</span><span class="ferme">Fermé</span></li>
+      </ul>
+      <div class="horaires-cta-col reveal">
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-phone-call"></i></div>
+          <div>
+            <strong>Téléphone</strong>
+            <a href="tel:+33545824012">05 45 82 40 12</a>
+          </div>
+        </div>
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-envelope-simple"></i></div>
+          <div>
+            <strong>E-mail</strong>
+            <a href="mailto:contact@pharmacie-gensac.fr">contact@pharmacie-gensac.fr</a>
+          </div>
+        </div>
+        <div class="h-cta-card">
+          <div class="h-cta-ico"><i class="ph ph-flag"></i></div>
+          <div>
+            <strong>English spoken here</strong>
+            <span>Notre équipe peut vous accueillir en anglais.</span>
+          </div>
+        </div>
+        <div class="horaires-note">
+          <i class="ph ph-info"></i>
+          <span>Pour une pharmacie de garde hors horaires, appelez le <strong>3237</strong>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOCALISATION ══════════════════════════════════ -->
+<section class="content-section">
+  <div class="section-wrap">
+    <div class="eyebrow reveal">Localisation</div>
+    <h2 class="section-h2 reveal">Nous trouver à <em>Gensac-la-Pallue</em></h2>
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=45.6514669,-0.2530952&z=16&output=embed"
+        title="Localisation Pharmacie de Gensac-la-Pallue"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p style="margin-top:14px;font-size:0.88rem;color:var(--text-mid);display:flex;align-items:center;gap:7px;">
+      <i class="ph ph-map-pin" style="color:var(--green-deep);"></i>Route de Merpins, 16130 Gensac-la-Pallue
+      <a href="https://maps.google.com/?q=45.6514669,-0.2530952" target="_blank" rel="noopener" style="margin-left:10px;color:var(--blue-river);font-weight:600;font-size:0.85rem;display:inline-flex;align-items:center;gap:4px;">
+        <i class="ph ph-navigation-arrow"></i>Ouvrir dans Maps
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div class="reveal">
+      <h2>Une question sur la pharmacie ?</h2>
+      <p>Appelez-nous ou envoyez-nous un mail. Nous sommes là pour vous répondre.</p>
+    </div>
+    <div class="cta-btns reveal">
+      <a class="btn-yellow" href="tel:+33545824012"><i class="ph ph-phone-call"></i>05 45 82 40 12</a>
+      <a class="btn-ghost-light" href="/contact"><i class="ph ph-envelope-simple"></i>Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+</LayoutV2>

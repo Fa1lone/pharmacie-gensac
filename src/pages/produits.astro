@@ -1,0 +1,188 @@
+---
+import LayoutV2 from '../layouts/LayoutV2.astro';
+import HeroPage from '../components/HeroPage.astro';
+
+const groupes = [
+  {
+    titre: "Médical & orthopédie",
+    icone: "ph-first-aid-kit",
+    items: [
+      { icon: "ph-bed", titre: "Vente & location de matériel médical", desc: "Lits médicalisés, fauteuils roulants, déambulateurs, cannes, béquilles — tout le matériel pour votre autonomie à domicile." },
+      { icon: "ph-house", titre: "Maintien à domicile", desc: "Matériel adapté pour rester chez soi en toute sécurité, avec conseils personnalisés selon votre situation." },
+      { icon: "ph-first-aid-kit", titre: "Perfusion", desc: "Matériel de perfusion sur prescription médicale. Accompagnement et conseils à domicile." },
+      { icon: "ph-person-simple-walk", titre: "Orthopédie", desc: "Ceintures lombaires, attelles, colliers cervicaux, semelles orthopédiques, genouillères et conseils d'adaptation." },
+      { icon: "ph-sock", titre: "Compression veineuse", desc: "Chaussettes, bas et collants de contention. Mesure et adaptation aux recommandations de votre médecin." },
+      { icon: "ph-shoe-prints", titre: "Podologie de série", desc: "Semelles de confort, orthèses plantaires de série, talonnettes et accessoires podologiques conseillés." },
+      { icon: "ph-sneaker", titre: "Chaussures orthopédiques de série", desc: "Chaussures orthopédiques de série adaptées aux pieds sensibles ou difficiles, avec conseil d'adaptation." },
+    ]
+  },
+  {
+    titre: "Bébé & famille",
+    icone: "ph-baby",
+    items: [
+      { icon: "ph-baby", titre: "Vente & location de tire-lait", desc: "Tire-laits électriques double pompe disponibles à la location. Accompagnement personnalisé pour l'allaitement." },
+      { icon: "ph-baby-carriage", titre: "Alimentation bébé", desc: "Laits maternisés, laits de croissance, laits spécifiques (APLV, coliques, régurgitations). Conseils personnalisés." },
+      { icon: "ph-heart", titre: "Soins maman & bébé", desc: "Soins de la peau, produits de puériculture, biberons, accessoires d'allaitement. Sélection adaptée aux jeunes mamans." },
+      { icon: "ph-paw-print", titre: "Vétérinaire", desc: "Antiparasitaires, compléments alimentaires et produits de soin pour chiens, chats et animaux domestiques." },
+    ]
+  },
+  {
+    titre: "Santé naturelle",
+    icone: "ph-leaf",
+    items: [
+      { icon: "ph-pill", titre: "Allopathie", desc: "Délivrance de médicaments sur ordonnance et sans ordonnance, conseil pharmaceutique, renouvellement de traitements." },
+      { icon: "ph-leaf", titre: "Phytothérapie", desc: "Plantes médicinales, tisanes, gélules végétales et compléments à base de plantes, sélectionnés avec rigueur." },
+      { icon: "ph-drop", titre: "Aromathérapie", desc: "Huiles essentielles de qualité thérapeutique, huiles végétales, diffuseurs et conseil d'utilisation." },
+      { icon: "ph-circles-three", titre: "Homéopathie", desc: "Granules, doses et complexes homéopathiques. Conseil personnalisé pour les familles et les nourrissons." },
+      { icon: "ph-flask", titre: "Compléments nutritionnels oraux", desc: "CNO sur prescription ou en conseil, pour les personnes dénutries, convalescentes ou âgées." },
+    ]
+  },
+  {
+    titre: "Beauté & hygiène",
+    icone: "ph-sparkle",
+    items: [
+      { icon: "ph-sparkle", titre: "Soins dermatologiques", desc: "Crèmes médicales, traitements de la peau sensible, eczéma, psoriasis, acné. Marques dermatologiques conseillées." },
+      { icon: "ph-sunglasses", titre: "Soins cosmétiques", desc: "Crèmes hydratantes, soins visage et corps, protection solaire. Marques dermatologiques et naturelles." },
+      { icon: "ph-person", titre: "Hygiène corps & intime", desc: "Produits d'hygiène intime, soins intimes, protections féminines, produits d'incontinence." },
+      { icon: "ph-scissors", titre: "Soins capillaires", desc: "Shampoings médicaux, lotions antipelliculaires, traitements antipoux, masques capillaires." },
+      { icon: "ph-hand-waving", titre: "Soins corps", desc: "Huiles, baumes, laits corporels. Sélection orientée bien-être et efficacité." },
+      { icon: "ph-flower", titre: "Onglerie & pédicurie", desc: "Soins des ongles, traitement des mycoses, produits anti-cors, conseils podologiques." },
+      { icon: "ph-tooth", titre: "Hygiène bucco-dentaire", desc: "Brosses à dents, dentifrices médicaux, bains de bouche, fils dentaires, protège-dents." },
+    ]
+  },
+];
+---
+<LayoutV2
+  title="Produits & matériel médical | Pharmacie de Gensac-la-Pallue"
+  description="Matériel médical, orthopédie, bébé, aromathérapie, phytothérapie, soins cosmétiques : découvrez l'offre complète de la Pharmacie de Gensac-la-Pallue."
+  canonical="https://pharmacie-gensac.fr/produits"
+>
+<style>
+/* ── HERO image — câblé via CSS var sur l'élément ── */
+
+/* ── INTRO BAND ── */
+.intro-band{background:var(--blue-river);padding:clamp(36px,4vw,52px) 28px;}
+.intro-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.intro-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.1rem,2vw,1.5rem);color:#fff;margin-bottom:6px;letter-spacing:-0.01em;}
+.intro-band p{font-size:0.92rem;color:rgba(255,255,255,0.80);max-width:55ch;line-height:1.65;}
+.intro-btn{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--blue-river);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.88rem;padding:11px 22px;border-radius:999px;white-space:nowrap;flex:none;transition:transform .25s;}
+.intro-btn:hover{transform:translateY(-2px);}
+@media(max-width:700px){.intro-band-inner{flex-direction:column;align-items:flex-start;}}
+
+/* ── GROUPES ── */
+.groupe{padding:clamp(56px,6vw,80px) 0;}
+.groupe:nth-child(even){background:var(--cream-2);}
+.groupe-header{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
+.groupe-ico{width:48px;height:48px;border-radius:12px;background:rgba(4,106,56,0.08);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.4rem;flex:none;}
+.groupe-header h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,2.8vw,2rem);letter-spacing:-0.025em;color:var(--text-main);}
+.groupe-header h2 span{color:var(--green-deep);}
+
+/* ── CARDS ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;}
+.cat-card{
+  background:var(--cream);border:1px solid rgba(4,106,56,0.09);border-radius:4px;
+  padding:20px 22px;display:flex;align-items:flex-start;gap:14px;
+  position:relative;overflow:hidden;
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+}
+.cat-card::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--blue-river);transform:scaleX(0);transform-origin:left;
+  transition:transform .32s var(--ease);
+}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(4,106,56,0.10);}
+.cat-card:hover::after{transform:scaleX(1);}
+.cat-ico{width:38px;height:38px;flex:none;border-radius:8px;background:rgba(4,106,56,0.07);display:flex;align-items:center;justify-content:center;color:var(--green-deep);font-size:1.1rem;}
+.cat-body h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.9rem;color:var(--text-main);margin-bottom:4px;line-height:1.3;}
+.cat-body p{font-size:0.8rem;color:var(--text-mid);line-height:1.6;}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--green-deep);padding:clamp(52px,5vw,72px) 28px;}
+.cta-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.cta-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;}
+.cta-band p{font-size:0.93rem;color:rgba(247,244,234,0.70);max-width:52ch;}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex:none;}
+.btn-yellow{display:inline-flex;align-items:center;gap:9px;background:var(--yellow-iris);color:var(--green-deep);font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 24px;border-radius:999px;transition:transform .25s;}
+.btn-yellow:hover{transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(247,244,234,0.28);color:rgba(247,244,234,0.82);background:transparent;font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.9rem;padding:12px 22px;border-radius:999px;transition:border-color .25s,background .25s;}
+.btn-ghost:hover{background:rgba(247,244,234,0.08);border-color:rgba(247,244,234,0.55);}
+@media(max-width:780px){.cta-band-inner{flex-direction:column;align-items:flex-start;}}
+</style>
+
+<HeroPage
+  eyebrow="Notre offre complète"
+  line1="Produits &"
+  line2="matériel médical"
+  subtitle="Médicaments, orthopédie, bébé, aromathérapie, soins naturels — tout pour votre santé, conseillé par nos pharmaciens."
+  statusText="Sur ordonnance & sans ordonnance · Conseil gratuit · Lun–Sam"
+  heroImg="/pharmacie-hero.png"
+  heroPos="center 30%"
+  cta1Label="05 45 82 40 12"
+  cta1Href="tel:+33545824012"
+  cta1Icon="ph-phone-call"
+  cta2Label="Voir nos services"
+  cta2Href="/services"
+  cta2Icon="ph-stethoscope"
+/>
+
+<div class="blue-divider" aria-hidden="true"></div>
+
+<!-- ══ INTRO BAND ════════════════════════════════════ -->
+<section class="intro-band">
+  <div class="intro-band-inner">
+    <div class="reveal">
+      <h2>Un conseil, une question sur un produit ?</h2>
+      <p>Notre équipe est là pour vous orienter vers le produit adapté à votre situation. Venez nous voir ou appelez-nous.</p>
+    </div>
+    <a class="intro-btn reveal" href="tel:+33545824012"><i class="ph ph-phone-call"></i>05 45 82 40 12</a>
+  </div>
+</section>
+
+<!-- ══ GROUPES DE PRODUITS ═══════════════════════════ -->
+{groupes.map((groupe, gi) => (
+  <section class="groupe">
+    <div class="section-wrap">
+      <div class="groupe-header reveal">
+        <div class="groupe-ico"><i class={`ph ${groupe.icone}`}></i></div>
+        <h2>{groupe.titre}</h2>
+      </div>
+      <div class="cat-grid">
+        {groupe.items.map((cat) => (
+          <div class="cat-card reveal">
+            <div class="cat-ico"><i class={`ph ${cat.icon}`}></i></div>
+            <div class="cat-body">
+              <h3>{cat.titre}</h3>
+              <p>{cat.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+))}
+
+<!-- ══ NOTE ══════════════════════════════════════════ -->
+<div style="background:var(--cream-2);padding:24px 28px;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <p style="font-size:0.83rem;color:var(--text-mid);font-style:italic;">
+      <i class="ph ph-info" style="color:var(--blue-river);margin-right:6px;"></i>
+      Cette liste est indicative. Elle sera complétée avec les catégories et marques exactes proposées après la reprise au 1er août 2026.
+    </p>
+  </div>
+</div>
+
+<!-- ══ CTA BAND ══════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div class="reveal">
+      <h2>Vous avez besoin d'un produit spécifique ?</h2>
+      <p>Appelez-nous avant de vous déplacer, nous vérifions la disponibilité et vous conseillons.</p>
+    </div>
+    <div class="cta-btns reveal">
+      <a class="btn-yellow" href="tel:+33545824012"><i class="ph ph-phone-call"></i>05 45 82 40 12</a>
+      <a class="btn-ghost" href="/contact"><i class="ph ph-envelope-simple"></i>Nous écrire</a>
+    </div>
+  </div>
+</section>
+
+</LayoutV2>
