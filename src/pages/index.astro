@@ -5,23 +5,55 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pharmacie de Gensac-la-Pallue</title>
+<title>Pharmacie de Gensac-la-Pallue | Charente (16130)</title>
+<meta name="description" content="Pharmacie de Gensac-la-Pallue, votre pharmacie de proximité en Charente. Ordonnances, vaccins, matériel médical. Lun–Ven 9h–19h, Sam 9h–13h. Tél : 05 45 82 40 12." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://pharmacie-gensac.fr/" />
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Pharmacy",
+  "name": "Pharmacie de Gensac-la-Pallue",
+  "url": "https://pharmacie-gensac.fr",
+  "telephone": "+33545824012",
+  "email": "contact@pharmacie-gensac.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Route de Merpins",
+    "addressLocality": "Gensac-la-Pallue",
+    "postalCode": "16130",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.6379,
+    "longitude": -0.2153
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"12:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"14:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"09:00","closes":"13:00"}
+  ],
+  "hasMap": "https://maps.google.com/?q=Pharmacie+Gensac-la-Pallue",
+  "image": "https://pharmacie-gensac.fr/logo-vertical.png"
+}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
 <style>
   :root{
     --cream:#F7F4EA;
     --cream-2:#FFFDF7;
-    --green-deep:#096534;
-    --green-vivid:#389D33;
-    --green-leaf:#94BE24;
-    --blue-river:#2DA1D9;
-    --yellow-iris:#F9CE07;
-    --text-main:#102418;
+    --green-deep:#046A38;
+    --green-vivid:#43B02A;
+    --green-leaf:#97D700;
+    --blue-river:#0072CE;
+    --yellow-iris:#FFCD00;
+    --brown-trunk:#623412;
+    --text-main:#0D2118;
     --text-mid:#2c3d32;
 
     --ease:cubic-bezier(0.16,1,0.3,1);
@@ -42,7 +74,7 @@
     overflow-x:hidden;
   }
 
-  h1,h2,h3{font-family:'Rufina',serif;font-weight:700;line-height:1.05;}
+  h1,h2,h3{font-family:'Montserrat',sans-serif;font-weight:700;line-height:1.05;}
 
   a{color:inherit;text-decoration:none;}
 
@@ -114,11 +146,11 @@
     background:linear-gradient(135deg,var(--green-deep),var(--green-vivid));
     display:flex;align-items:center;justify-content:center;
     color:var(--cream);font-size:1.2rem;
-    font-family:'Rufina',serif;font-weight:700;
+    font-family:'Montserrat',sans-serif;font-weight:700;
     letter-spacing:-0.01em;
   }
   .titulaire-info .name{
-    font-family:'Rufina',serif;font-weight:700;
+    font-family:'Montserrat',sans-serif;font-weight:700;
     font-size:1.05rem;color:var(--text-main);
     margin-bottom:3px;
   }
@@ -162,11 +194,12 @@
   .testi-stars{display:flex;gap:3px;}
   .testi-stars span{color:var(--yellow-iris);font-size:1rem;line-height:1;}
   .testi-quote{
-    font-family:'Rufina',serif;
-    font-size:1.05rem;
-    line-height:1.55;
-    color:var(--text-main);
+    font-family:'Montserrat',sans-serif;
     font-style:italic;
+    font-weight:500;
+    font-size:1rem;
+    line-height:1.6;
+    color:var(--text-main);
     flex:1;
   }
   .testi-quote::before{content:'«\00a0';color:var(--green-leaf);font-style:normal;}
@@ -245,10 +278,11 @@
     gap:24px;
   }
   .brand{display:flex;align-items:center;gap:12px;}
-  .brand-mark{flex:none;width:42px;height:42px;}
+  .brand-logo{flex:none;width:auto;height:48px;display:block;object-fit:contain;}
   .brand-text{display:flex;flex-direction:column;line-height:1.05;}
-  .brand-text .b1{font-family:'Rufina',serif;font-weight:700;font-size:1.15rem;color:var(--green-deep);}
+  .brand-text .b1{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.15rem;color:var(--green-deep);}
   .brand-text .b2{font-size:0.6rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);margin-top:2px;}
+  .header-right{display:flex;align-items:center;gap:12px;}
 
   nav.main-nav{display:flex;align-items:center;gap:30px;}
   nav.main-nav a{
@@ -287,6 +321,81 @@
   .phone-pill i{font-size:1.1rem;}
   .phone-pill:hover{background:var(--green-vivid);transform:translateY(-1px);}
 
+  /* ============ HAMBURGER ============ */
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:40px;height:40px;
+    padding:8px;
+    background:transparent;
+    border:none;cursor:pointer;
+    border-radius:8px;
+    transition:background .2s;
+  }
+  .hamburger:hover{background:rgba(4,106,56,0.08);}
+  .hamburger span{
+    display:block;
+    width:22px;height:2px;
+    background:var(--green-deep);
+    border-radius:2px;
+    transition:transform .35s var(--ease), opacity .35s var(--ease);
+    transform-origin:center;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ============ MENU MOBILE OVERLAY ============ */
+  .mobile-menu{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99;
+    background:var(--cream);
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    padding:80px 36px 40px;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu nav a{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem,7vw,2.8rem);
+    color:var(--text-main);
+    line-height:1.15;
+    display:block;
+    padding:8px 0;
+    opacity:0;
+    transform:translateX(-20px);
+    transition:color .25s var(--ease);
+  }
+  .mobile-menu.open nav a{
+    animation:menuLinkReveal .5s var(--ease) forwards;
+  }
+  .mobile-menu.open nav a:nth-child(1){animation-delay:.05s;}
+  .mobile-menu.open nav a:nth-child(2){animation-delay:.12s;}
+  .mobile-menu.open nav a:nth-child(3){animation-delay:.19s;}
+  .mobile-menu.open nav a:nth-child(4){animation-delay:.26s;}
+  @keyframes menuLinkReveal{
+    to{opacity:1;transform:translateX(0);}
+  }
+  .mobile-menu nav a:hover{color:var(--green-deep);}
+  .mobile-menu .menu-phone{
+    margin-top:36px;
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--green-deep);color:var(--cream);
+    font-weight:700;font-size:1.1rem;
+    padding:14px 24px;border-radius:999px;
+    opacity:0;
+    animation:none;
+  }
+  .mobile-menu.open .menu-phone{
+    animation:menuLinkReveal .5s var(--ease) .32s forwards;
+  }
+
   /* ============ HERO ============ */
   .hero{
     position:relative;
@@ -307,7 +416,7 @@
   /* Ken Burns — photo dans son propre layer */
   .hero-bg{
     position:absolute;inset:0;
-    background-image:url("/pharmacie-gensac.png");
+    background-image:url("/pharmacie-hero.png");
     background-size:cover;
     background-position:center;
     transform-origin:center;
@@ -627,10 +736,11 @@
   }
   .human h2 .it{font-style:italic;font-weight:400;display:block;color:var(--green-deep);}
   .pull-quote{
-    font-family:'Rufina',serif;
+    font-family:'Montserrat',sans-serif;
     font-style:italic;
-    font-size:1.8rem;
-    line-height:1.3;
+    font-weight:600;
+    font-size:1.6rem;
+    line-height:1.35;
     color:var(--text-main);
     margin-bottom:28px;
     text-indent:-0.1em;
@@ -687,7 +797,7 @@
     position:absolute;bottom:0;left:0;right:0;
     background:linear-gradient(to top,rgba(9,101,52,0.7) 0%,transparent 100%);
     padding:24px 20px 18px;
-    font-family:'Rufina',serif;
+    font-family:'Montserrat',sans-serif;
     font-style:italic;
     font-size:0.9rem;
     color:rgba(255,255,255,0.9);
@@ -704,7 +814,7 @@
     padding:18px 14px;
     text-align:center;
   }
-  .stat .num{font-family:'Rufina',serif;font-weight:700;font-size:1.7rem;color:var(--green-deep);line-height:1;}
+  .stat .num{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.7rem;color:var(--green-deep);line-height:1;}
   .stat .lbl{font-size:0.72rem;color:var(--text-mid);margin-top:6px;font-weight:500;}
 
   /* ============ INFOS PRATIQUES ============ */
@@ -835,7 +945,15 @@
     justify-content:space-between;
   }
   .footer-brand{max-width:320px;}
-  .footer-brand .fb1{font-family:'Rufina',serif;font-weight:700;font-size:1.3rem;color:var(--cream);margin-bottom:8px;}
+  .footer-logo{
+    display:block;
+    height:52px;width:auto;
+    object-fit:contain;
+    background:white;
+    padding:8px 14px;
+    border-radius:10px;
+    margin-bottom:16px;
+  }
   .footer-brand p{font-weight:300;font-size:0.9rem;line-height:1.6;color:rgba(247,244,234,0.6);}
   .footer-col h4{font-family:'Figtree',sans-serif;font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--green-leaf);margin-bottom:14px;}
   .footer-col p, .footer-col a{display:flex;align-items:center;gap:9px;font-weight:300;font-size:0.92rem;color:rgba(247,244,234,0.78);margin-bottom:10px;}
@@ -859,6 +977,8 @@
   }
   @media(max-width:780px){
     nav.main-nav{display:none;}
+    .hamburger{display:flex;}
+    .phone-pill{display:none;}
     .quick-grid{grid-template-columns:1fr;}
     .quick-card + .quick-card{border-left:none;border-top:1px solid rgba(247,244,234,0.10);}
     .header-inner{padding:12px 18px;}
@@ -879,17 +999,24 @@
 </head>
 <body>
 
+<!-- ============ MENU MOBILE OVERLAY ============ -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu navigation">
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#equipe">Équipe</a>
+    <a href="#infos">Infos pratiques</a>
+  </nav>
+  <a class="menu-phone" href="tel:+33545824012">
+    <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
+  </a>
+</div>
+
 <!-- ============ HEADER ============ -->
 <header>
   <div class="header-inner">
     <a class="brand" href="#" aria-label="Pharmacie de Gensac-la-Pallue">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="24" cy="24" r="23" fill="#F7F4EA" stroke="#096534" stroke-width="1.4"/>
-        <!-- pharmacy cross -->
-        <path d="M20 11h8v9h9v8h-9v9h-8v-9h-9v-8h9z" fill="#389D33"/>
-        <!-- vine leaf overlay -->
-        <path d="M30 14c4-1 8 1 9 5-3 1-5 0-6-1 2 2 3 4 3 7-3-1-5-3-6-5 1 3 1 5 0 7-2-3-3-6-2-9-1 1-2 2-2 4-1-4 1-7 4-8z" fill="#94BE24"/>
-      </svg>
+      <img class="brand-logo" src="/logo-vertical.png" alt="Logo Pharmacie de Gensac-la-Pallue" width="44" height="52" />
       <span class="brand-text">
         <span class="b1">Pharmacie</span>
         <span class="b2">de Gensac-la-Pallue</span>
@@ -903,9 +1030,14 @@
       <a href="#infos">Infos pratiques</a>
     </nav>
 
-    <a class="phone-pill" href="tel:+33545824012">
-      <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
-    </a>
+    <div class="header-right">
+      <a class="phone-pill" href="tel:+33545824012">
+        <i class="ph-bold ph-phone-call"></i>05 45 82 40 12
+      </a>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -1199,7 +1331,7 @@
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="fb1">Pharmacie de Gensac-la-Pallue</div>
+      <img src="/logo-horizontal.png" alt="Pharmacie de Gensac-la-Pallue" class="footer-logo" width="220" height="60" />
       <p>Votre pharmacie de proximité au cœur de la Charente, au service des familles du village depuis plus de 15 ans.</p>
     </div>
     <div class="footer-col">
@@ -1242,6 +1374,34 @@
     window.addEventListener('scroll', function(){
       hdr.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+  })();
+
+  /* ===== Menu mobile hamburger ===== */
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var menu = document.getElementById('mobile-menu');
+    if(!btn || !menu) return;
+    function openMenu(){
+      btn.classList.add('open');
+      menu.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+      document.body.style.overflow='hidden';
+    }
+    function closeMenu(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    }
+    btn.addEventListener('click', function(){
+      btn.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') closeMenu();
+    });
   })();
 
   /* ===== Parallax souris hero ===== */
