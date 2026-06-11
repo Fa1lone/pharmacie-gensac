@@ -1000,6 +1000,44 @@ footer{
 .sticky-btn.primary{background:var(--green-deep);color:var(--cream);}
 .sticky-btn.primary:hover{background:var(--green-vivid);}
 
+/* ====== FLORAL DECORATIONS ====== */
+.hero-floral{
+  position:absolute;right:-30px;bottom:-50px;
+  width:clamp(300px,42vw,560px);z-index:2;
+  pointer-events:none;opacity:0.14;
+  transform:rotate(-8deg) scaleX(-1);
+}
+.hero-floral img{width:100%;height:auto;display:block;}
+.services{position:relative;overflow:hidden;}
+.services-floral{
+  position:absolute;right:-60px;top:-50px;
+  width:clamp(160px,18vw,260px);z-index:0;
+  pointer-events:none;opacity:0.07;
+  transform:rotate(20deg);
+}
+.services-floral img{width:100%;height:auto;display:block;}
+.quote-section{position:relative;overflow:hidden;}
+.quote-floral{
+  position:absolute;right:clamp(-20px,3vw,60px);top:50%;
+  width:clamp(100px,12vw,160px);z-index:0;
+  pointer-events:none;opacity:0.25;
+  transform:translateY(-50%) rotate(-12deg);
+}
+.quote-floral img{width:100%;height:auto;display:block;}
+footer{position:relative;overflow:hidden;}
+.footer-floral{
+  position:absolute;right:-20px;bottom:-20px;
+  width:clamp(180px,20vw,280px);z-index:0;
+  pointer-events:none;opacity:0.10;
+  transform:rotate(-14deg) scaleX(-1);
+}
+.footer-floral img{width:100%;height:auto;display:block;}
+@media(max-width:780px){
+  .hero-floral{width:220px;right:-20px;bottom:-20px;opacity:0.10;}
+  .quote-floral{display:none;}
+  .footer-floral{width:140px;}
+}
+
 /* ====== RESPONSIVE ====== */
 @media(max-width:1024px){
   .services-header{grid-template-columns:1fr;}
@@ -1081,6 +1119,7 @@ footer{
 <!-- ====== HERO ====== -->
 <section class="hero" id="accueil">
   <div class="hero-bg-wrap" aria-hidden="true"><div class="hero-bg"></div></div>
+  <div class="hero-floral" aria-hidden="true"><img src="/floral-vigne.png" alt="" loading="eager" width="560" height="360" /></div>
 
   <div class="hero-inner">
     <div class="hero-location reveal">
@@ -1149,6 +1188,7 @@ footer{
 
 <!-- ====== SERVICES ====== -->
 <section class="services" id="services">
+  <div class="services-floral" aria-hidden="true"><img src="/floral-feuille.png" alt="" loading="lazy" width="260" height="260" /></div>
   <div class="section-wrap">
     <div class="services-header">
       <div>
@@ -1221,6 +1261,7 @@ footer{
 
 <!-- ====== QUOTE — compact ====== -->
 <section class="quote-section">
+  <div class="quote-floral" aria-hidden="true"><img src="/floral-iris.png" alt="" loading="lazy" width="160" height="260" /></div>
   <div class="quote-inner">
     <p class="quote-text">"On connaît vos noms. Parfois depuis avant votre naissance.</p>
     <span class="quote-attr">— L'équipe, Pharmacie de Gensac-la-Pallue</span>
@@ -1574,6 +1615,7 @@ footer{
 
 <!-- ====== FOOTER ====== -->
 <footer id="contact">
+  <div class="footer-floral" aria-hidden="true"><img src="/floral-feuille.png" alt="" loading="lazy" width="280" height="280" /></div>
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" class="footer-logo" width="260" height="62" />
