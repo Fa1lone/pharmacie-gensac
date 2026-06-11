@@ -8,8 +8,13 @@ import HeroPage from '../components/HeroPage.astro';
   canonical="https://pharmacie-gensac.fr/la-pharmacie"
 >
 <style>
-/* ── REPRISE BAND ───────────────────────────────── */
-.reprise-band{background:var(--yellow-iris);padding:clamp(44px,5vw,68px) 28px;}
+/* ── FLORAL ─────────────────────────────────────── */
+@keyframes lpFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+.lp-fl{position:absolute;pointer-events:none;z-index:0;}
+.lp-fl img{width:100%;height:auto;display:block;}
+.reprise-band{background:var(--yellow-iris);padding:clamp(44px,5vw,68px) 28px;position:relative;overflow:hidden;}
+.reprise-fl-iris{right:clamp(-40px,2vw,10px);top:50%;transform:translateY(-50%) rotate(-12deg);width:clamp(80px,10vw,140px);opacity:0.28;animation:lpFloat 11s ease-in-out infinite;}
+.reprise-fl-vigne{left:-40px;bottom:-30px;width:clamp(160px,18vw,240px);opacity:0.16;transform:rotate(10deg) scaleX(-1);}
 .reprise-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
 .reprise-date{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(3.2rem,8vw,6.5rem);color:var(--green-deep);line-height:1;letter-spacing:-0.04em;white-space:nowrap;flex:none;}
 .reprise-date sup{font-size:0.38em;vertical-align:super;}
@@ -19,7 +24,9 @@ import HeroPage from '../components/HeroPage.astro';
 @media(max-width:780px){.reprise-sep{display:none;}.reprise-band-inner{gap:18px;}}
 
 /* ── STATS BAND ─────────────────────────────────── */
-.stats-band{background:var(--green-deep);padding:clamp(32px,3.5vw,48px) 28px;}
+.stats-band{background:var(--green-deep);padding:clamp(32px,3.5vw,48px) 28px;position:relative;overflow:hidden;}
+.stats-fl-feuille{right:-30px;top:-20px;width:clamp(120px,14vw,180px);opacity:0.14;transform:rotate(18deg);}
+.stats-fl-iris{left:-20px;bottom:-10px;width:clamp(70px,8vw,100px);opacity:0.11;transform:rotate(8deg);}
 .stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
 .stat-item{text-align:center;padding:0 28px;position:relative;}
 .stat-item+.stat-item::before{content:"";position:absolute;left:0;top:15%;bottom:15%;width:1px;background:rgba(247,244,234,0.12);}
@@ -103,7 +110,9 @@ import HeroPage from '../components/HeroPage.astro';
 .map-wrap iframe{width:100%;height:100%;border:none;display:block;filter:saturate(0.8);}
 
 /* ── CTA BAND ───────────────────────────────────── */
-.cta-band{background:var(--green-deep);padding:clamp(52px,5vw,72px) 28px;}
+.cta-band{background:var(--green-deep);padding:clamp(52px,5vw,72px) 28px;position:relative;overflow:hidden;}
+.cta-fl-vigne{right:-40px;bottom:-30px;width:clamp(200px,24vw,320px);opacity:0.12;transform:rotate(-8deg);}
+.cta-fl-feuille{left:-25px;top:-20px;width:clamp(100px,12vw,160px);opacity:0.10;transform:rotate(-22deg) scaleX(-1);}
 .cta-band-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
 .cta-band h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--cream);letter-spacing:-0.02em;margin-bottom:8px;}
 .cta-band p{font-size:0.93rem;color:rgba(247,244,234,0.70);max-width:52ch;}
@@ -135,6 +144,8 @@ import HeroPage from '../components/HeroPage.astro';
 
 <!-- ══ REPRISE BAND ══════════════════════════════════ -->
 <section class="reprise-band">
+  <div class="lp-fl reprise-fl-iris" aria-hidden="true"><img src="/floral-iris.png" alt="" loading="lazy" width="140" height="230" /></div>
+  <div class="lp-fl reprise-fl-vigne" aria-hidden="true"><img src="/floral-vigne.png" alt="" loading="lazy" width="240" height="156" /></div>
   <div class="reprise-band-inner">
     <div class="reprise-date reveal">1<sup>er</sup> août</div>
     <div class="reprise-sep reveal" aria-hidden="true"></div>
@@ -147,6 +158,8 @@ import HeroPage from '../components/HeroPage.astro';
 
 <!-- ══ STATS BAND ════════════════════════════════════ -->
 <section class="stats-band">
+  <div class="lp-fl stats-fl-feuille" aria-hidden="true"><img src="/floral-feuille.png" alt="" loading="lazy" width="180" height="180" /></div>
+  <div class="lp-fl stats-fl-iris" aria-hidden="true"><img src="/floral-iris.png" alt="" loading="lazy" width="100" height="165" /></div>
   <div class="stats-inner">
     <div class="stat-item reveal">
       <span class="stat-val">15+</span>
@@ -376,6 +389,8 @@ import HeroPage from '../components/HeroPage.astro';
 
 <!-- ══ CTA BAND ══════════════════════════════════════ -->
 <section class="cta-band">
+  <div class="lp-fl cta-fl-vigne" aria-hidden="true"><img src="/floral-vigne.png" alt="" loading="lazy" width="320" height="208" /></div>
+  <div class="lp-fl cta-fl-feuille" aria-hidden="true"><img src="/floral-feuille.png" alt="" loading="lazy" width="160" height="160" /></div>
   <div class="cta-band-inner">
     <div class="reveal">
       <h2>Une question sur la pharmacie ?</h2>
