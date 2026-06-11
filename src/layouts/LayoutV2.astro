@@ -279,7 +279,9 @@ nav.main-nav a.active{color:var(--green-deep);}
 .btn-submit:hover{background:var(--green-vivid);transform:translateY(-2px);}
 
 /* footer */
-footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28px 40px;}
+footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28px 40px;position:relative;overflow:hidden;}
+.footer-floral{position:absolute;right:-20px;bottom:-20px;width:clamp(160px,18vw,260px);z-index:0;pointer-events:none;opacity:0.09;transform:rotate(-14deg) scaleX(-1);}
+.footer-floral img{width:100%;height:auto;display:block;}
 .footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px;justify-content:space-between;}
 .footer-brand{max-width:300px;}
 .footer-logo{display:block;height:62px;width:auto;object-fit:contain;background:white;padding:10px 18px;border-radius:6px;margin-bottom:18px;}
@@ -358,6 +360,7 @@ footer{background:var(--green-deep);color:rgba(247,244,234,0.78);padding:64px 28
 <slot />
 
 <footer id="contact-footer">
+  <div class="footer-floral" aria-hidden="true"><img src="/floral-feuille.png" alt="" loading="lazy" width="260" height="260" /></div>
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="/logo-long.png" alt="Pharmacie de Gensac La Pallue" class="footer-logo" width="260" height="62" />
